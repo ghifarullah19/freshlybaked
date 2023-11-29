@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id('sales_id');
-            // $table->timestamp('date');
+            $table->timestamp('date');
             $table->integer('total_price');
             $table->integer('total_item');
             $table->string('status');
-            // $table->timestamps('order_at');
+            $table->timestamps('order_at');
             $table->foreignId('user_id')->constrained('users');
             $table->foreignId('menu_id')->constrained('menus');
         });
