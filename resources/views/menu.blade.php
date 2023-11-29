@@ -44,11 +44,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link" href="index.html"
+            <a class="nav-item nav-link" href="/"
               >Home <span class="sr-only">(current)</span></a
             >
-            <a class="nav-item nav-link active" href="#menu">Menu</a>
-            <a class="nav-item nav-link" href="contact.html">Contact</a>
+            <a class="nav-item nav-link active" href="/menu">Menu</a>
+            <a class="nav-item nav-link" href="/contact">Contact</a>
             <a class="nav-item btn btn-warning tombol" href="https://api.whatsapp.com/send/?phone=6281322123045&text&app_absent=0">Order</a>
           </div>
         </div>
@@ -66,21 +66,21 @@
               <img src="img/dish1.1.jpeg" class="card-img" alt="..." height="400" />
               <div class="card-img-overlay">
                 <h5 class="card-title">Cake & Dessert</h5>
-                <a href="dish-1.html" class="card-text">View More</a>
+                <a href="dish-1" class="card-text">View More</a>
               </div>
             </div>
             <div class="card bg-dark text-white">
               <img src="img/dish2.1.jpeg" class="card-img" alt="..." height="400" />
               <div class="card-img-overlay">
                 <h5 class="card-title">Bread</h5>
-                <a href="dish-2.html" class="card-text">View More</a>
+                <a href="dish-2" class="card-text">View More</a>
               </div>
             </div>
             <div class="card bg-dark text-white">
               <img src="img/dish3.1.jpeg" class="card-img" alt="..." height="400" />
               <div class="card-img-overlay">
                 <h5 class="card-title">Signature</h5>
-                <a href="dish-3.html" class="card-text">View More</a>
+                <a href="dish-3" class="card-text">View More</a>
               </div>
             </div>
           </div>
@@ -110,13 +110,13 @@
           <div class="row">
             <div class="col">
               <h6 >
-                <a href="index.html" class="mb-2">Home</a>
+                <a href="index" class="mb-2">Home</a>
               </h6>
             </div>
 
             <div class="col">
               <h6>
-                <a href="contact.html" class="mb-2">Contact Us</a>
+                <a href="contact" class="mb-2">Contact Us</a>
               </h6>
               <div class="list-group list-group-flush">
                 <a href="https://wa.me/qr/ASA4SVPXMSIQC1" class="list-group-item list-group-item-action bg-transparent border-0 text-white px-0">081222024097</a>
