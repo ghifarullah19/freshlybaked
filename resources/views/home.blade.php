@@ -5,7 +5,7 @@
 
 <div id="default-carousel" class="relative w-[100%] mt-28" data-carousel="static">
     <!-- Carousel wrapper -->
-    <div class="relative xl:h-[600px] overflow-hidden rounded-lg sm:h-[200px]">
+    <div class="relative lg:h-[500px] overflow-hidden rounded-lg">
          <!-- Item 1 -->
         <div class="hidden duration-1000 ease-in" data-carousel-item>
             <img src="/img/dish1.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
@@ -44,22 +44,22 @@
     </button>
 </div>
 
-<section id="about">
-    <div class="container mx-auto px-4">
-      <div class="about text-center">
+<section id="about w-full">
+    <div class="mx-auto">
+      <div class="flex flex-col about text-center">
         <h2 class="about-title" data-aos="fade-down">About Us</h2>
-        <div class="flex flex-row">
+        <div class="flex flex-row justify-evenly">
           <div class="flex flex-col">
-            <div class="about-apih px-4" data-aos="fade-up">
+            <div class="flex flex-col w-[500px] px-10 about-apih" data-aos="fade-up">
               <img
                 src="img/siapih1.jpg"
                 alt="yadi"
                 width="200"
-                class="rounded-circle inline-block" 
+                class="rounded-circle block mx-auto" 
               />
               <h3>Yadi Haryadi Fitriawan</h3>
               <p>Head Chef</p>
-              <div class="w-[500px]">
+              <div class="container px-1">
                 <p>
                   Founder dari Si Apih Freshly Baked. Lahir pada tanggal 4
                   Oktober 1976 di Sumedang. Akrab dipanggil Si Apih ini
@@ -72,17 +72,17 @@
               </div>
             </div>
           </div>
-          <div class="flex justify-center">
-            <div class="about-us lg:ml-80" data-aos="fade-up">
+          <div class="flex flex-col">
+            <div class="flex flex-col w-[500px] px-10 about-us" data-aos="fade-up">
               <img
                 src="img/logo.jpg"
                 alt="si_apih"
                 width="200"
-                class="rounded-circle inline-block"
+                class="rounded-circle block mx-auto"
               />
               <h3>Si Apih Freshly Baked</h3>
               <p>Bakery</p>
-              <div class="w-[500px]">
+              <div class="container px-1">
                 <p>
                   Alamat kami berada di Jl. Sariwangi Dalam 28 Blok 23/64 Kota
                   Bandung. Si Apih Freshly Backed dikelola bersama istrinya. Saat
