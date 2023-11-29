@@ -23,7 +23,7 @@
     <link rel="stylesheet" href="css/style.css" />
 
     <!-- icon -->
-    <link rel="icon" href="logo.jpg" />
+    <link rel="icon" href="img/logo.jpg" />
 
     <title>Si Apih Freshly Baked</title>
   </head>
@@ -47,7 +47,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav ml-auto">
-            <a class="nav-item nav-link active" href="#home"
+            <a class="nav-item nav-link active" href="/"
               >Home <span class="sr-only">(current)</span></a
             >
             <a class="nav-item nav-link" href="#about">About</a>
@@ -192,17 +192,17 @@
           <div class="row">
             <div class="col">
               <h6 >
-                <a href="menu.html" class="mb-2">Menu</a>
+                <a href="menu" class="mb-2">Menu</a>
               </h6>
               <div class="list-group list-group-flush">
-                <a href="dish-1.html" class="list-group-item list-group-item-action bg-transparent border-0 text-white px-0">Cake & Dessert</a>
-                <a href="dish-2.html" class="list-group-item list-group-item-action bg-transparent border-0 text-white px-0">Bread</a>
-                <a href="dish-3.html" class="list-group-item list-group-item-action bg-transparent border-0 text-white px-0">Signature</a>
+                <a href="dish-1" class="list-group-item list-group-item-action bg-transparent border-0 text-white px-0">Cake & Dessert</a>
+                <a href="dish-2" class="list-group-item list-group-item-action bg-transparent border-0 text-white px-0">Bread</a>
+                <a href="dish-3" class="list-group-item list-group-item-action bg-transparent border-0 text-white px-0">Signature</a>
               </div>
             </div>
             <div class="col">
               <h6>
-                <a href="contact.html" class="mb-2">Contact Us</a>
+                <a href="contact" class="mb-2">Contact Us</a>
               </h6>
               <div class="list-group list-group-flush">
                 <a href="https://wa.me/qr/ASA4SVPXMSIQC1" class="list-group-item list-group-item-action bg-transparent border-0 text-white px-0">081222024097</a>
