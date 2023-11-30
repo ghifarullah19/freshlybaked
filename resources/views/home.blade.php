@@ -1,12 +1,11 @@
 @extends('layouts.main')
 
 @section('container')
-    
-
-<div id="default-carousel" class="relative w-[100%] mt-28" data-carousel="static">
+<div class="relative top-[82px]">
+  <div id="default-carousel" class="relative w-full" data-carousel="static">
     <!-- Carousel wrapper -->
-    <div class="relative lg:h-[500px] overflow-hidden rounded-lg">
-         <!-- Item 1 -->
+    <div class="relative h-96 md:h-[500px] overflow-hidden rounded-lg">
+          <!-- Item 1 -->
         <div class="hidden duration-1000 ease-in" data-carousel-item>
             <img src="/img/dish1.jpeg" class="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="...">
         </div>
@@ -42,13 +41,13 @@
             <span class="sr-only">Next</span>
         </span>
     </button>
-</div>
-
-<section id="about w-full">
+  </div>
+  
+  <section id="about w-full">
     <div class="mx-auto">
       <div class="flex flex-col about text-center">
         <h2 class="about-title" data-aos="fade-down">About Us</h2>
-        <div class="flex flex-row justify-evenly">
+        <div class="flex flex-row justify-evenly flex-wrap">
           <div class="flex flex-col">
             <div class="flex flex-col w-[500px] px-10 about-apih" data-aos="fade-up">
               <img
@@ -97,5 +96,5 @@
     </div>
   </section>
   <!-- akhir about -->
-
+</div>
 @endsection
