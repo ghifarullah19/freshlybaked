@@ -3,10 +3,10 @@
 }
 
 /* navbar */
-.navbar {
+/* .navbar {
     position: relative;
     z-index: 2;
-}
+} */
 .navbar-brand {
     font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
     font-size: 32px;
@@ -63,9 +63,9 @@
 }
 
 /* About */
-.about {
+/* .about {
     padding: 2rem 1rem;
-}
+} */
 .about-title {
     margin-bottom: 50px;
     color: #f68b1e;

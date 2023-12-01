@@ -13,13 +13,14 @@ return new class extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->id('sales_id');
-            // $table->timestamp('date');
+            $table->date('date');
             $table->integer('total_price');
             $table->integer('total_item');
-            $table->string('status');
-            // $table->timestamps('order_at');
-            $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('menu_id')->constrained('menus');
+            $table->text('status');
+            $table->timestamp('order_at');
+            $table->foreignId('users_id');
+            $table->foreignId('menus_id');
+            $table->timestamps(); // created_at, updated_at
         });
     }
 

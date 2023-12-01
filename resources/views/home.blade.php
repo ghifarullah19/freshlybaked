@@ -85,21 +85,16 @@
           </div>
         </div>
 
-        <div class="border border-black p-4 rounded-xl">
-          <div class="bg-slate-600 p-2 flex justify-center rounded-2xl">
-            <img src="/img/2.jpg" alt="">
-          </div>
-          <div class="mt-3">
-            <p class="font-light text-black text-base">Cake</p>
-            <p class="font-light text-2xl">Kue Keju</p>
-          </div>
-        </div>
-
-      </div>
+  <div class="border border-black p-4 rounded-xl">
+    <div class="bg-slate-600 p-2 flex justify-center rounded-2xl">
+      <img src="/img/2.jpg" alt="">
     </div>
+    <div class="mt-3">
+      <p class="font-light text-black text-base">Cake</p>
+      <p class="font-light text-2xl">Kue Keju</p>
+    </div>
+  </div>
 
-    <div class="mt-8"></div>
-    {{-- Akhir Highlight --}}
-  
-
+  <div class="mt-8"></div>
+  {{-- Akhir Highlight --}}
 @endsection
