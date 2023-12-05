@@ -21,7 +21,7 @@
 
 {{-- Awal About --}}
 <section class="about">
-<div class="about-container mx-auto mt-10 w-[70%]">
+<div class="about-container mx-auto mt-10 w-[57%]">
   <h1 class="font-bold text-2xl text-center">______ About ______</h1>
   <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-5 mx-5 md:mx-0">
     <div class="">
@@ -53,7 +53,7 @@
     {{-- Awal Highlight Produk --}}
     <div class="container mx-auto mt-8">
       <h1 class="font-bold text-2xl text-center">______ Highlight ______</h1>
-      <div class="mt-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 mx-5 md:mx-0">
+      <div class="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mx-5 md:mx-0">
         <div class="border border-black p-4 rounded-xl">
           <div class="bg-slate-600 p-2 flex justify-center rounded-2xl">
             <img src="/img/1.jpg" alt="">
@@ -84,17 +84,57 @@
             <p class="font-light text-2xl">Kue Hitam Lumer</p>
           </div>
         </div>
+        
+        <div class="border border-black p-4 rounded-xl">
+          <div class="bg-slate-600 p-2 flex justify-center rounded-2xl">
+            <img src="/img/3.jpg" alt="">
+          </div>
+          <div class="mt-3">
+            <p class="font-light text-black text-base">Cake</p>
+            <p class="font-light text-2xl">Kue Hitam Lumer</p>
+          </div>
+        </div>
 
-  <div class="border border-black p-4 rounded-xl">
-    <div class="bg-slate-600 p-2 flex justify-center rounded-2xl">
-      <img src="/img/2.jpg" alt="">
-    </div>
-    <div class="mt-3">
-      <p class="font-light text-black text-base">Cake</p>
-      <p class="font-light text-2xl">Kue Keju</p>
-    </div>
-  </div>
+        <div class="border border-black p-4 rounded-xl">
+          <div class="bg-slate-600 p-2 flex justify-center rounded-2xl">
+            <img src="/img/3.jpg" alt="">
+          </div>
+          <div class="mt-3">
+            <p class="font-light text-black text-base">Cake</p>
+            <p class="font-light text-2xl">Kue Hitam Lumer</p>
+          </div>
+        </div>
 
-  <div class="mt-8"></div>
+        <div class="border border-black p-4 rounded-xl">
+          <div class="bg-slate-600 p-2 flex justify-center rounded-2xl">
+            <img src="/img/3.jpg" alt="">
+          </div>
+          <div class="mt-3">
+            <p class="font-light text-black text-base">Cake</p>
+            <p class="font-light text-2xl">Kue Hitam Lumer</p>
+          </div>
+        </div>
+
+        <div class="border border-black p-4 rounded-xl">
+          <div class="bg-slate-600 p-2 flex justify-center rounded-2xl">
+            <img src="/img/3.jpg" alt="">
+          </div>
+          <div class="mt-3">
+            <p class="font-light text-black text-base">Cake</p>
+            <p class="font-light text-2xl">Kue Hitam Lumer</p>
+          </div>
+        </div>
+
+        <div class="border border-black p-4 rounded-xl">
+          <div class="bg-slate-600 p-2 flex justify-center rounded-2xl">
+            <img src="/img/2.jpg" alt="">
+          </div>
+          <div class="mt-3">
+            <p class="font-light text-black text-base">Cake</p>
+            <p class="font-light text-2xl">Kue Keju</p>
+          </div>
+        </div>
+      </div>
+    </div>
   {{-- Akhir Highlight --}}
 @endsection
