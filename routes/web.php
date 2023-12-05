@@ -20,8 +20,8 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/menu', function () {
-    return view('menu');
+Route::get('/products', function () {
+    return view('products');
 });
 
 Route::get('/contact', function () {
@@ -32,4 +32,9 @@ Route::get('/about', function () {
     return view('about');
 });
 
+Route::get('/dashboard', function() {
+    return view('dashboard.index');
+});
+
 Route::get('/login', [LoginController::class, 'index']);
+

@@ -230,3 +230,16 @@
         font-size: 62px;
     }
 }
+
+@media (max-width: 375px) {
+    .grid-cols-2 {
+        grid-template-columns: (1, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 430px) {
+    nav div a span.nav-title {
+       display: none !important;
+    }
+}
+
