@@ -59,6 +59,6 @@ class User extends Authenticatable
     public function sales()
     {
         // HasMany digunakan karena relasi antara User dengan Post adalah one to many
-        return $this->hasMany(Sales::class);
+        return $this->hasMany(Sale::class);
     }
 }

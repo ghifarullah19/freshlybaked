@@ -18,8 +18,8 @@ return new class extends Migration
             $table->integer('total_item');
             $table->text('status');
             $table->timestamp('order_at');
-            $table->foreignId('users_id');
-            $table->foreignId('menus_id');
+            $table->foreignId('users_id')->references('users_id')->on('users');
+            $table->foreignId('menus_id')->references('menus_id')->on('menus');
             $table->timestamps(); // created_at, updated_at
         });
     }

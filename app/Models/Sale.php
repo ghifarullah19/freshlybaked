@@ -52,12 +52,12 @@ class Sale extends Authenticatable
     public function menus()
     {
         // HasMany digunakan karena relasi antara User dengan Post adalah one to many
-        return $this->belongsTo(Sales::class);
+        return $this->belongsTo(Menu::class);
     }
 
     public function users()
     {
         // HasMany digunakan karena relasi antara User dengan Post adalah one to many
-        return $this->belongsTo(Sales::class);
+        return $this->belongsTo(User::class);
     }
 }
