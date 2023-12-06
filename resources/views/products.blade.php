@@ -23,7 +23,7 @@
 
 <section class="mx-5 my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
     <div class="w-full max-w-[125%] bg-gray-50 border border-black rounded-lg shadow">
-        <a href="#">
+        <a href="product">
             <img class="p-8 rounded-t-lg w-[100%]" src="/img/1.jpg" alt="product image" />
         </a>
         <div class="px-5 pb-5">

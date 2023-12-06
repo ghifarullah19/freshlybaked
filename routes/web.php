@@ -22,8 +22,14 @@ Route::get('/', function () {
     return view('home');
 });
 
+// Halaman Products
 Route::get('/products', function () {
     return view('products');
+});
+
+// Halaman Single Products
+Route::get('/product', function () {
+    return view('product');
 });
 
 Route::get('/contact', function () {
