@@ -22,6 +22,7 @@
         </div>
     </div>
 
+
      {{-- Galeri --}}
     <!-- component -->
 <div class=" bg-black container mx-auto p-4 mt-5">
