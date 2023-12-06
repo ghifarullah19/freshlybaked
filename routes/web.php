@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
+use App\Models\Menu;
 use Laravel\Socialite\Facades\Socialite;
 
 
@@ -17,15 +19,20 @@ use Laravel\Socialite\Facades\Socialite;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
 Route::get('/', function () {
-    return view('home');
+    return view('home', [
+        "title" => "Home",
+        "active" => "home",
+        "menus" => Menu::take(8)->get()
+    ]);
 });
 
 // Halaman Products
-Route::get('/products', function () {
-    return view('products');
-});
+// Route::get('/products', function () {
+//     return view('products');
+// });
+
+Route::get('/products', [MenuController::class, 'index']);
 
 // Halaman Single Products
 Route::get('/product', function () {

@@ -13,7 +13,15 @@ class MenuController extends Controller
      */
     public function index()
     {
-        //
+        $title = "Menu";
+
+        // Membuat query untuk mengambil data post yang sudah di filter
+        return view('/products', [
+            'title' => "All Posts" . $title,
+            'active' => 'products',
+            // 'posts' => Menu::latest()->filter(request(['search', 'category']))->paginate(7)->withQueryString()
+            'menus' => Menu::latest()->paginate(8)
+        ]);
     }
 
     /**
