@@ -26,7 +26,8 @@ class MenuFactory extends Factory
         ];
     }
 
-    public function randomArray(): string {
+    public function randomArray(): string
+    {
         $array = ['cake', 'bread', 'signature'];
         return $array[array_rand($array)];
     }
