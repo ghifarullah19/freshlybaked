@@ -20,7 +20,7 @@ class MenuController extends Controller
             'title' => "All Posts" . $title,
             'active' => 'products',
             // 'posts' => Menu::latest()->filter(request(['search', 'category']))->paginate(7)->withQueryString()
-            'menus' => Menu::latest()->paginate(8)
+            'menus' => Menu::all()
         ]);
     }
 
