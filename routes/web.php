@@ -52,7 +52,7 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
 
-Route::get('/login', [LoginController::class, 'login']);
+Route::get('/login', [LoginController::class, 'index']);
 
 //login google
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
