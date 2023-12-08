@@ -24,7 +24,6 @@
 
 
      {{-- Galeri --}}
-    <!-- component -->
 <div class=" bg-black container mx-auto p-4 mt-5">
     <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
       <div class="grid gap-4">
