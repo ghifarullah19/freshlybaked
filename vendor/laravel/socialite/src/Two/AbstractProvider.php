@@ -182,7 +182,7 @@ abstract class AbstractProvider implements ProviderContract
      */
     protected function buildAuthUrlFromBase($url, $state)
     {
-        return $url.'?'.http_build_query($this->getCodeFields($state), '', '&', $this->encodingType);
+        return $url . '?' . http_build_query($this->getCodeFields($state), '', '&', $this->encodingType);
     }
 
     /**
@@ -483,7 +483,7 @@ abstract class AbstractProvider implements ProviderContract
      */
     protected function usesState()
     {
-        return ! $this->stateless;
+        return !$this->stateless;
     }
 
     /**
@@ -504,7 +504,6 @@ abstract class AbstractProvider implements ProviderContract
     public function stateless()
     {
         $this->stateless = true;
-
         return $this;
     }
 
