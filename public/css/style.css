@@ -249,3 +249,8 @@
     background-size: cover;
     background-position: center;
 }
+
+/* css hover text register */
+.one:hover span:last-child {
+    width: 100%;
+  }
