@@ -26,14 +26,13 @@ class User extends Authenticatable
     // Fillable digunakan untuk menentukan field mana saja yang boleh diisi
     protected $fillable = [
         'name',
-        'username',
         'email',
         'password',
         'google_id'
     ];
 
     // Guarded digunakan untuk menentukan field mana saja yang tidak boleh diisi
-    protected $guarded = ['user_id'];
+    // protected $guarded = ['user_id'];
 
     /**
      * The attributes that should be hidden for serialization.

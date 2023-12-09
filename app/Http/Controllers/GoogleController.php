@@ -17,10 +17,11 @@ class GoogleController extends Controller
     public function handleGoogleCallback()
     {
         try {
-            $google_user = Socialite::driver('google')->user();
-
+            // INI EMANG MERAH, TAPI GAK ERROR. BIARIN AJA, JANGAN DIUBAH.
+            $google_user = Socialite::driver('google')->stateless()->user();
+            // INI EMANG MERAH, TAPI GAK ERROR. BIARIN AJA, JANGAN DIUBAH.
             $user = User::where('google_id', $google_user->getId())->first();
-
+            
             if (!$user) {
                 $new_user =  User::create([
                     'name' => $google_user->getName(),
@@ -28,12 +29,12 @@ class GoogleController extends Controller
                     'google_id' => $google_user->getId(),
                     'password' => bcrypt('12345678'),
                 ]);
-
+                
                 Auth::login($new_user);
-                return redirect()->intended('/home');
+                return redirect()->intended('home');
             } else {
                 Auth::login($user);
-                return redirect()->intended('/home');
+                return redirect()->intended('home');
             }
         } catch (\Throwable $th) {
             dd($th);
