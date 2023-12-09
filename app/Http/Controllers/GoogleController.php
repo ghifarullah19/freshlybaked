@@ -31,10 +31,10 @@ class GoogleController extends Controller
                 ]);
                 
                 Auth::login($new_user);
-                return redirect()->intended('home');
+                return redirect()->intended('/dashboard');
             } else {
                 Auth::login($user);
-                return redirect()->intended('home');
+                return redirect()->intended('/dashboard');
             }
         } catch (\Throwable $th) {
             dd($th);
