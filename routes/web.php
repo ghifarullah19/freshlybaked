@@ -53,6 +53,14 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
 
+Route::get('/dashboard/products', function () {
+    return view('dashboard.products.index');
+});
+
+Route::get('/dashboard/categories', function () {
+    return view('dashboard.categories.index');
+});
+
 Route::get('/login', [LoginController::class, 'index']);
 Route::get('/register', [RegisterController::class, 'index']);
 
