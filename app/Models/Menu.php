@@ -26,7 +26,7 @@ class Menu extends Authenticatable
     // protected $fillable = [ 'name', 'username', 'email', 'password' ];
     
     // Guarded digunakan untuk menentukan field mana saja yang tidak boleh diisi
-    protected $guarded = ['menu_id'];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.

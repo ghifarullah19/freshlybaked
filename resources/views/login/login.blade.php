@@ -1,7 +1,6 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 
-
 <body class="bg-custom min-h-screen login ">
     <div class="flex items-center justify-center min-h-full">
         <div class="bg-gray-900 bg-opacity-60  rounded-lg shadow p-8 w-full max-w-md justify-center">
@@ -26,11 +25,11 @@
                 @csrf
                 <div class="mb-4">
                     <label for="email" class="block mb-1 font-semibold text-gray-50">Email</label>
-                    <input type="email" id="email" name="email" class="w-full border p-2 rounded" required @error('email') is-invalid @enderror>
+                    <input type="email" id="email" name="email" class="w-full border p-2 rounded" required value="{{ old('email') }}">
                     @error('email')
                     <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
                         <span class="font-medium">Danger alert!</span>
-                        {{ $message  }}
+                        {{ $message }}
                     </div>
                     @enderror
                 </div>
@@ -49,7 +48,6 @@
                         <span>Create account</span>
                         <span class="absolute -bottom-1 left-0 w-0 transition-all h-1 bg-yellow-400"></span>
                     </p>
-
                 </a>
             </div>
             <!-- "" -->
@@ -72,7 +70,6 @@
             </div>
             <!-- end login with socialite -->
             <!-- register button -->
-
         </div>
     </div>
 </body>
