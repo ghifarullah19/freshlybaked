@@ -6,7 +6,6 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 use App\Models\Menu;
-use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -51,7 +50,13 @@ Route::get('/about', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
-});
+})->middleware('auth');
+
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate']);
+Route::post('/logout', [LoginController::class, 'logout']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard/products', function () {
     return view('dashboard.products.index');
@@ -64,9 +69,6 @@ Route::get('/dashboard/products.create', function () {
 Route::get('/dashboard/categories', function () {
     return view('dashboard.categories.index');
 });
-
-Route::get('/login', [LoginController::class, 'index']);
-Route::get('/register', [RegisterController::class, 'index']);
 
 //login google
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');

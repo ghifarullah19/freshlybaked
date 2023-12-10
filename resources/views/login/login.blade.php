@@ -9,10 +9,30 @@
                 <img class="w-8 h-8 mr-2 rounded-full" src="img/logo.jpg" alt="logo">
                 Freshly Baked
             </a>
-            <form>
+            @if (session()->has('success'))
+                <div class="p-4 mb-4 text-sm bg-gray-800 text-green-400" role="alert">
+                    <span class="font-medium">Success!</span>
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if (session()->has('loginError'))
+                <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
+                    <span class="font-medium">Danger alert!</span>
+                    {{ session('loginError') }}
+                </div>
+            @endif
+            <form action="/login" method="POST">
+                @csrf
                 <div class="mb-4">
                     <label for="email" class="block mb-1 font-semibold text-gray-50">Email</label>
-                    <input type="email" id="email" name="email" class="w-full border p-2 rounded" required>
+                    <input type="email" id="email" name="email" class="w-full border p-2 rounded" required @error('email') is-invalid @enderror>
+                    @error('email')
+                    <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
+                        <span class="font-medium">Danger alert!</span>
+                        {{ $message  }}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-4">
                     <label for="password" class="block mb-1 font-semibold text-gray-50">Password</label>
