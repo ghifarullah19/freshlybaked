@@ -57,6 +57,10 @@ Route::get('/dashboard/products', function () {
     return view('dashboard.products.index');
 });
 
+Route::get('/dashboard/products.create', function () {
+    return view('dashboard.products.create');
+});
+
 Route::get('/dashboard/categories', function () {
     return view('dashboard.categories.index');
 });
