@@ -2,13 +2,13 @@
 
 @section('container')
 <div class="text-4xl font-bold mb-4 mx-3 my-3">
-    <h1>Products</h1>
+    <h1>Categories</h1>
 </div>
 <hr class="border-t border-gray-600 my-4 mx-4 px-[610px]"> <!-- Separator line -->
 
 {{-- Button Add Product --}}
 <div class="mt-5 mx-3">
-    <button type="button" class="flex py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"><a href="/dashboard/products.create">Add New Product</a></button>
+    <button type="button" class="flex py-2.5 px-5 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Add New Categories</button>
 </div>
 
 
@@ -21,13 +21,7 @@
                     No
                 </th>
                 <th scope="col" class="px-6 py-3">
-                    Name
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Category
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Price
+                    Categories Name
                 </th>
                 <th scope="col" class="px-6 py-3">
                     Action
@@ -41,17 +35,9 @@
                 <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     1
                 </th>
-                {{-- Isi Tabel Name --}}
-                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Kue Hitam Lurd!
-                </td>
-                {{-- Isi Tabel Categories --}}
+                {{-- Isi Tabel CategoriesName --}}
                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                     Cake
-                </td>
-                {{-- Isi Tabel Price --}}
-                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    Rp. 200.000
                 </td>
                 {{-- Isi Tabel Button --}}
                 <td class="px-6 flex">
@@ -81,6 +67,5 @@
         </tbody>
     </table>
 </div>
-
 
 @endsection

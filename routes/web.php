@@ -58,6 +58,18 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
+Route::get('/dashboard/products', function () {
+    return view('dashboard.products.index');
+});
+
+Route::get('/dashboard/products.create', function () {
+    return view('dashboard.products.create');
+});
+
+Route::get('/dashboard/categories', function () {
+    return view('dashboard.categories.index');
+});
+
 //login google
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);

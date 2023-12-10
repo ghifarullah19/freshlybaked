@@ -1,6 +1,8 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<h1 class="text-4xl font-bold mb-4">Welcome {{ auth()->user()->name }}</h1>
-<p class="text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel lorem id augue elementum venenatis.</p>
+<div class="text-4xl font-bold mb-4 mx-3 my-3">
+    <h1>Welcome back</h1>
+</div>
+<hr class="border-t border-gray-600 my-4 mx-4 px-[610px]"> <!-- Separator line -->
 @endsection
