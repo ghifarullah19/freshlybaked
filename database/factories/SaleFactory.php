@@ -22,8 +22,8 @@ class SaleFactory extends Factory
             'total_item' => mt_rand(1, 10),
             'status' => $this->randomArray(),
             'order_at' => fake()->date(),
-            'users_id' => mt_rand(1, 3),
-            'menus_id' => mt_rand(1, 10),
+            'user_id' => mt_rand(1, 3),
+            'menu_id' => mt_rand(1, 10),
         ];
     }
     public function randomArray(): string
