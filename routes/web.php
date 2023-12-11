@@ -24,7 +24,7 @@ Route::get('/', function () {
     return view('home', [
         "title" => "Home",
         "active" => "home",
-        "menus" => Menu::take(8)->get()
+        "menus" => Menu::take(4)->get()
     ]);
 });
 

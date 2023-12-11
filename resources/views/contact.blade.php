@@ -67,7 +67,7 @@
 
                       <!-- Image Section (Right) -->
                       <div class="w-full md:w-1/2 p-4">
-                          <img data-aos="zoom-in" data-aos-duration="3000" src="img/maps2.png" alt="Company Location" class="w-full h-auto rounded-md">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d507330.21843400126!2d106.86905279069626!3d-6.582425778008019!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7b7c62b117b%3A0x5afbf7beb8b7a5d7!2sSi%20Apih%20freshly%20baked!5e0!3m2!1sid!2sid!4v1702208171088!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                       </div>
                   </section>
 
