@@ -21,14 +21,8 @@ class MenuFactory extends Factory
             'name' => fake()->name(),
             'price' => mt_rand(5000, 100000),
             'quantity' => mt_rand(1, 5),
-            'category' => $this->randomArray(),
-            'description' => fake()->paragraph()
+            'description' => fake()->paragraph(),
+            'category_id' => mt_rand(1, 3),
         ];
-    }
-
-    public function randomArray(): string
-    {
-        $array = ['cake', 'bread', 'signature'];
-        return $array[array_rand($array)];
     }
 }

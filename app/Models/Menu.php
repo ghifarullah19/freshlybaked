@@ -54,4 +54,10 @@ class Menu extends Authenticatable
         // HasMany digunakan karena relasi antara User dengan Post adalah one to many
         return $this->hasMany(Sale::class);
     }
+
+    // public function category()
+    // {
+    //     // BelongsTo digunakan karena relasi antara Post dengan User adalah many to one
+    //     return $this->belongsTo(Category::class);
+    // }
 }

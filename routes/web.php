@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RegisterController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Models\Menu;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -66,13 +70,23 @@ Route::get('/dashboard/products', function () {
     ]);
 });
 
+Route::get('/dashboard/categories', [CategoryController::class, 'index']);
+
 Route::get('/dashboard/products.create', function () {
     return view('dashboard.products.create');
 });
 
-Route::get('/dashboard/categories', function () {
-    return view('dashboard.categories.index');
+Route::get('/dashboard/users', function () {
+    return view('dashboard.users.index', [
+        "title" => "Users",
+        "active" => "users",
+        "users" => User::all()
+    ]);
 });
+
+// Route::get('/dashboard/categories', function () {
+//     return view('dashboard.categories.index');
+// });
 
 //login google
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
