@@ -235,7 +235,7 @@
     .grid-cols-2 {
         grid-template-columns: (1, minmax(0, 1fr));
     }
-    
+
 }
 
 @media (max-width: 430px) {
@@ -254,3 +254,16 @@
 .one:hover span:last-child {
     width: 100%;
   }
+
+/*sidebar css*/
+/* Only the scroll bar */
+::-webkit-scrollbar {
+    width: .5rem;
+    height: .5rem;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0,0,0,.15);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0,0,0,.3);
+}

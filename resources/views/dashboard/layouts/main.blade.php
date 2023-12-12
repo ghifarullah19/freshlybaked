@@ -24,11 +24,11 @@
 </head>
 
 <body>
-    
+
     @include('dashboard.layouts.sidebar')
     <div>
         @yield('container')
-    </div> 
+    </div>
 </body>
 
 </html>

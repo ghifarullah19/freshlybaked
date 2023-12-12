@@ -6,8 +6,7 @@
 
 
 {{-- Breadcumbs --}}
-<nav class="flex mt-20 px-4" aria-label="Breadcrumb">
-
+<nav class="fixed mt-8 px-4" aria-label="Breadcrumb">
   <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
     <li class="inline-flex items-center">
       <a href="#" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white">
@@ -39,7 +38,7 @@
 
 {{-- Product --}}
 
-<div class="bg-white py-8 pt-16">
+<div class="bg-white py-8 pt-16 mt-10">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex flex-col md:flex-row -mx-4">
       <div class="md:flex-1 px-4">
