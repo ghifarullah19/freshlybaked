@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Category;
 use App\Models\User;
 use App\Models\Menu;
 use App\Models\Sale;
@@ -28,8 +30,23 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password')
         ]);
 
+        Category::create([
+            'name' => 'Cake',
+            'slug' => 'cake'
+        ]);
+
+        Category::create([
+            'name' => 'Bread',
+            'slug' => 'bread'
+        ]);
+
+        Category::create([
+            'name' => 'Signature',
+            'slug' => 'signature'
+        ]);
+
         User::factory(3)->create();
         Menu::factory(10)->create();
-        Sale::factory(5)->create();
+        Sale::factory(5)->create();        
     }
 }
