@@ -6,24 +6,19 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
 
-{{-- Header fauzi --}}
-<section class="relative bg-[url(/img/bg.jpg)] bg-cover bg-center bg-no-repeat">
-  <div
-    class="absolute inset-0 bg-white/60 sm:bg-transparent sm:from-white/95 sm:to-white/25 ltr:sm:bg-gradient-to-r rtl:sm:bg-gradient-to-l"></div>
-  <div
-    class="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8 justify-center">
-    <div class="max-w-xl text-center ltr:sm:text-left rtl:sm:text-right">
-      <h1 class="text-3xl font-extrabold sm:text-5xl text-black sm:text-white">
-        Si Apih Freshly Baked
-        <strong class="block font-extrabold text-black sm:text-white text-xl">
-          Baking Private & Made by Order
-        </strong>
-      </h1>
-      </div>
+{{-- H Gilang --}}
+<div class="container"><div class="bg-black flex items-center justify-center h-screen">
+    <div class="text-center">
+        <div class="relative inline-block mt-7">
+            <img data-aos="zoom-in" data-aos-duration="3000"  src="img/bg5.jpg" alt="Image" class="w-full h-auto">
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center ">
+                <p class="text-5xl font-bold">Si Apih Freshly Baked</p>
+                <p class="text-2xl font-bold mt-1">Baking Private & Made By Order</p>
+            </div>
+        </div>
     </div>
-  </div>
-</section>
-{{-- Akhir Header Fauzi --}}
+</div>
+{{-- H Akhir Gilang --}}
 
 {{-- About --}}
 <!-- component -->
@@ -41,13 +36,13 @@
             <!-- frame start -->
             <div class="each-frame border-box flex-none h-full" title="About"> <!-- title shows in top -->
                 <!-- this is full editable area -->
-                <div class="main flex w-full p-8"> 
+                <div class="main flex w-full p-8">
                     <div class="sub w-4/6 my-auto">
-                      <img class="rounded-md ml-8" src="img/logo1.jpg" alt="image" width="300" >
+                      <img data-aos="zoom-in" data-aos-duration="3000" class="rounded-md ml-8" src="img/logo1.jpg" alt="image" width="300" >
                     </div>
                     <div class="sub w-full my-auto">
-                        <div class="head text-3xl font-bold mb-4 ml-5">FreshlyBaked</div>
-                        <div class="long-text text-lg ml-4">FreshlyBaked Adalah Sebuah Toko Yang Menjual Berbagi Macam Kue. Didirikan pada tahun 2017, Freshly Baked by Origin Bakery didirikan karena kami melihat potensi pertumbuhan industri roti di Indonesia melalui perubahan gaya hidup. Namun, saat ini pilihan roti yang lebih sehat sangat sedikit dan kemungkinan besar harganya mahal.</div>
+                        <div data-aos="fade-left" data-aos-duration="3000" class="head text-3xl font-bold mb-4 ml-5">FreshlyBaked</div>
+                        <div data-aos="fade-left" data-aos-duration="3000" class="long-text text-lg ml-4">FreshlyBaked Adalah Sebuah Toko Yang Menjual Berbagi Macam Kue. Didirikan pada tahun 2017, Freshly Baked by Origin Bakery didirikan karena kami melihat potensi pertumbuhan industri roti di Indonesia melalui perubahan gaya hidup. Namun, saat ini pilihan roti yang lebih sehat sangat sedikit dan kemungkinan besar harganya mahal.</div>
                     </div>
                 </div>
             </div>
@@ -55,13 +50,13 @@
 
             <div class="each-frame border-box flex-none h-full" title="Head Chef"> <!-- title shows in top -->
                 <!-- this is full editable area -->
-                <div class="main flex w-full p-8"> 
+                <div class="main flex w-full p-8">
                     <div class="sub w-4/6 my-auto">
-                        <img class="rounded-md ml-8" src="img/siapih1.jpg" alt="" width="300">
+                        <img data-aos="zoom-in" data-aos-duration="3000" class="rounded-md ml-8" src="img/siapih1.jpg" alt="" width="300">
                     </div>
                     <div class="sub w-full my-auto">
-                        <div class="head text-3xl font-bold mb-4">Yadi Haryadi Fitriawan</div>
-                        <div class="long-text text-lg">Founder dari Si Apih Freshly Baked. Lahir pada tanggal 4 Oktober 1976 di Sumendang. Akrab dipanggil Si Apih ini merupakan koki yang berpengalaman. Dia pernah bekerja di Dubai selama beberapa tahun dan menjadi Chef Pastry di beberapa hotel ternama di Bandung. Setelah tidak melanjutkan kontraknya di Hotel Holiday Inn Pasteur, kini Si Apih fokus kepada usahanya.</div> 
+                        <div data-aos="fade-left" data-aos-duration="3000" class="head text-3xl font-bold mb-4">Yadi Haryadi Fitriawan</div>
+                        <div data-aos="fade-left" data-aos-duration="3000" class="long-text text-lg">Founder dari Si Apih Freshly Baked. Lahir pada tanggal 4 Oktober 1976 di Sumendang. Akrab dipanggil Si Apih ini merupakan koki yang berpengalaman. Dia pernah bekerja di Dubai selama beberapa tahun dan menjadi Chef Pastry di beberapa hotel ternama di Bandung. Setelah tidak melanjutkan kontraknya di Hotel Holiday Inn Pasteur, kini Si Apih fokus kepada usahanya.</div>
                     </div>
                 </div>
             </div>
@@ -78,7 +73,7 @@
           .body{background-color:white !important;}
       </style>
 
-     
+
 
 
 
@@ -88,9 +83,9 @@
       <h1  class="font-bold text-2xl text-center highlight-title"> Highlight </h1>
       <div class="mt-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 mx-5 md:mx-0">
         @foreach ($menus as $menu)
-        <div data-aos="flip-right" data-aos-duration="2000" class="border border-black p-4 rounded-xl">
+        <div data-aos="zoom-in" data-aos-duration="3000" class="border border-black p-4 rounded-xl">
           <div class="bg-slate-600 p-2 flex justify-center rounded-2xl">
-            <img src="/img/1.jpg" alt="">
+            <img data-aos="zoom-in" data-aos-duration="3000" src="/img/1.jpg" alt="">
           </div>
           <div class="mt-3">
             <p class="font-light text-black text-base">{{ $menu->category }}</p>
@@ -132,9 +127,20 @@
 
   </div>
 
+  {{-- Pop-Up Contact WhatsApp--}}
+  <div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
+    <div>
+        <a title="WhatsApp Number" href="https://api.whatsapp.com/send/?phone=6281322123045&text&type=phone_number&app_absent=0" target="_blank" class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
+        <img class="object-cover object-center w-full h-full rounded-full" src="img/wame.png"/>
+        </a>
+    </div>
+    </div>
+{{-- Akhir --}}
+
   <script>
     AOS.init();
 </script>
+
 <script>
   function gallery(){
       this.index=0;
@@ -142,11 +148,11 @@
         this.rootEl = document.querySelector(".gallery");
         this.platform = this.rootEl.querySelector(".platform");
         this.frames = this.platform.querySelectorAll(".each-frame");
-        this.contentArea = this.rootEl.querySelector(".content-area");      
+        this.contentArea = this.rootEl.querySelector(".content-area");
         this.width = parseInt(this.rootEl.style.width);
         this.limit = {start:0,end:this.frames.length-1};
-        this.frames.forEach(each=>{each.style.width=this.width+"px";});   
-        this.goto(this.index);      
+        this.frames.forEach(each=>{each.style.width=this.width+"px";});
+        this.goto(this.index);
       }
       this.set_title = function(){this.rootEl.querySelector(".heading").innerText=this.frames[this.index].getAttribute("title");}
       this.next = function(){this.platform.style.right=this.width * ++this.index + "px";this.set_title();}
