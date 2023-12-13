@@ -9,11 +9,11 @@
             <div class="p-4">
                 <ul class="space-y-1">
                     <li>
-                        <a href="/dashboard" class="flex `items-center bg-gray-500 rounded-xl font-bold text-sm text-yellow-900 py-3 px-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                        <a href="/dashboard" class="flex items-center bg-gray-400 rounded-xl font-bold text-sm text-gray-900 py-3 px-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" class="mr-1">
                                 <path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z"/>
                             </svg>
-                            Home
+                            <div class="ml-2">Home</div>
                         </a>
                     </li>
                     <li>
@@ -35,6 +35,15 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-lg mr-4" viewBox="0 0 16 16">
                                 <path d="M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1H2zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
                             </svg>Account
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/dashboard/pdf" class="flex bg-gray-400 hover:bg-yellow-50 rounded-xl font-bold text-sm text-gray-900 py-3 px-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 28 28"><g fill="currentColor"><path d="M14 2v8a2 2 0 0 0 2 2h7.999l.001.078V23.6a2.4 2.4 0 0 1-2.4 2.4H6.4A2.4 2.4 0 0 1 4 23.6V4.4A2.4 2.4 0 0 1 6.4 2z"/>
+                                    <path d="M15.5 2.475V10a.5.5 0 0 0 .5.5h7.502a2.739 2.739 0 0 0-.307-.366l-7.431-7.431a2.401 2.401 0 0 0-.264-.228"/>
+                                </g>
+                            </svg>
+                            <div class="ml-3">PDF Reporting</div>
                         </a>
                     </li>
                 </ul>
