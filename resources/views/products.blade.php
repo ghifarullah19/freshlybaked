@@ -20,26 +20,39 @@
 {{-- Produts --}}
 
 <section class="mx-5 my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-    @foreach ($menus as $menu)
-    <div class="w-full max-w-[125%] bg-gray-50 border border-black rounded-lg shadow">
-        <a href="product">
-            <img class="p-8 rounded-t-lg w-[100%]" src="/img/1.jpg" alt="product image" />
-        </a>
-        <div class="px-5 pb-5">
-            <a href="#">
-                <h5 class="text-xl font-sans hover:font-serif tracking-tight text-gray-900">{{ $menu->name }}</h5>
+    @if ($menus->count() > 0)
+        @foreach ($menus as $menu)
+        <div class="w-full max-w-[125%] bg-gray-50 border border-black rounded-lg shadow">
+            <a href="/products/{{ $menu->slug }}">
+                @if ($menu->image)
+                    <div style="max-height: 350px; overflow: hidden">
+                        <img src="{{ asset('storage/' . $menu->image) }}">
+                    </div>
+                @else
+                    <div style="max-height: 350px; overflow: hidden">
+                        <img src="https://source.unsplash.com/350x350?{{ 'bakery' }}" alt="Product Image">
+                        {{-- <img src="{{ asset('storage/' . $menu->image) }}"> --}}
+                    </div>
+                @endif
             </a>
-            <div class="flex items-center mt-2.5 mb-5">
-                <div class="flex items-center space-x-1 rtl:space-x-reverse">
-                    {{ Str::ucfirst($menu->category) }}
+            <div class="px-5 pb-5">
+                <a href="#">
+                    <h5 class="text-xl font-sans hover:font-serif tracking-tight text-gray-900">{{ $menu->name }}</h5>
+                </a>
+                <div class="flex items-center mt-2.5 mb-5">
+                    <div class="flex items-center space-x-1 rtl:space-x-reverse">
+                        {{ Str::ucfirst($menu->category) }}
+                    </div>
+                </div>
+                <div class="flex items-center justify-between">
+                    <small class="text-2xl font-bold text-gray-900">Rp.{{ $menu->price }}</small>
+                    <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
                 </div>
             </div>
-            <div class="flex items-center justify-between">
-                <small class="text-2xl font-bold text-gray-900">Rp.{{ $menu->price }}</small>
-                <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</a>
-            </div>
         </div>
-    </div>
-    @endforeach
+        @endforeach
+    @else
+        <p class="text-center text-gray-600 dark:text-gray-400">No menu found.</p>
+    @endif
 </section>
 @endsection

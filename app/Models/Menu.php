@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Menu extends Authenticatable
 {
@@ -14,7 +15,7 @@ class Menu extends Authenticatable
      * HasFactory digunakan untuk membuat factory model User 
      * Notifiable digunakan untuk mengirimkan notifikasi ke user 
      */
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Sluggable;
 
     /**
      * The attributes that are mass assignable.
@@ -60,4 +61,18 @@ class Menu extends Authenticatable
     //     // BelongsTo digunakan karena relasi antara Post dengan User adalah many to one
     //     return $this->belongsTo(Category::class);
     // }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'name'
+            ]
+        ];
+    }
 }

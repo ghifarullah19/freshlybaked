@@ -6,6 +6,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardMenuController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Models\Menu;
@@ -38,6 +39,7 @@ Route::get('/', function () {
 // });
 
 Route::get('/products', [MenuController::class, 'index']);
+Route::get('/products/{menu:slug}', [MenuController::class, 'show']);
 
 // Halaman Single Products
 Route::get('/product', function () {
@@ -56,19 +58,29 @@ Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->middleware('auth');
 
+Route::get('/dashboard/products/checkSlug', [DashboardMenuController::class, 'checkSlug'])->middleware('auth');
+Route::resource('/dashboard/products', DashboardMenuController::class)->middleware('auth');
+// Route::get('/dashboard/products', function () {
+//     return view('dashboard.products.index', [
+//         "title" => "Products",
+//         "active" => "products",
+//         "menus" => Menu::all()
+//     ]);
+// });
+
+Route::get('/dashboard/products/create', function () {
+    return view('dashboard.products.create', [
+        "title" => "Create Product",
+        "active" => "products",
+        "categories" => Category::all()
+    ]);
+});
+
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
-
-Route::get('/dashboard/products', function () {
-    return view('dashboard.products.index', [
-        "title" => "Products",
-        "active" => "products",
-        "menus" => Menu::all()
-    ]);
-});
 
 Route::get('/dashboard/categories', [CategoryController::class, 'index']);
 

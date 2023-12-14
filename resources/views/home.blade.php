@@ -1,22 +1,18 @@
 @extends('layouts.main')
 
-@section('container')
-
 <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
-
+@section('container')
 {{-- H Gilang --}}
-<div class="container"><div class="bg-black flex items-center justify-center h-screen">
-    <div class="text-center">
-        <div class="relative inline-block mt-7">
-            <img data-aos="zoom-in" data-aos-duration="3000"  src="img/bg5.jpg" alt="Image" class="w-full h-auto">
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center ">
-                <p class="text-5xl font-bold">Si Apih Freshly Baked</p>
-                <p class="text-2xl font-bold mt-1">Baking Private & Made By Order</p>
-            </div>
-        </div>
+<div class="bg-black flex items-center justify-center h-screen text-center">
+  <div class="relative inline-block mt-7">
+    <img data-aos="zoom-in" data-aos-duration="3000"  src="img/bg5.jpg" alt="Image" class="w-full h-auto">
+    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center ">
+      <p class="text-5xl font-bold">Si Apih Freshly Baked</p>
+      <p class="text-2xl font-bold mt-1">Baking Private & Made By Order</p>
     </div>
+  </div>
 </div>
 {{-- H Akhir Gilang --}}
 
