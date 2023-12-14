@@ -39,24 +39,30 @@
     <div class="flex flex-col md:flex-row -mx-4">
       <div class="md:flex-1 px-4">
         <div class="h-auto w-[100%] md:w-[105%] lg:w-[100%] rounded-lg mb-4 border border-black">
-          <img class="w-full h-full object-cover rounded-lg" src="/img/1.jpg" alt="Product Image">
+          @if ($menu->image)
+            <div style="max-height: 350px; overflow: hidden">
+              <img src="{{ asset('storage/' . $menu->image) }}">
+            </div>
+            @else
+            <img class="w-full h-full object-cover rounded-lg" src="https://source.unsplash.com/1200x800?{{ 'bakery' }}" alt="Product Image">
+          @endif
         </div>
       </div>
 
       {{-- Product Name --}}
       <div class="md:flex-1 px-4">
-        <h2 class="text-2xl font-bold text-black mb-2">Product Name</h2>
-        <p class="text-black text-sm mb-4">
+        <h2 class="text-2xl font-bold text-black mb-2">{{ $menu->name }}</h2>
+        {{-- <p class="text-black text-sm mb-4">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta, accusantium?
-        </p>
+        </p> --}}
         <div class="flex mb-4">
           <div class="mr-4">
             <span class="font-bold text-black">Price:</span>
-            <span class="text-black">Rp.30000</span>
+            <span class="text-black">Rp. {{ $menu->price }}</span>
           </div>
           <div>
             <span class="font-bold text-black">Availability:</span>
-            <span class="text-black">In Stock</span>
+            <span class="text-black">{{ $menu->quantity }}</span>
           </div>
         </div>
         <div>
