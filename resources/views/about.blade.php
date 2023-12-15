@@ -11,12 +11,12 @@
         <div class="container m-auto px-6 text-gray-600 md:px-12 xl:px-6">
             <div class="space-y-6 md:space-y-0 md:flex md:gap-6 lg:items-center lg:gap-12">
             <div data-aos="fade-right" data-aos-duration="2000" class="md:5/12 lg:w-5/12">
-                <img class="rounded-xl" src="img/logo1.jpg" alt="image" width="500" >
+                <img class="rounded-xl" src="img/siapih1.jpg" alt="image" width="400" >
             </div>
             <div class="md:7/12 lg:w-6/12">
                 <h2 data-aos="fade-up" data-aos-duration="2000" class="text-2xl text-gray-900 font-bold md:text-4xl">About Us</h2>
-                <p data-aos="fade-up" data-aos-duration="2000" class="mt-6 text-gray-700">Halo! FreshlyBaked Adalah Sebuah Toko Yang Menjual Berbagi Macam Kue. Didirikan pada tahun 2017, Freshly Baked by Origin Bakery didirikan karena kami melihat potensi pertumbuhan industri roti di Indonesia melalui perubahan gaya hidup. Namun, saat ini pilihan roti yang lebih sehat sangat sedikit dan kemungkinan besar harganya mahal.</p>
-                <p data-aos="fade-up" data-aos-duration="2000" class="mt-4 text-gray-700">Alamat kami berada di Jl. Sariwangi Dalam 28 Blok 23/64 Kota Bandung.</p>
+                <p data-aos="fade-up" data-aos-duration="2000" class="mt-6 text-gray-700 text-xl">Founder dari Si Apih Freshly Baked. Lahir pada tanggal 4 Oktober 1976 di Sumendang. Akrab dipanggil Si Apih ini merupakan koki yang berpengalaman. Dia pernah bekerja di Dubai selama beberapa tahun dan menjadi Chef Pastry di beberapa hotel ternama di Bandung. Setelah tidak melanjutkan kontraknya di Hotel Holiday Inn Pasteur, kini Si Apih fokus kepada usahanya.</p>
+                <p data-aos="fade-up" data-aos-duration="2000" class="mt-4 text-gray-700 text-xl">Alamat kami berada di Jl. Sariwangi Dalam 28 Blok 23/64 Kota Bandung.</p>
             </div>
             </div>
         </div>
