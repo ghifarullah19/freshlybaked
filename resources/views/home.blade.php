@@ -42,7 +42,7 @@
 
             {{-- Produk --}}
 
-              <div class="bg-yellow-950 flex items-center justify-center h-screen ">
+              <div class="bg-gray-200 flex items-center justify-center h-screen ">
 
                 <section x-data="{ slideIndexTop: 0, slideIndexBottom: 0 }" class="max-w-5xl w-full bg-yellow-950  p-8 rounded shadow-md">
                   <!-- Produk Terlaris -->
@@ -222,10 +222,10 @@
             {{-- Akhir Mockup --}}
 
             {{-- About --}}
-            <div class="font-sans">
+            {{-- <div class="font-sans"> --}}
 
                 <!-- About Us Section -->
-                <section class="about-us-section" onmousemove="handleMouseMove(event)">
+                {{-- <section class="about-us-section" onmousemove="handleMouseMove(event)">
                   <div class="carousel">
                     <div class="carousel-inner mt-7">
                       <!-- Image 1 -->
@@ -289,9 +289,9 @@
                   </script>
                 </section>
 
-              </div>
+              </div> --}}
               {{-- Style --}}
-              <style>
+              {{-- <style>
                 body {
                   background-color: white; /* Set the background color to white */
                 }
@@ -353,7 +353,7 @@
                   border: none;
                   cursor: pointer;
                 }
-              </style>
+              </style> --}}
               {{-- Style --}}
             {{-- Akhir About --}}
 
