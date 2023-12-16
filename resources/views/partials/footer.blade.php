@@ -8,6 +8,11 @@
                 </a>
             </div>
             <div class="px-5 py-2">
+                <a href="about" class="text-base leading-6 text-gray-500 hover:text-gray-900">
+                    Highlight
+                </a>
+            </div>
+            <div class="px-5 py-2">
                 <a href="products" class="text-base leading-6 text-gray-500 hover:text-gray-900">
                     Products
                 </a>
