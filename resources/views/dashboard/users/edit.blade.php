@@ -3,7 +3,7 @@
 @section('container')
 
 <div class="text-4xl font-bold mb-4 mx-3 my-3">
-    <h1>Edit Products</h1>
+    <h1>Edit Account</h1>
 </div>
 <hr class="border-t border-gray-600 my-4 mx-4 px-[610px]"> <!-- Separator line -->
 
@@ -69,7 +69,7 @@
     <option value="Bread">Out of Stock</option>
     </select> --}}
 
-    
+
     {{-- Mengirim data image lama --}}
     <input type="hidden" name="oldImage" value="{{ $user->image }}">
 

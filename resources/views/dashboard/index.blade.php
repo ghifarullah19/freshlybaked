@@ -14,12 +14,12 @@
                         <div class="h-100 border-l mx-4"></div>
                         <div class="flex flex-nowrap -space-x-3">
                             <div class="h-9 w-9">
-                                <img class="object-cover w-full h-full rounded-full" src="https://ui-avatars.com/api/?background=random">
+                                <img class="object-cover w-full h-full rounded-full" src="{{ asset('storage/' . Auth()->user()->image) }}">
                             </div>
                         </div>
                     </div>
                     <div class="flex items-center gap-x-2">
-                        <button type="button"    class="inline-flex items-center justify-center h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
+                        <button type="button"  onclick="window.location.href='/dashboard/users/{{ Auth()->user()->username }}/edit'" class="inline-flex items-center justify-center h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
                             Setting
                         </button>
                     </div>
