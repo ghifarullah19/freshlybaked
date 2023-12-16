@@ -4,7 +4,7 @@
 
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
         <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/dist/hammer.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.min.js" defer></script>
 
 
             {{-- Header --}}
@@ -28,59 +28,155 @@
                   <div class="text-center mx-auto max-w-2xl">
                     <!-- Gambar Toko -->
                     <div class="relative inline-block">
-                      <img data-aos="zoom-out" data-aos-duration="3000" src="img/g.jpg" alt="Toko" class="w-full h-auto mb-4 rounded-xl">
-                      <a data-aos="zoom-out" data-aos-duration="3000" href="" class="absolute bottom-0 right-0 mb-2 mr-2 p-1 border border-white bg-black rounded-lg text-gray bold hover:text-blue-200 hover:border-blue-500 hover:bg-black transition duration-300 text-sm">Baca Lebih Lanjut ➥</a>
+                      <img data-aos="zoom-out" data-aos-duration="2000" src="img/g.jpg" alt="Toko" class="w-full h-auto mb-4 rounded-xl">
+                      <a data-aos="zoom-out" data-aos-duration="2000" href="" class="absolute bottom-0 right-0 mb-2 mr-2 p-1 border border-white bg-black rounded-lg text-gray bold hover:text-blue-200 hover:border-blue-500 hover:bg-black transition duration-300 text-sm">Baca Lebih Lanjut ➥</a>
                     </div>
 
                     <!-- Deskripsi Toko -->
-                    <p data-aos="zoom-out" data-aos-duration="3000" class="text-lg text-gray-100 mx-auto">Freshly Baked Adalah Sebuah Toko Yang Menjual Berbagi Macam Kue. <br> Didirikan pada tahun 2017, Freshly Baked by Origin Bakery didirikan karena kami melihat potensi pertumbuhan industri roti di Indonesia melalui perubahan gaya hidup. Namun, saat ini pilihan roti yang lebih sehat sangat sedikit dan kemungkinan besar harganya mahal.</p>
+                    <p data-aos="zoom-out" data-aos-duration="1000" class="text-lg text-gray-100 mx-auto">Freshly Baked Adalah Sebuah Toko Yang Menjual Berbagi Macam Kue. <br> Didirikan pada tahun 2017, Freshly Baked by Origin Bakery didirikan karena kami melihat potensi pertumbuhan industri roti di Indonesia melalui perubahan gaya hidup. Namun, saat ini pilihan roti yang lebih sehat sangat sedikit dan kemungkinan besar harganya mahal.</p>
                   </div>
                 </section>
 
             </div>
             {{-- Akhir Tentang Kami --}}
 
-            {{--  --}}
-            <div class="font-sans bg-gray-100">
+            {{-- Produk --}}
 
-                <!-- Section with Moving Images and Description -->
-                <section class="py-16 bg-gray-100">
-                  <div class="container mx-auto flex items-center justify-center flex-col md:flex-row">
-                    <!-- Image on the Left with Animation -->
-                    <div class="md:w-1/2 relative overflow-hidden mr-4 flex justify-center items-center">
-                      <img src="img/baked.gif" alt="Left Image" class="h-auto animate-left rounded-xl" style="animation-duration: 4s; animation-timing-function: ease-in-out; animation-iteration-count: infinite;">
-                    </div>
+              <div class="bg-yellow-950 flex items-center justify-center h-screen ">
 
-                    <!-- Image on the Right with Animation -->
-                    <div class="md:w-1/2 relative overflow-hidden ml-4 flex justify-center items-center">
-                      <img src="img/baked.gif" alt="Right Image" class="h-auto animate-right" style="animation-duration: 4s; animation-timing-function: ease-in-out; animation-iteration-count: infinite;">
+                <section x-data="{ slideIndexTop: 0, slideIndexBottom: 0 }" class="max-w-5xl w-full bg-yellow-950  p-8 rounded shadow-md">
+                  <!-- Produk Terlaris -->
+                  <div class="mb-8">
+                    <h2 class="text-2xl font-bold mb-4 text-center text-gray-200">Produk Terlaris</h2>
+
+                    <div class="relative">
+                      <div x-show="slideIndexTop === 0" class="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-hidden fade">
+                        <!-- Card 1 -->
+                        <div class="flex flex-col items-center bg-gray-200 p-4 rounded-3xl shadow-md w-500 transition-transform transform hover:scale-105">
+                          <img data-aos="zoom-out" data-aos-duration="1000" src="img/1.jpg" alt="Produk 1" class="w-36 h-36 object-cover mb-2 transition-opacity rounded-xl">
+                          <p class="text-sm font-semibold text-center transition-opacity">Nama Produk 1</p>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="flex flex-col items-center bg-gray-200 p-4 rounded-3xl shadow-md w-500 transition-transform transform hover:scale-105">
+                          <img data-aos="zoom-out" data-aos-duration="1000" src="img/2.jpg" alt="Produk 2" class="w-36 h-36 object-cover mb-2 transition-opacity rounded-xl">
+                          <p class="text-sm font-semibold text-center transition-opacity">Nama Produk 2</p>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="flex flex-col items-center bg-gray-200 p-4 rounded-3xl shadow-md w-500 transition-transform transform hover:scale-105">
+                          <img data-aos="zoom-out" data-aos-duration="1000" src="img/3.jpg" alt="Produk 3" class="w-36 h-36 object-cover mb-2 transition-opacity rounded-xl ">
+                          <p class="text-sm font-semibold text-center transition-opacity">Nama Produk 3</p>
+                        </div>
+                      </div>
+
+                      <div x-show="slideIndexTop === 1" class="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-hidden fade">
+                        <!-- Card 4 -->
+                        <div class="flex flex-col items-center bg-gray-200 p-4 rounded-3xl shadow-md w-500 transition-transform transform hover:scale-105">
+                          <img data-aos="zoom-out" data-aos-duration="1000" src="img/4.jpg" alt="Produk 4" class="w-36 h-36 object-cover mb-2 transition-opacity rounded-xl">
+                          <p class="text-sm font-semibold text-center transition-opacity">Nama Produk 4</p>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="flex flex-col items-center bg-gray-200 p-4 rounded-3xl shadow-md w-500 transition-transform transform hover:scale-105">
+                          <img data-aos="zoom-out" data-aos-duration="1000" src="img/5.jpg" alt="Produk 5" class="w-36 h-36 object-cover mb-2 transition-opacity rounded-xl">
+                          <p class="text-sm font-semibold text-center transition-opacity">Nama Produk 5</p>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="flex flex-col items-center bg-gray-200 p-4 rounded-3xl shadow-md w-500 transition-transform transform hover:scale-105">
+                          <img data-aos="zoom-out" data-aos-duration="1000" src="img/6.jpg" alt="Produk 6" class="w-36 h-36 object-cover mb-2 transition-opacity rounded-xl">
+                          <p class="text-sm font-semibold text-center transition-opacity">Nama Produk 6</p>
+                        </div>
+                      </div>
+
+                      <!-- Tombol Previous -->
+                      <button @click="slideIndexTop = (slideIndexTop - 1 + 2) % 2" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+                        &#x2190; <!-- Panah kiri -->
+                      </button>
+
+                      <!-- Tombol Next -->
+                      <button @click="slideIndexTop = (slideIndexTop + 1) % 2" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+                        &#x2192; <!-- Panah kanan -->
+                      </button>
                     </div>
                   </div>
 
-                  <!-- Single Description Centered Below Images -->
-                  <div class="mt-4 text-center">
-                    <h2 class="text-3xl font-semibold text-gray-800 mb-4 mt-5">Kenapa Harus Beli Produk Kami?</h2>
-                    <p class="text-gray-600 ml-7 mr-7">Dengan bangga kami hadirkan toko roti kami sebagai destinasi terbaik untuk menikmati kelezatan sehat dengan harga terjangkau. Roti berkualitas tinggi dari bahan pilihan tanpa pengawet, dan rasa yang membuat ketagihan menjadi tanda khas kami. Inovasi rasa yang luar biasa dan desain yang menarik menciptakan pengalaman kuliner yang tak terlupakan. Layanan ramah dan profesional dari tim kami, menu diet dan kesehatan, serta komitmen kami terhadap lingkungan membuat kunjungan ke toko kami lebih dari sekadar pembelian. Dapatkan keuntungan dari promosi dan diskon menarik, serta nikmati tempat yang nyaman untuk bersantai. Kami berkomitmen untuk memberikan yang terbaik untuk Anda, menjadikan toko roti kami sebagai pilihan utama yang memuaskan semua selera. Terima kasih atas kepercayaan Anda, dan mari bersama-sama menikmati kelezatan roti berkualitas di toko kami!.</p>
+                <!-- Produk Terbaru -->
+                <div>
+                  <h2 class="text-2xl font-bold mb-4 text-center text-gray-200">Produk Terbaru</h2>
+
+                  <div class="relative">
+                    <div x-show="slideIndexBottom === 0" class="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-hidden fade">
+                      <!-- Card 1 -->
+                      <div class="flex flex-col items-center bg-gray-200 p-4 rounded-3xl shadow-md w-500 transition-transform transform hover:scale-105">
+                        <img data-aos="zoom-out" data-aos-duration="1000" src="img/1.jpg" alt="Produk Terbaru 1" class="w-36 h-36 object-cover mb-2 transition-opacity rounded-xl">
+                        <p class="text-sm font-semibold text-center transition-opacity">Nama Produk Terbaru 1</p>
+                      </div>
+
+                      <!-- Card 2 -->
+                      <div class="flex flex-col items-center bg-gray-200 p-4 rounded-3xl shadow-md w-500 transition-transform transform hover:scale-105">
+                        <img data-aos="zoom-out" data-aos-duration="1000" src="img/2.jpg" alt="Produk Terbaru 2" class="w-36 h-36 object-cover mb-2 transition-opacity rounded-xl">
+                        <p class="text-sm font-semibold text-center transition-opacity">Nama Produk Terbaru 2</p>
+                      </div>
+
+                      <!-- Card 3 -->
+                      <div class="flex flex-col items-center bg-gray-200 p-4 rounded-3xl shadow-md w-500 transition-transform transform hover:scale-105">
+                        <img data-aos="zoom-out" data-aos-duration="1000" src="img/3.jpg" alt="Produk Terbaru 3" class="w-36 h-36 object-cover mb-2 transition-opacity rounded-xl">
+                        <p class="text-sm font-semibold text-center transition-opacity">Nama Produk Terbaru 3</p>
+                      </div>
+                    </div>
+
+                    <div x-show="slideIndexBottom === 1" class="grid grid-cols-1 md:grid-cols-3 gap-4 overflow-hidden fade">
+                      <!-- Card 4 -->
+                        <div class="flex flex-col items-center bg-gray-200 p-4 rounded-3xl shadow-md w-500 transition-transform transform hover:scale-105">
+                          <img data-aos="zoom-out" data-aos-duration="1000" src="img/4.jpg" alt="Produk Terbaru 4" class="w-36 h-36 object-cover mb-2 transition-opacity rounded-xl">
+                          <p class="text-sm font-semibold text-center transition-opacity">Nama Produk Terbaru 4</p>
+                        </div>
+
+                        <!-- Card 5 -->
+                        <div class="flex flex-col items-center bg-gray-200 p-4 rounded-3xl shadow-md w-500 transition-transform transform hover:scale-105">
+                          <img data-aos="zoom-out" data-aos-duration="1000" src="img/5.jpg" alt="Produk Terbaru 5" class="w-36 h-36 object-cover mb-2 transition-opacity rounded-xl">
+                          <p class="text-sm font-semibold text-center transition-opacity">Nama Produk Terbaru 5</p>
+                        </div>
+
+                        <!-- Card 6 -->
+                        <div class="flex flex-col items-center bg-gray-200 p-4 rounded-3xl shadow-md w-500 transition-transform transform hover:scale-105">
+                          <img data-aos="zoom-out" data-aos-duration="1000" src="img/6.jpg" alt="Produk Terbaru 6" class="w-36 h-36 object-cover mb-2 transition-opacity rounded-xl">
+                          <p class="text-sm font-semibold text-center transition-opacity">Nama Produk Terbaru 6</p>
+                        </div>
+                      </div>
+
+                      <!-- Tombol Previous -->
+                      <button @click="slideIndexBottom = (slideIndexBottom - 1 + 2) % 2" class="absolute top-1/2 left-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+                        &#x2190; <!-- Panah kiri -->
+                      </button>
+
+                      <!-- Tombol Next -->
+                      <button @click="slideIndexBottom = (slideIndexBottom + 1) % 2" class="absolute top-1/2 right-2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full">
+                        &#x2192; <!-- Panah kanan -->
+                      </button>
+                    </div>
+                  </div>
+                  <div class="mt-5 text-center">
+                    <a href="/halaman-produk" class="bg-blue-800 text-white px-4 py-2 rounded-full">Produk Selengkapnya</a>
                   </div>
                 </section>
 
               </div>
                 {{-- Style --}}
-                <style>
-                    @keyframes moveLeft {
-                      0% { transform: translateX(0); }
-                      50% { transform: translateX(-50px); }
-                      100% { transform: translateX(0); }
+                  <style>
+                    .fade-enter-active, .fade-leave-active {
+                      transition: opacity 0.5s;
                     }
 
-                    @keyframes moveRight {
-                      0% { transform: translateX(0); }
-                      50% { transform: translateX(50px); }
-                      100% { transform: translateX(0); }
+                    .fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+                      opacity: 0;
                     }
-                </style>
+                  </style>
                 {{-- Akhir Style --}}
-            {{--  --}}
+
+            {{-- Akhir Produk --}}
 
 
             {{-- Mockup 2 --}}
