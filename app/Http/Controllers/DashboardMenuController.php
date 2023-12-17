@@ -16,11 +16,35 @@ class DashboardMenuController extends Controller
      */
     public function index()
     {
-        return view('dashboard.products.index', [
-            // 'posts' => Post::where('user_id', auth()->user()->id)->get()
-            'menus' => Menu::all(),
-            'categories' => Menu::join('categories', 'categories.id', '=', 'menus.category_id')->get()
-        ]);
+        if (request('sort') == 'price') {
+            return view('dashboard.products.index', [
+                'menus' => Menu::join('categories', 'categories.id', '=', 'menus.category_id')
+                ->orderBy('menus.price', 'asc')
+                ->select('menus.*', 'categories.name as category_name')
+                ->get(),
+            ]);
+        } else if (request('sort') == 'name') {
+            return view('dashboard.products.index', [
+                'menus' => Menu::join('categories', 'categories.id', '=', 'menus.category_id')
+                ->orderBy('menus.name', 'asc')
+                ->select('menus.*', 'categories.name as category_name')
+                ->get(),
+            ]);
+        } else if (request('sort') == 'category') {
+            return view('dashboard.products.index', [
+                'menus' => Menu::join('categories', 'categories.id', '=', 'menus.category_id')
+                ->orderBy('categories.name', 'asc')
+                ->select('menus.*', 'categories.name as category_name')
+                ->get(),
+            ]);
+        } else {
+            return view('dashboard.products.index', [
+                'menus' => Menu::join('categories', 'categories.id', '=', 'menus.category_id')
+                ->orderBy('menus.id', 'asc')
+                ->select('menus.*', 'categories.name as category_name')
+                ->get(),
+            ]);
+        }
     }
 
     /**
@@ -146,6 +170,14 @@ class DashboardMenuController extends Controller
     {
         return view('dashboard.print.products', [
             'menus' => Menu::all(),
+            'categories' => Menu::join('categories', 'categories.id', '=', 'menus.category_id')->get()
+        ]);
+    }
+
+    public function sortByPrice()
+    {
+        return view('dashboard.products.index', [
+            'menus' => Menu::orderBy('price', 'asc')->get(),
             'categories' => Menu::join('categories', 'categories.id', '=', 'menus.category_id')->get()
         ]);
     }
