@@ -427,13 +427,6 @@
 
 
             {{-- Pop-Up Contact WhatsApp--}}
-                <div class="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
-                    <div>
-                        <a title="WhatsApp Number" href="https://api.whatsapp.com/send/?phone=6281322123045&text&type=phone_number&app_absent=0" target="_blank" class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
-                            <img class="object-cover object-center w-full h-full rounded-full" src="img/wame.png"/>
-                        </a>
-                    </div>
-                </div>
             {{-- Akhir --}}
 
         <script>

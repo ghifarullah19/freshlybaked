@@ -84,7 +84,7 @@
                     src="img/siapih1.jpg"
                     alt="yadi"
                     width="200"
-                    class="rounded-circle" 
+                    class="rounded-circle"
                   />
                   <h3>Yadi Haryadi Fitriawan</h3>
                   <p>Head Chef</p>
@@ -140,7 +140,7 @@
                   <p >
                     <a href="" class="card-text">View</a>
                   </p>
-                  
+
                 </div>
               </div>
               <div class="card">
@@ -150,7 +150,7 @@
                   <p >
                     <a href="" class="card-text">View</a>
                   </p>
-                 
+
                 </div>
               </div>
               <div class="card">
@@ -160,7 +160,7 @@
                   <p >
                     <a href="" class="card-text">View</a>
                   </p>
-                  
+
                 </div>
               </div>
             </div>
@@ -174,7 +174,7 @@
       <div class="row">
         <div class="col">
           <img src="img/logo.jpg" class="img-fluid mb-4 rounded-circle" width="100">
-          
+
           <p class="text-white">
             Copyright © 2022 Si Apih Freshly Backed. All Rights Reserved
           </p>
@@ -238,6 +238,6 @@
     <script>
       AOS.init();
     </script>
-  
+
   </body>
 </html>
