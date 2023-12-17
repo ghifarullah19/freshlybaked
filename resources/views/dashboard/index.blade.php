@@ -18,12 +18,114 @@
                             </div>
                         </div>
                     </div>
+{{--                    onclick="window.location.href='/dashboard/users/{{ Auth()->user()->username }}/edit'"--}}
                     <div class="flex items-center gap-x-2">
-                        <button type="button"  onclick="window.location.href='/dashboard/users/{{ Auth()->user()->username }}/edit'" class="inline-flex items-center justify-center h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
+                        <button type="button" data-modal-target="modal-setting"  data-modal-toggle="modal-setting"  class="inline-flex items-center justify-center h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
                             Setting
                         </button>
                     </div>
                 </div>
+
+{{--                modal Setting button --}}
+                <div id="modal-setting" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full transition ease-in-out delay-150  pt-10 mb-10 hover:-translate-y-1 hover:scale-110 duration-300">
+                    <div class="relative p-4 w-full max-w-2xl max-h-full">
+                        <!-- Modal content -->
+                        <div class="relative bg-white rounded-lg shadow">
+                            <!-- Modal header -->
+                            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                                <h3 class="text-xl font-semibold text-gray-900">
+                                    Setting Account
+                                </h3>
+                                <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="modal-setting">
+                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                    </svg>
+                                    <span class="sr-only">Close modal</span>
+                                </button>
+                            </div>
+                            <!-- Modal body -->
+                            <div class="p-4 md:p-5 space-y-4">
+                                <form method="POST" action="/dashboard/users/{{ Auth()->user()->username }}" class="max-w-2xl my-4 mx-4" enctype="multipart/form-data">
+                                    @method('PUT')
+                                    @csrf
+                                    <div class="mb-5">
+                                        <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
+                                        <input type="text" id="name" name="name" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500" value="{{ old('name',Auth()->user()->name) }}">
+                                        @error('name')
+                                        <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
+                                            <span class="font-medium">Danger alert!</span>
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+
+                                    <div class="mb-5">
+                                        <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
+                                        <input type="text" id="username" name="username" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 " readonly value="{{ old('username', Auth()->user()->username) }}">
+                                        @error('username')
+                                        <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
+                                            <span class="font-medium">Danger alert!</span>
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+                                    <div class="mb-5">
+                                        <label for="email" class="block mb-2 text-sm font-medium text-gray-900 ">Email</label>
+                                        <input type="text" id="email" name="email" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500" value="{{ old('email', Auth()->user()->email) }}">
+                                        @error('email')
+                                        <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
+                                            <span class="font-medium">Danger alert!</span>
+                                            {{ $message }}
+                                        </div>
+                                        @enderror
+                                    </div>
+
+                                    <input type="hidden" name="oldImage" value="{{ Auth()->user()->image }}">
+
+                                    {{-- Jika ada image lama --}}
+                                    @if (Auth()->user()->image)
+                                        {{-- Tampilkan image tersebut --}}
+                                        <img src="{{ asset('storage/' . Auth()->user()->image) }}" class="img-preview mb-3 block">
+                                        {{-- Jika tidak ada --}}
+                                    @else
+                                        {{-- Tampilkan image kosong --}}
+                                        <img class="img-preview img-fluid mb-3">
+                                    @endif
+                                    <input type="file" id="image" name="image" onchange="previewImage()">
+                                </form>
+                                <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b ">
+                                    <button type="button" data-modal-target="popup-modal-setting"  data-modal-toggle="popup-modal-setting" data-modal-hide="modal-setting" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Accept</button>
+                                    <button data-modal-hide="modal-setting" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Decline</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{{--                end modal setting button--}}
+{{--                modal setting approvement--}}
+                <div id="popup-modal-setting" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                    <div class="relative p-4 w-full max-w-md max-h-full">
+                        <div class="relative bg-white rounded-lg shadow">
+                            <button data-modal-hide="popup-modal-setting" type="button" class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center" data-modal-hide="popup-modal">
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                                </svg>
+                                <span class="sr-only">Close modal</span>
+                            </button>
+                            <div class="p-4 md:p-5 text-center">
+                                <svg  class="mx-auto mb-4 text-gray-400 w-12 h-12" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
+                                </svg>
+                                <h3 class="mb-5 text-lg font-normal text-gray-500">Apakah anda yakin ?</h3>
+                                <button data-modal-hide="popup-modal-setting" type="submit" class="text-white bg-green-600  focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">
+                                    Yes, I'm sure
+                                </button>
+                                <button data-modal-hide="popup-modal-setting" type="button" class="text-gray-500 bg-white hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">No, cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+{{--                end modal setting approvement--}}
                 <hr class="my-5">
                 <div class="grid grid-cols-2 gap-x-20">
                     <div>
@@ -88,4 +190,5 @@
     </div>
 </main>
 </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
 @endsection
