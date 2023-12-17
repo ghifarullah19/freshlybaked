@@ -7,10 +7,10 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardMenuController;
 use App\Http\Controllers\DashboardUserController;
+use App\Http\Controllers\UserController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Models\Menu;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -62,6 +62,9 @@ Route::get('/dashboard/products/checkSlug', [DashboardMenuController::class, 'ch
 Route::resource('/dashboard/products', DashboardMenuController::class)->middleware('auth');
 Route::get('/dashboard/users/checkSlug', [DashboardUserController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/users', DashboardUserController::class)->middleware('auth');
+
+Route::post('/settings', [UserController::class, 'update'])->name('settings.update');
+
 // Route::get('/dashboard/products', function () {
 //     return view('dashboard.products.index', [
 //         "title" => "Products",
