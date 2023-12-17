@@ -34,9 +34,14 @@
 
 
                     <!-- Modal toggle -->
-                    <button data-modal-target="modal-product" data-modal-toggle="modal-product" class="block text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
-                        Tambah Data
-                    </button>
+                    <div class="flex flex-row">
+                        <button data-modal-target="modal-product" data-modal-toggle="modal-product" class="mr-1 block text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+                            Tambah Data
+                        </button>
+                        <button onclick="window.location.href='/dashboard/print/products'" class="block text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+                            Cetak Data
+                        </button>
+                    </div>
 
                     <!-- Main modal -->
                     <div id="modal-product" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full transition ease-in-out delay-150  pt-10 hover:-translate-y-1 hover:scale-110 duration-300">
@@ -161,7 +166,7 @@
                                 </td>
                                 {{-- Isi Tabel Categories --}}
                                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    {{ $menu->category }}
+                                    {{ $categories->where('id', $menu->category_id)->first()->name }}
                                 </td>
                                 {{-- Isi Tabel Price --}}
                                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">

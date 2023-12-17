@@ -23,6 +23,11 @@
                         <button type="button" data-modal-target="modal-setting"  data-modal-toggle="modal-setting"  class="inline-flex items-center justify-center h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
                             Setting
                         </button>
+                        <button type="button"  class="inline-flex items-center justify-center h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
+                            <a href="/">
+                                Home
+                            </a>
+                        </button>
                     </div>
                 </div>
 

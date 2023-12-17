@@ -18,7 +18,8 @@ class DashboardMenuController extends Controller
     {
         return view('dashboard.products.index', [
             // 'posts' => Post::where('user_id', auth()->user()->id)->get()
-            'menus' => Menu::all()
+            'menus' => Menu::all(),
+            'categories' => Menu::join('categories', 'categories.id', '=', 'menus.category_id')->get()
         ]);
     }
 
@@ -139,5 +140,13 @@ class DashboardMenuController extends Controller
     {
         $slug = SlugService::createSlug(Menu::class, 'slug', $request->name);
         return response()->json(['slug' => $slug]);
+    }
+
+    public function print()
+    {
+        return view('dashboard.print.products', [
+            'menus' => Menu::all(),
+            'categories' => Menu::join('categories', 'categories.id', '=', 'menus.category_id')->get()
+        ]);
     }
 }

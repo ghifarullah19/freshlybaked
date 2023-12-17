@@ -23,7 +23,7 @@ class GoogleController extends Controller
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:5|max:255'
         ]);
-        
+
         $validateData['google_id'] = $request['google_id'];
         $validateData['password'] = bcrypt($validateData['password']);
 
@@ -56,12 +56,12 @@ class GoogleController extends Controller
                     'google_id' => $google_user->getId(),
                     // 'password' => bcrypt('password'),
                 ];
-                
+
                 // Auth::login($new_user);
                 return redirect('/register/google')->with('google_user', $new_user);
             } else {
                 Auth::login($user);
-                return redirect()->intended('/dashboard');
+                return redirect()->intended('/');
             }
         } catch (\Throwable $th) {
             dd($th);
