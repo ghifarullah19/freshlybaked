@@ -18,7 +18,7 @@
                             </div>
                         </div>
                     </div>
-{{--                    onclick="window.location.href='/dashboard/users/{{ Auth()->user()->username }}/edit'"--}}
+                   {{-- onclick="window.location.href='/dashboard/users/{{ Auth()->user()->username }}/edit'" --}}
                     <div class="flex items-center gap-x-2">
                         <button type="button" data-modal-target="modal-setting"  data-modal-toggle="modal-setting"  class="inline-flex items-center justify-center h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
                             Setting
@@ -26,7 +26,7 @@
                     </div>
                 </div>
 
-{{--                modal Setting button --}}
+               {{-- modal Setting button --}}
                 <div id="modal-setting" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full transition ease-in-out delay-150  pt-10 mb-10 hover:-translate-y-1 hover:scale-110 duration-300">
                     <div class="relative p-4 w-full max-w-2xl max-h-full">
                         <!-- Modal content -->
@@ -45,12 +45,12 @@
                             </div>
                             <!-- Modal body -->
                             <div class="p-4 md:p-5 space-y-4">
-                                <form method="POST" action="/dashboard/users/{{ Auth()->user()->username }}" class="max-w-2xl my-4 mx-4" enctype="multipart/form-data">
-                                    @method('PUT')
+                                <form method="POST" action="{{ route('settings.update') }}" class="max-w-2xl my-4 mx-4" enctype="multipart/form-data">
+                                    {{-- @method('PUT') --}}
                                     @csrf
                                     <div class="mb-5">
                                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
-                                        <input type="text" id="name" name="name" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500" value="{{ old('name',Auth()->user()->name) }}">
+                                        <input type="text" id="name" name="name" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg b`g-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500" value="{{ old('name',Auth()->user()->name) }}">
                                         @error('name')
                                         <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
                                             <span class="font-medium">Danger alert!</span>
@@ -92,11 +92,11 @@
                                         <img class="img-preview img-fluid mb-3">
                                     @endif
                                     <input type="file" id="image" name="image" onchange="previewImage()">
+                                    <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b ">
+                                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Accept</button>
+                                        <button data-modal-hide="modal-setting" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Decline</button>
+                                    </div>
                                 </form>
-                                <div class="flex items-center p-4 md:p-5 border-t border-gray-200 rounded-b ">
-                                    <button type="button" data-modal-target="popup-modal-setting"  data-modal-toggle="popup-modal-setting" data-modal-hide="modal-setting" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Accept</button>
-                                    <button data-modal-hide="modal-setting" type="button" class="ms-3 text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Decline</button>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -167,4 +167,19 @@
 </main>
 </body>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+    <script>
+        function previewImage() {
+            const image = document.querySelector('#image');
+            const imgPreview = document.querySelector('.img-preview');
+
+            imgPreview.style.display = 'block';
+
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(image.files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                imgPreview.src = oFREvent.target.result;
+            }
+        }
+    </script>
 @endsection

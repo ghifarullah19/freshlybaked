@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
-use App\Http\Requests\UpdateUserRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -51,9 +52,33 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,' . auth()->id(),
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
+
+        $user = User::find(auth()->id());
+
+        $validatedData = $request->validate($rules);
+
+        // Jika ada file image yang dikirim dari form create post maka akan disimpan di storage
+        if ($request->file('image')) {
+            // Jika ada file image lama yang dikirim dari form edit post 
+            if ($request->oldImage) {
+                // Maka file image lama akan dihapus dari storage
+                Storage::delete($request->oldImage);
+            }
+            // Menyimpan file image baru ke dalam storage
+            $validatedData['image'] = $request->file('image')->store('User-images');
+        }
+
+        $user->fill($validatedData);
+        $user->save();
+        
+        return redirect()->back()->with('success', 'Profile updated successfully');
     }
 
     /**

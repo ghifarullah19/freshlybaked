@@ -87,8 +87,6 @@ class DashboardUserController extends Controller
             $validatedData['image'] = $request->file('image')->store('user-images');
         }
 
-        // $validatedData['user_id'] = auth()->user()->id;
-
         User::where('id', $user->id)->update($validatedData);
 
         return redirect('/dashboard/users')->with('success', 'New post has been updated!');
