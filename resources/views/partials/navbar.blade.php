@@ -30,10 +30,13 @@
                       <li>
                           <a href="/dashboard" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
                       </li>
+                      <li>
+                          <button type="submit">
+                              <span class="font-bold text-sm ml-2">Logout</span>
+                          </button>
+                      </li>
                   </ul>
-                  <button type="submit" class="mt-2 inline-flex items-center justify-center h-9 px-4 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
-                      <span class="font-bold text-sm ml-2">Logout</span>
-                  </button>
+
 
               </div>
             </form>
