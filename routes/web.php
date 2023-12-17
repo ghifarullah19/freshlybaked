@@ -66,6 +66,7 @@ Route::resource('/dashboard/users', DashboardUserController::class)->middleware(
 Route::post('/settings', [UserController::class, 'update'])->name('settings.update');
 
 Route::get('/dashboard/print/products', [DashboardMenuController::class, 'print'])->middleware('auth');
+Route::get('/dashboard/products/sortByPrice', [DashboardMenuController::class, 'sortByPrice'])->middleware('auth');
 
 // Route::get('/dashboard/products', function () {
 //     return view('dashboard.products.index', [

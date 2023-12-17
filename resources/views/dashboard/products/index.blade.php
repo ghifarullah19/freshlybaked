@@ -35,12 +35,23 @@
 
                     <!-- Modal toggle -->
                     <div class="flex flex-row">
-                        <button data-modal-target="modal-product" data-modal-toggle="modal-product" class="mr-1 block text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+                        <button data-modal-target="modal-product" data-modal-toggle="modal-product" class="mr-1 block text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center h-fit" type="button">
                             Tambah Data
                         </button>
-                        <button onclick="window.location.href='/dashboard/print/products'" class="block text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="button">
+                        <button onclick="window.location.href='/dashboard/print/products'" class="mr-1 block text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center h-fit" type="button">
                             Cetak Data
                         </button>
+                        <form action="/dashboard/products">         
+                            <select name="sort" for="sort" id="sort" class="text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2.5">
+                                <option value="default">Awal</option>
+                                <option value="name">Nama</option>
+                                <option value="category">Kategori</option>
+                                <option value="price">Harga</option>
+                            </select>
+                            <button class="text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">
+                                Urut
+                            </button>
+                        </form>
                     </div>
 
                     <!-- Main modal -->
@@ -166,7 +177,7 @@
                                 </td>
                                 {{-- Isi Tabel Categories --}}
                                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    {{ $categories->where('id', $menu->category_id)->first()->name }}
+                                    {{ $menu->category_name }}
                                 </td>
                                 {{-- Isi Tabel Price --}}
                                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
