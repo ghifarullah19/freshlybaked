@@ -20,6 +20,13 @@
                 {{-- Akhir Backgroundg--}}
 
 
+
+                {{--  --}}
+
+
+
+                {{--  --}}
+
                 {{-- Form Contact  --}}
                 <div class="bg-white h-screen flex items-center justify-center">
 
@@ -47,7 +54,6 @@
                       </form>
                     </div>
                   </div>
-
                 </div>
                 {{-- FAkhir Formcontact --}}
 
