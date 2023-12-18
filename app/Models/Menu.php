@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Cviebrock\EloquentSluggable\Sluggable;
+use Illuminate\Http\Request;
 
 class Menu extends Authenticatable
 {
@@ -49,6 +50,37 @@ class Menu extends Authenticatable
     //     'password' => 'hashed',
     // ];
 
+    public function scopeFilter($query, array $filters)
+    {
+        if (request('filter') == 'name') {
+            $query->when($filters['search'] ?? false, function ($query, $search) {
+                return $query->where("name", "like", "%" . $search . "%");
+            });
+        } else if (request('filter') == 'category') {
+            $query->when($filters['search'] ?? false, function ($query, $search) {
+                return $query->whereHas('category', function ($query) {
+                    $query->where('name', 'like', '%' . request('search') . '%');
+                });
+            });
+        }
+
+        // $query->when($filters['search'] ?? false, function ($query, $search) {
+        //     return $query->where("name", "like", "%" . $search . "%");
+        // });
+
+        // $query->when($filters['category'] ?? false, function ($query, $category) {
+        //     return $query->whereHas('category', function ($query) use ($category) {
+        //         $query->where('slug', $category);
+        //     });
+        // });
+
+        // $query->when($filters['author'] ?? false, function ($query, $author) {
+        //     return $query->whereHas('author', function ($query) use ($author) {
+        //         $query->where('username', $author);
+        //     });
+        // });
+    }
+
     // Membuat relasi dengan model Post
     public function sales()
     {
@@ -56,11 +88,11 @@ class Menu extends Authenticatable
         return $this->hasMany(Sale::class);
     }
 
-    // public function category()
-    // {
-    //     // BelongsTo digunakan karena relasi antara Post dengan User adalah many to one
-    //     return $this->belongsTo(Category::class);
-    // }
+    public function category()
+    {
+        // BelongsTo digunakan karena relasi antara Post dengan User adalah many to one
+        return $this->belongsTo(Category::class);
+    }
 
     public function getRouteKeyName()
     {

@@ -40,11 +40,7 @@ Route::get('/', function () {
 
 Route::get('/products', [MenuController::class, 'index']);
 Route::get('/products/{menu:slug}', [MenuController::class, 'show']);
-
-// Halaman Single Products
-Route::get('/product', function () {
-    return view('product');
-});
+Route::get('search', [MenuController::class, 'search']);
 
 Route::get('/contact', function () {
     return view('contact');
