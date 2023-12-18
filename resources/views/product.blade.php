@@ -60,9 +60,15 @@
             <span class="font-bold text-black">Price:</span>
             <span class="text-black">Rp. {{ $menu->price }}</span>
           </div>
-          <div>
+          <div class="mr-4">
             <span class="font-bold text-black">Availability:</span>
             <span class="text-black">{{ $menu->quantity }}</span>
+          </div>
+          <div>
+            <span class="font-bold text-black">Category:</span>
+            <a href="/products?category={{ $menu->category->slug }}">
+              <span class="text-black">{{ $menu->category->name }}</span>
+            </a>
           </div>
         </div>
         <div>
