@@ -60,6 +60,7 @@ Route::get('/dashboard/users/checkSlug', [DashboardUserController::class, 'check
 Route::resource('/dashboard/users', DashboardUserController::class)->middleware('auth');
 
 Route::post('/settings', [UserController::class, 'update'])->name('settings.update');
+Route::post('/create-product', [MenuController::class, 'store'])->name('product.create');
 
 Route::get('/dashboard/print/products', [DashboardMenuController::class, 'print'])->middleware('auth');
 Route::get('/dashboard/products/sortByPrice', [DashboardMenuController::class, 'sortByPrice'])->middleware('auth');

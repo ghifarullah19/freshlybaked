@@ -72,13 +72,23 @@
                                     </button>
                                 </div>
                                 <!-- Modal body -->
-                                <form method="POST" action="/dashboard/products" class="max-w-2xl my-4 mx-4" enctype="multipart/form-data" class="p-4 md:p-5" >
+                                <form method="POST" action="{{ route('product.create') }}" class="max-w-2xl my-4 mx-4" enctype="multipart/form-data" class="p-4 md:p-5" >
                                    @csrf
                                     <div class="grid gap-4 mb-4 grid-cols-2">
                                         <div class="col-span-2">
                                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
                                             <input type="text" name="name" id="name" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type product name" required>
                                             @error('name')
+                                            <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
+                                                <span class="font-medium">Danger alert!</span>
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-span-2">
+                                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Slug</label>
+                                            <input type="text" name="slug" id="slug" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type product name" required>
+                                            @error('slug')
                                             <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
                                                 <span class="font-medium">Danger alert!</span>
                                                 {{ $message }}
@@ -97,12 +107,11 @@
                                         </div>
                                         <div class="col-span-2 sm:col-span-1">
                                             <label for="category" class="block mb-2 text-sm font-medium text-gray-900   ">Category</label>
-                                            <select id="category" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
+                                            <select id="category_id" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
                                                 <option selected="">Select category</option>
-                                                <option value="TV">TV/Monitors</option>
-                                                <option value="PC">PC</option>
-                                                <option value="GA">Gaming/Console</option>
-                                                <option value="PH">Phones</option>
+                                                <option value="1">Cake</option>
+                                                <option value="2">Bread</option>
+                                                <option value="3">Signature</option>
                                             </select>
                                         </div>
                                         <div class="col-span-2 sm:col-span-1">
@@ -113,7 +122,7 @@
                                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16" />
                                                     </svg>
                                                 </button>
-                                                <input type="text" id="counter-input" data-input-counter data-input-counter-min="1" data-input-counter-max="10" class="flex-shrink-0 text-black border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[2.5rem] text-center" placeholder="" value="1" required>
+                                                <input type="text" id="quantity" name="quantity" data-input-counter data-input-counter-min="1" data-input-counter-max="10" class="flex-shrink-0 text-black border-0 bg-transparent text-sm font-normal focus:outline-none focus:ring-0 max-w-[2.5rem] text-center" placeholder="" value="1" required>
                                                 <button type="button" id="increment-button" data-input-counter-increment="counter-input" class="flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                                                     <svg class="w-2.5 h-2.5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                                                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16" />
@@ -121,9 +130,20 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <div class="col-span-2 ">
+                                        <div class="col-span-2">
+                                            <label for="image">Post Image</label>
+                                            <input type="file" id="image" name="image" onchange="previewImage()">
+                                            <img class="mt-3 img-preview">
+                                            @error('image')
+                                            <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
+                                                <span class="font-medium">Danger alert!</span>
+                                                {{ $message }}
+                                            </div>
+                                            @enderror
+                                        </div>
+                                        <div class="col-span-2">
                                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900">Product Description</label>
-                                            <textarea id="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Write product description here"></textarea>
+                                            <textarea id="description" name="description" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500" placeholder="Write product description here"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-span-2 pb-5">
@@ -132,7 +152,6 @@
                                             Add new product
                                         </button>
                                     </div>
-
                                 </form>
                             </div>
                         </div>
@@ -221,4 +240,29 @@
     </div>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.0/flowbite.min.js"></script>
+<script>
+    const name = document.querySelector('#name');
+    const slug = document.querySelector('#slug');
+
+    name.addEventListener('change', function() {
+      fetch('/dashboard/products/checkSlug?name=' + name.value)
+        .then(response => response.json())
+        .then(data => slug.value = data.slug)
+    });
+    // document.addEventListener('trix-file-accept', function(e) {
+    //   e.preventDefault();
+    // });
+
+    // Menangani image preview
+    function previewImage() {
+      const image = document.querySelector('#image');
+      const imgPreview = document.querySelector('.img-preview');
+      imgPreview.style.display = 'block';
+      const oFReader = new FileReader();
+      oFReader.readAsDataURL(image.files[0]);
+      oFReader.onload = function(oFREVent) {
+        imgPreview.src = oFREVent.target.result;
+      }
+    }
+</script>
 </body>
