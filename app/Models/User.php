@@ -56,10 +56,10 @@ class User extends Authenticatable
     ];
 
     // Membuat relasi dengan model Post
-    public function sales()
+    public function carts()
     {
         // HasMany digunakan karena relasi antara User dengan Post adalah one to many
-        return $this->hasMany(Sale::class);
+        return $this->hasMany(Cart::class, 'user_id', 'id');
     }
 
     public function getRouteKeyName()

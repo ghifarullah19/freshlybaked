@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Http\Request;
+use App\Models\CartDetail;
 
 class Menu extends Authenticatable
 {
@@ -82,10 +83,10 @@ class Menu extends Authenticatable
     }
 
     // Membuat relasi dengan model Post
-    public function sales()
+    public function cartDetail()
     {
         // HasMany digunakan karena relasi antara User dengan Post adalah one to many
-        return $this->hasMany(Sale::class);
+        return $this->hasMany(CartDetail::class, 'menu_id', 'id');
     }
 
     public function category()

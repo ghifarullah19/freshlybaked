@@ -7,7 +7,7 @@ namespace Database\Seeders;
 use App\Models\Category;
 use App\Models\User;
 use App\Models\Menu;
-use App\Models\Sale;
+use App\Models\Cart;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -48,6 +48,6 @@ class DatabaseSeeder extends Seeder
 
         User::factory(3)->create();
         Menu::factory(10)->create();
-        Sale::factory(5)->create();        
+        // Cart::factory(5)->create();    
     }
 }

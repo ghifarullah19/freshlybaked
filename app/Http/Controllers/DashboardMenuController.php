@@ -39,10 +39,7 @@ class DashboardMenuController extends Controller
             ]);
         } else {
             return view('dashboard.products.index', [
-                'menus' => Menu::join('categories', 'categories.id', '=', 'menus.category_id')
-                ->orderBy('menus.id', 'asc')
-                ->select('menus.*', 'categories.name as category_name')
-                ->get(),
+                'menus' => Menu::all(),
             ]);
         }
     }
