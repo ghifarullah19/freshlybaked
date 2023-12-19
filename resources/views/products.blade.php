@@ -9,7 +9,7 @@
         {{-- Search --}}
         <form action="/products" method="get">
             {{-- Container Search --}}
-            <div class="flex flex-row gap-3">
+            <div class="flex flex-row gap-3 h-[40px]">
                 {{-- Filter --}}
                 <div class="flex flex-col">
                     {{-- Label Filter --}}
@@ -22,10 +22,16 @@
                 </div>
 
                 {{-- Search Input --}}
-                <input type="search" id="search" class="block w-full p-4 ps-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-white dark:border-gray-600 dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search something..." name="search" value="{{ request("search") }}">
-                
-                {{-- Button Search --}}
-                <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                <div class="flex flex-col w-full">
+                    <div class="flex flex-row">
+                        <input type="search" id="search" class="block w-full p-4 ps-4 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-white dark:border-gray-600 dark:placeholder-black dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search something..." name="search" value="{{ request("search") }}">
+                        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Search</button>
+                    </div>
+                    {{-- Button Search --}}
+                    <div class="flex flex-row">
+                        <div class="ps-4" id="search_list"></div>
+                    </div>
+                </div>
             </div>
         </form>
     </div>
@@ -37,7 +43,7 @@
 
 
 {{-- Produts --}}
-<section class="mx-5 my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3" id="search_list">
+<section class="mx-5 my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
      @if ($menus->count() > 0)
         @foreach ($menus as $menu)
             {{-- Border --}}
@@ -45,7 +51,7 @@
                 <a href="/products/{{ $menu->slug }}">
                     {{-- Image --}}
                     <div class="relative">
-                        <img class="w-full" src="https://source.unsplash.com/350x350?{{ 'bakery' }}" alt="Product Image">
+                        <img class="w-full" src="https://source.unsplash.com/350x350?{{ $menu->category->name }}" alt="Product Image">
                         <div class="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 m-2 rounded-md text-sm font-medium">IN STOCK
                         </div>
                     </div>
@@ -166,7 +172,6 @@
                     'search': value
                 },
                 success: function (data) {
-                    
                     $("#search_list").html(data);
                 }
             })

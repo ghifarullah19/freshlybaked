@@ -55,13 +55,13 @@ class GoogleController extends Controller
                     'email' => $google_user->getEmail(),
                     'google_id' => $google_user->getId(),
                     // 'password' => bcrypt('password'),
-                ];
+                ];  
 
                 // Auth::login($new_user);
                 return redirect('/register/google')->with('google_user', $new_user);
             } else {
                 Auth::login($user);
-                return redirect()->intended('/');
+                return redirect()->intended('/');   
             }
         } catch (\Throwable $th) {
             dd($th);

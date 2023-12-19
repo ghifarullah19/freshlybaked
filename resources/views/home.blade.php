@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="w-full h-1/4 p-3 bg-amber-200 rounded-b-2xl">
                                         <span class="text-lg font-semibold uppercase tracking-wide ">{{ $menu->name }}</span>
-                                    <p class="text-gray-600 text-sm leading-5 mt-1">{{ $menu->category }}</p>
+                                    <p class="text-gray-600 text-sm leading-5 mt-1">{{ $menu->category->name }}</p>
                                 </div>
                             </div>
                         @endforeach

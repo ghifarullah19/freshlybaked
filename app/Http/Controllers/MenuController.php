@@ -48,9 +48,29 @@ class MenuController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreMenuRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'slug' => 'required|unique:menus',
+            'category_id' => 'required',
+            'price' => 'required',
+            'quantity' => 'required',
+            'image' => 'image|file|max:1024',
+            'description' => 'required'
+        ]);
+
+        if ($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('menu-images');
+        }
+
+        // $validatedData['user_id'] = auth()->user()->id;
+        // $validatedData['excerpt'] = Str::limit(strip_tags($request->body, 100));
+        // $validatedData['excerpt'] = substr($request->body, 0, 255);
+
+        Menu::create($validatedData);
+
+        return redirect('/dashboard/products')->with('success', 'New post has been added!');
     }
 
     /**
@@ -99,7 +119,9 @@ class MenuController extends Controller
                 $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
 
                 foreach ($data as $row) {
-                    $output .= '<li class="list-group-item">' . $row->name . '</li>';
+                    $output .= '<li class="list-group-item"><a href="/products/' . $row->slug . '">'
+                    . $row->name . 
+                    '</a></li>';
                 }
 
                 $output .= '</ul>';

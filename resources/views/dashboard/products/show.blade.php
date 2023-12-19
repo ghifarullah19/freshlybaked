@@ -39,11 +39,7 @@
           {{-- Product Description --}}
           <span class="font-bold text-black">Product Description:</span>
           <p class="text-black text-sm mt-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-            sed ante justo. Integer euismod libero id mauris malesuada tincidunt. Vivamus commodo nulla ut
-            lorem rhoncus aliquet. Duis dapibus augue vel ipsum pretium, et venenatis sem blandit. Quisque
-            ut erat vitae nisi ultrices placerat non eget velit. Integer ornare mi sed ipsum lacinia, non
-            sagittis mauris blandit. Morbi fermentum libero vel nisl suscipit, nec tincidunt mi consectetur.
+            {{ $menu->description }}  
           </p>
         </div>
         {{-- Input Number Quantity --}}
