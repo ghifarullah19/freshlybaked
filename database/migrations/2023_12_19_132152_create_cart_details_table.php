@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('sales', function (Blueprint $table) {
+        Schema::create('cart_details', function (Blueprint $table) {
             $table->id();
-            $table->date('date');
-            $table->integer('total_price');
-            $table->integer('total_item');
-            $table->text('status');
-            $table->timestamp('order_at');
-            $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('menu_id')->references('id')->on('menus');
-            $table->timestamps(); // created_at, updated_at
+            $table->foreignId('cart_id')->references('id')->on('carts');
+            $table->integer('quantity');
+            $table->integer('total_price');
+            $table->timestamps();
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('sales');
+        Schema::dropIfExists('cart_details');
     }
 };

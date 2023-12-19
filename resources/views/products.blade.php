@@ -41,6 +41,12 @@
     <h1 class="text-2xl font-bold text-black">Menu</h1>
 </div>
 
+@if (session()->has('success'))
+    <div class="p-4 mb-4 text-sm bg-gray-800 text-green-400" role="alert">
+        <span class="font-medium">Success!</span>
+        {{ session('success') }}
+    </div>
+@endif
 
 {{-- Produts --}}
 <section class="mx-5 my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -71,7 +77,7 @@
                         {{-- Menu's price --}}
                         <span class="font-bold text-lg">Rp.{{ $menu->price }}</span>
                         {{-- Button Cart --}}
-                        <button class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+                        <button onclick="window.location.href='/products/{{ $menu->slug }}'" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
                             Add to Cart
                         </button>
                     </div>
@@ -82,75 +88,6 @@
         <p class="text-center text-gray-600 dark:text-gray-400">No menu found.</p>
     @endif
 
-</section>
-
-{{-- Version 3 --}}
-<section class="mx-5 my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-    @if ($menus->count() > 0)
-        @foreach ($menus as $menu)
-        {{-- Image --}}
-            <div class="w-full max-w-[125%] bg-white shadow rounded">
-                <div
-                class="h-72 w-full bg-gray-200 flex flex-col justify-between p-4 bg-cover bg-center"
-                style="background-image: url('https://source.unsplash.com/350x350?{{ 'bakery' }}')"
-                >
-                <div>
-                    <span
-                    class="uppercase text-xs bg-green-50 p-0.5 border-green-500 border rounded text-green-700 font-medium select-none"
-                    >
-                    In Stock
-                    </span>
-                </div>
-                </div>
-                {{-- Menu's Category --}}
-                <div class="p-4 flex flex-col items-center">
-                <p class="text-gray-400 font-light text-xs text-center">Bakery</p>
-                {{-- Menu's name --}}
-                <h1 class="text-gray-800 text-center mt-1">{{ $menu->name }}</h1>
-                <p class="text-center text-gray-800 mt-1 font-bold text-xl">Rp. {{ $menu->price }}</p>
-
-                {{-- Button Quantity --}}
-                <div class="inline-flex items-center mt-2">
-                    {{-- Button Decrease --}}
-                    <button type="button" id="decrement-button" data-input-counter-decrement="quantity-input" class="bg-gray-100 dark:bg-white   hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-11 focus:ring-2 focus:outline-none">
-                        <svg class="w-3 h-3 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
-                        </svg>
-                    </button>
-                    {{-- Input Counter --}}
-                    <input type="text" id="quantity-input" data-input-counter class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-white dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" value="1" data-input-counter-min="1" data-input-counter-max="10" required>
-                    {{-- Button Increase --}}
-                    <button type="button" id="increment-button" data-input-counter-increment="quantity-input" class="bg-gray-100 dark:bg-white   hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-2 focus:outline-none">
-                        <svg class="w-3 h-3 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-                        </svg>
-                    </button>
-                </div>
-                
-                {{-- Button Cart --}}
-                <button
-                    class="py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50 mt-4 w-full flex items-center justify-center"
-                >
-                    Add to Cart
-                    <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="h-6 w-6 ml-2"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                    />
-                    </svg>
-                </button>
-                </div>
-            </div>
-        @endforeach
-    @endif
 </section>
 
 @endsection

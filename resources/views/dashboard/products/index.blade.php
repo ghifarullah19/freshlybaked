@@ -196,7 +196,7 @@
                                 </td>
                                 {{-- Isi Tabel Categories --}}
                                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                    {{ $menu->category_name }}
+                                    {{ $menu->category->name }}
                                 </td>
                                 {{-- Isi Tabel Price --}}
                                 <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">

@@ -8,6 +8,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardMenuController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Models\Menu;
@@ -110,3 +111,6 @@ Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name(
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 Route::get('/register/google', [GoogleController::class, 'index']);
 Route::post('/register/google', [GoogleController::class, 'store']);
+
+Route::post('/products/cart/{menu:id}', [CartController::class, 'addToCart'])->middleware('auth');
+Route::get('/cart', [CartController::class, 'index'])->middleware('auth');
