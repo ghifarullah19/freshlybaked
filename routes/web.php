@@ -113,4 +113,6 @@ Route::get('/register/google', [GoogleController::class, 'index']);
 Route::post('/register/google', [GoogleController::class, 'store']);
 
 Route::post('/products/cart/{menu:id}', [CartController::class, 'addToCart'])->middleware('auth');
-Route::get('/cart', [CartController::class, 'index'])->middleware('auth');
+Route::get('/checkout', [CartController::class, 'checkOut'])->middleware('auth');
+Route::delete('/checkout/{menu:id}', [CartController::class, 'delete'])->middleware('auth');
+Route::post('/confirm-checkout', [CartController::class, 'confirm'])->middleware('auth');
