@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardMenuController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\HistoryController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Models\Menu;
@@ -112,7 +113,9 @@ Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallb
 Route::get('/register/google', [GoogleController::class, 'index']);
 Route::post('/register/google', [GoogleController::class, 'store']);
 
-Route::post('/products/cart/{menu:id}', [CartController::class, 'addToCart'])->middleware('auth');
+Route::get('/products/cart/{menu:id}', [CartController::class, 'addToCart'])->middleware('auth');
 Route::get('/checkout', [CartController::class, 'checkOut'])->middleware('auth');
 Route::delete('/checkout/{menu:id}', [CartController::class, 'delete'])->middleware('auth');
-Route::post('/confirm-checkout', [CartController::class, 'confirm'])->middleware('auth');
+Route::get('/confirm-checkout', [CartController::class, 'confirm'])->middleware('auth');
+Route::get('/history', [HistoryController::class, 'index'])->middleware('auth');
+Route::get('/history/{cart:id}', [HistoryController::class, 'detail'])->middleware('auth');

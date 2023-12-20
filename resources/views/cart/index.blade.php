@@ -63,7 +63,7 @@
                   </td>
                   {{-- Isi Tabel Button --}}
                   <td class="px-6 flex">
-                      <form action="/cart/{{ $cart->id }}" method="POST">
+                      <form action="/cart/{{ $cart->id }}" method="post">
                           @csrf
                           @method('delete')
                           <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Delete</button>
@@ -136,7 +136,7 @@
                   </td>
                   {{-- Isi Tabel Button --}}
                   <td class="px-6 flex">
-                      <form action="/cart/{{ $cart->id }}" method="POST">
+                      <form action="/cart/{{ $cart->id }}" method="get">
                           @csrf
                           @method('delete')
                           <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Delete</button>
