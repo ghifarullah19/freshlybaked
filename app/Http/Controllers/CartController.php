@@ -27,7 +27,7 @@ class CartController extends Controller
         $menu = Menu::find($id);
 
         if ($request->quantity > $menu->quantity) {
-            return redirect('/products')->with('error', 'Stok tidak cukup');
+            return redirect('/products/'. $menu->slug)->with('error', 'Stok tidak cukup');
         }
 
         $check_cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
@@ -65,6 +65,57 @@ class CartController extends Controller
         $cart->total_price = $cart->total_price + ($menu->price * $request->quantity);
         $cart->update();
 
-        return redirect('/products')->with('success', 'Menu berhasil ditambahkan ke keranjang');
+        return redirect('/products/'. $menu->slug)->with('success', 'Menu berhasil ditambahkan ke keranjang');
+    }
+
+    public function checkOut() {
+        $cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->get();
+        
+        $cart_first = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
+
+        if (!empty($cart_first)) {
+            $cart_details = CartDetail::where('cart_id', $cart_first->id)->get();
+
+            return view('cart.checkout', [
+                "title" => "Checkout",
+                "active" => "cart",
+                "carts" => $cart,
+                "cart_details" => $cart_details
+            ]);
+        } else {
+            return view('cart.checkout', [
+                "title" => "Checkout",
+                "active" => "cart",
+                "carts" => [],
+                "cart_details" => []
+            ]);
+        }
+        
+    }
+
+    public function delete($id) {
+        $cart_detail = CartDetail::find($id);
+        $cart = Cart::where('id', $cart_detail->cart_id)->first();
+        $cart->total_price = $cart->total_price - $cart_detail->total_price;
+        $cart->update();
+        $cart_detail->delete();
+
+        return redirect('/checkout')->with('success', 'Menu berhasil dihapus dari keranjang');
+    }
+
+    public function confirm() {
+        $cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
+        $cart_id = $cart->id;
+        $cart->status = 1;
+        $cart->update();
+
+        $cart_details = CartDetail::where('cart_id', $cart_id)->get();
+        foreach ($cart_details as $cart_detail) {
+            $menu = Menu::find($cart_detail->menu_id);
+            $menu->quantity = $menu->quantity - $cart_detail->quantity;
+            $menu->update();
+        }
+
+        return redirect('/checkout')->with('success', 'Pesanan berhasil dibuat');
     }
 }

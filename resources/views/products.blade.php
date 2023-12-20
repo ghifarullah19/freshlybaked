@@ -41,13 +41,6 @@
     <h1 class="text-2xl font-bold text-black">Menu</h1>
 </div>
 
-@if (session()->has('success'))
-    <div class="p-4 mb-4 text-sm bg-gray-800 text-green-400" role="alert">
-        <span class="font-medium">Success!</span>
-        {{ session('success') }}
-    </div>
-@endif
-
 {{-- Produts --}}
 <section class="mx-5 my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
      @if ($menus->count() > 0)

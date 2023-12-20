@@ -36,6 +36,20 @@
 
 <div class="bg-white py-8 pt-16 mt-10">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    @if (session()->has('success'))
+        <div class="p-4 mb-4 text-sm bg-gray-800 text-green-400" role="alert">
+            <span class="font-medium">Success!</span>
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session()->has('error'))
+        <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
+            <span class="font-medium">Error!</span>
+            {{ session('error') }}
+        </div>
+    @endif
+    
     <div class="flex flex-col md:flex-row -mx-4">
       <div class="md:flex-1 px-4">
         <div class="h-auto w-[100%] md:w-[105%] lg:w-[100%] rounded-lg mb-4 border border-black">
