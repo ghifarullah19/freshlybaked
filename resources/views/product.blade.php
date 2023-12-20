@@ -97,8 +97,7 @@
           </p>
         </div>
         {{-- Input Number Quantity --}}
-        <form method="POST" action="/products/cart/{{ $menu->id }}" class="max-w-xs mt-7">
-          @csrf
+        <form method="get" action="/products/cart/{{ $menu->id }}" class="max-w-xs mt-7">
           <label for="counter-input" class="block mb-1 text-sm font-medium text-black">Choose quantity:</label>
           <div class="relative flex items-center">
             <button type="button" id="decrement-button" data-input-counter-decrement="counter-input" class="flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">

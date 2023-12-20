@@ -23,9 +23,9 @@
         </form>
     </div>
 
-    @if (!empty($cart) || !empty($cart_details))
+    @if (!empty($history) || !empty($history_details))
   <div class="block text-black text-center font-semibold">
-    Tabel Cart
+    Tabel history
   </div>
   <div class="flex overflow-x-auto shadow-md sm:rounded-lg mx-3">
     
@@ -47,15 +47,12 @@
               <th scope="col" class="px-6 py-3 text-white">
                   Harga Total
               </th>
-              <th scope="col" class="px-6 py-3 text-white">
-                  Action
-              </th>
           </tr>
           </thead>
 
           <tbody>
-              {{-- {{ dd($carts->id) }} --}}
-              @foreach ($cart_details as $cart)
+              {{-- {{ dd($historys->id) }} --}}
+              @foreach ($history_details as $history)
               <tr class="odd:bg-white odd:dark:bg-amber-50 even:bg-gray-50 even:dark:bg-gray-300 dark:border-gray-700 border-b-2">
                   {{-- Isi Tabel No --}}
                   <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
@@ -63,38 +60,26 @@
                   </th>
                   {{-- Isi Tabel Name --}}
                   <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                      {{ $cart->menu->name }}
+                      {{ $history->menu->name }}
                   </td>
                   {{-- Isi Tabel Categories --}}
                   <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                      {{ $cart->quantity }}
+                      {{ $history->quantity }}
                   </td>
                   {{-- Isi Tabel Price --}}
                   <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                        Rp.{{ $cart->menu->price }}
+                        Rp.{{ $history->menu->price }}
                   </td>
                   {{-- Isi Tabel Price --}}
                   <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                      Rp.{{ $cart->total_price }}
-                  </td>
-                  {{-- Isi Tabel Button --}}
-                  <td class="px-6 flex">
-                      <form action="/checkout/{{ $cart->id }}" method="POST">
-                          @csrf
-                          @method('delete')
-                          <button onclick="confirmation('Apakah anda yakin ingin menghapus pesanan?')" type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Delete</button>
-                      </form>
+                      Rp.{{ $history->total_price }}
                   </td>
                 </tr>
           @endforeach
         </tbody>
     </table>
 </div>
-<div class="flex flex-row justify-end pt-2 pe-9">
-    <form action="/confirm-checkout" method="get">
-        <button onclick="confirm('Apakah anda yakin ingin checkout pesanan?')" type="submit" class="text-white bg-green-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">Check Out Dong</button>
-    </form>
-</div>
+
 @else
     <div class="flex justify-center align-middle"><h1>Kosong Bro</h1></div>
 @endif
