@@ -15,7 +15,7 @@
                     {{-- Label Filter --}}
                     <span>Filter</span>
                     {{-- Dropdown --}}
-                    <select name="filter" id="filter" class="rounded-lg p-1"> 
+                    <select name="filter" id="filter" class="rounded-lg p-1">
                         <option value="name">Name</option>
                         <option value="category">Category</option>
                     </select>
@@ -55,13 +55,13 @@
                         </div>
                     </div>
                 </a>
-                
+
                 {{-- Menu's name --}}
                 <div class="p-4">
                     <a href="/products/{{ $menu->slug }}">
                         <h3 class="text-lg font-medium mb-2 text-black">{{ $menu->name }}</h3>
                     </a>
-                    
+
                     {{-- Menu's desc --}}
                     <a href="/products?category={{ $menu->category->slug }}">
                         <p class="text-gray-600 text-sm mb-4">{{ $menu->category->name }}</p>

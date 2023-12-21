@@ -11,6 +11,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
+    />
 
     {{-- TailwindCSS & Flowbite --}}
     @vite(['resources/css/app.css','resources/js/app.js'])

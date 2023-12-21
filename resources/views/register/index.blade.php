@@ -3,7 +3,7 @@
 
 <body class="bg-custom min-h-screen">
     <div class="flex items-center justify-center min-h-full">
-        <div class="bg-black bg-opacity-80 rounded-lg shadow p-8 w-full max-w-md justify-center">
+        <div class="bg-gray-900 bg-opacity-60  rounded-lg shadow p-8 w-full max-w-md justify-center">
             <p href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-50 dark:text-white">
                 <img class="w-8 h-8 mr-2 rounded-full" src="img/logo.jpg" alt="logo">
                 Freshly Baked
@@ -12,7 +12,7 @@
                 @csrf
                 <div class="mb-5">
                   <label for="name" class="block mb-2 text-sm font-medium text-white">Name</label>
-                  <input type="text" id="name" name="name" class="text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 shadow-sm-light" placeholder="John Doe" required value="{{ old('name') }}">
+                  <input type="text" id="name" name="name" class="text-sm rounded-lg block w-full p-2.5 bg-white border-black placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 shadow-sm-light" placeholder="Enter Your Username" required value="{{ old('name') }}">
                 </div>
                 @error('name')
                     <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
@@ -22,7 +22,7 @@
                 @enderror
                 <div class="mb-5">
                   <label for="email" class="block mb-2 text-sm font-medium text-white">Email</label>
-                  <input type="email" id="email" name="email" class="text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-800 focus:border-blue-800 shadow-sm-light" placeholder="name@email.com" required value="{{ old('email') }}">
+                  <input type="email" id="email" name="email" class="text-sm rounded-lg block w-full p-2.5 bg-white border-black placeholder-gray-400 text-white focus:ring-blue-800 focus:border-blue-800 shadow-sm-light" placeholder="Enter your Email" required value="{{ old('email') }}">
                 </div>
                 @error('email')
                     <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
@@ -32,7 +32,7 @@
                 @enderror
                 <div class="mb-5">
                   <label for="password" class="block mb-2 text-sm font-medium text-white">Your password</label>
-                  <input type="password" id="password" name="password" class="text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 shadow-sm-light" required>
+                  <input type="password" placeholder="********" id="password" name="password" class="text-sm rounded-lg block w-full p-2.5 bg-white border-black placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 shadow-sm-light" required>
                 </div>
                 @error('password')
                     <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
@@ -40,21 +40,20 @@
                         {{ $message  }}
                   </div>
                 @enderror
-                <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Register new account</button>
+                <button type="submit" class="mb-1.5 block w-full text-center text-white bg-indigo-600 hover:bg-indigo-700 px-2 py-1.5 rounded-md">Register new account</button>
               </form>
-            <hr class="border-gray-300 my-4">
             <!-- Login button -->
             <div class="text-center mt-4">
-                <span>
-                    <small class="text-white">Already Have account?</small>
-                    <a href="/login" class="text-gray-900 ">
-                        <small class="text-blue-600"> Login</small>
-                    </a>
-                </span>
+                <span class="text-xs text-gray-400 font-semibold">Already have account?</span>
+                <a href="/login" class="text-white text-xs font-semibold hover:text-blue-500">
+                    Sign In
+                </a>
             </div>
             <!-- login with socialite -->
-            <div class="text-center mt-4">
-              <p class="text-gray-50">Or register with</p>
+            <div class="flex justify-center items-center">
+                <span class="w-full border border-white"></span>
+                <span class="px-4 text-white">Or</span>
+                <span class="w-full border border-white"></span>
             </div>
             <div class="align-middle block mt-3">
               <button onclick="window.location.href='{{ route('google.login') }}'" class="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 rounded-lg font-medium relative mx-auto border-2">
