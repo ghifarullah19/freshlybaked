@@ -4,7 +4,7 @@
 <body class="bg-custom min-h-screen login ">
     <div class="flex items-center justify-center min-h-full">
         <div class="bg-gray-900 bg-opacity-60  rounded-lg shadow p-8 w-full max-w-md justify-center">
-            <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-50 dark:text-white">
+            <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-50 ">
                 <img class="w-8 h-8 mr-2 rounded-full" src="img/logo.jpg" alt="logo">
                 Freshly Baked
             </a>
@@ -24,8 +24,8 @@
             <form action="/login" method="POST">
                 @csrf
                 <div class="mb-4">
-                    <label for="email" class="block mb-1 font-semibold text-gray-50">Email</label>
-                    <input type="email" id="email" name="email" class="w-full border p-2 rounded" required value="{{ old('email') }}">
+                    <label for="email" class="block mb-1  text-gray-50">Email</label>
+                    <input type="email" placeholder="Enter Your Email " id="email" name="email" class="w-full border p-2 rounded border-2 rounded-lg font-sans border-black" required value="{{ old('email') }}">
                     @error('email')
                     <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
                         <span class="font-medium">Danger alert!</span>
@@ -35,25 +35,24 @@
                 </div>
                 <div class="mb-4">
                     <label for="password" class="block mb-1 font-semibold text-gray-50">Password</label>
-                    <input type="password" id="password" name="password" class="w-full border p-2 rounded" required>
+                    <input type="password" placeholder="***********" id="password" name="password" class="w-full border p-2 rounded border p-2 rounded border-2 rounded-lg font-sans border-black" required>
                 </div>
-                <button type="submit" class=" block mx-auto align-middlebg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded items-center">
+                <button type="submit" class="mb-1.5 block w-full text-center text-white bg-indigo-600 hover:bg-indigo-700 px-2 py-1.5 rounded-md">
                     Login
                 </button>
             </form>
-            <hr class="border-gray-300 my-4">
             <div class="text-center mt-4">
-                <a href="/register" class="text-white hover:text-blue-500">
-                    <p class="block font-sans text-sm relative w-max one text-center">
-                        <span>Create account</span>
-                        <span class="absolute -bottom-1 left-0 w-0 transition-all h-1 bg-yellow-400"></span>
-                    </p>
+                <span class="text-xs text-gray-400 font-semibold">Don't have account?</span>
+                <a href="/register" class="text-white text-xs font-semibold hover:text-blue-500">
+                    Sign Up
                 </a>
             </div>
             <!-- "" -->
             <!-- login with socialite -->
-            <div class="text-center mt-4">
-                <p class="text-gray-50">Or login with</p>
+            <div class="flex justify-center items-center">
+                <span class="w-full border border-white"></span>
+                <span class="px-4 text-white">Or</span>
+                <span class="w-full border border-white"></span>
             </div>
             <div class="align-middle block mt-3">
                 <button onclick="window.location.href='{{ route('google.login') }}'" class="flex items-center justify-center flex-none px-3 py-2 md:px-4 md:py-3 rounded-lg font-medium relative mx-auto border-2">
