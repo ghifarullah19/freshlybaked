@@ -52,6 +52,17 @@ Route::get('/about', function () {
     return view('about');
 });
 
+// View untuk Halaman Profile sementara
+Route::get('/profile', function () {
+    return view('profile');
+});
+
+// View untuk ubah profile sementara
+Route::get('/ubahprofile', function () {
+    return view('ubahprofile');
+});
+
+
 Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->middleware('auth');
