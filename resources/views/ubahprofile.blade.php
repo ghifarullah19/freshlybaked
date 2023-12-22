@@ -6,33 +6,37 @@
 
             <!-- Form Input -->
             <div class="mt-8">
-                <form action="#" method="post">
+                <form action="/ubahprofile" method="post" enctype="multipart/form-data">
+                    @csrf
                     <div class="text-2xl font-semibold text-center mb-4">Edit Information</div>
-
                     <div class="mb-4">
                         <label for="profile_image" class="block text-gray-700 font-medium">Image Profile :</label>
                         <input type="hidden" name="oldImage" value="{{ Auth()->user()->image }}">
-
-                                    {{-- Jika ada image lama --}}
-                                    @if (Auth()->user()->image)
-                                        {{-- Tampilkan image tersebut --}}
-                                        <img src="{{ asset('storage/' . Auth()->user()->image) }}" class="img-preview mb-3 block">
-                                        {{-- Jika tidak ada --}}
-                                    @else
-                                        {{-- Tampilkan image kosong --}}
-                                        <img class="img-preview img-fluid mb-3">
-                                    @endif
-                                    <input type="file" id="image" name="image" onchange="previewImage()" class="w-full border rounded-md">
+                            {{-- Jika ada image lama --}}
+                            @if (Auth()->user()->image)
+                                {{-- Tampilkan image tersebut --}}
+                                <img src="{{ asset('storage/' . Auth()->user()->image) }}" class="img-preview mb-3 block">
+                                {{-- Jika tidak ada --}}
+                            @else
+                                {{-- Tampilkan image kosong --}}
+                                <img class="img-preview img-fluid mb-3">
+                            @endif
+                            <input type="file" id="image" name="image" onchange="previewImage()" class="w-full border rounded-md">
                     </div>
                     
                     <div class="mb-4">
-                        <label for="full_name" class="block text-gray-700 font-medium">Full Name :</label>
-                        <input type="text" id="full_name" name="full_name" class="mt-1 p-2 w-full border rounded-md">
+                        <label for="name" class="block text-gray-700 font-medium">Full Name :</label>
+                        <input type="text" id="name" name="name" class="mt-1 p-2 w-full border rounded-md" value="{{ auth()->user()->name }}">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label for="username" class="block text-gray-700 font-medium">Username :</label>
+                        <input type="text" id="username" name="username" class="mt-1 p-2 w-full border rounded-md" value="{{ auth()->user()->username }}"">
                     </div>
 
                     <div class="mb-4">
                         <label for="email" class="block text-gray-700 font-medium">Email :</label>
-                        <input type="email" id="email" name="email" class="mt-1 p-2 w-full border rounded-md">
+                        <input type="email" id="email" name="email" class="mt-1 p-2 w-full border rounded-md" value="{{ auth()->user()->email }}">
                     </div>
 
                     <div class="mb-4">
@@ -51,7 +55,7 @@
                     </div>
 
                     <div class="mt-8 text-center">
-                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
+                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md">
                             Save
                         </button>
                     </div>
@@ -60,5 +64,19 @@
         </div>
     </div>
 </section>
+
+<script>
+    // Menangani image preview
+    function previewImage() {
+      const image = document.querySelector('#image');
+      const imgPreview = document.querySelector('.img-preview');
+      imgPreview.style.display = 'block';
+      const oFReader = new FileReader();
+      oFReader.readAsDataURL(image.files[0]);
+      oFReader.onload = function(oFREVent) {
+        imgPreview.src = oFREVent.target.result;
+      }
+    }
+</script>
 
 @endsection

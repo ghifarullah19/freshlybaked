@@ -62,6 +62,8 @@ Route::get('/ubahprofile', function () {
     return view('ubahprofile');
 });
 
+Route::post('/ubahprofile', [UserController::class, 'updateProfile']);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard.index');
