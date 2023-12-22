@@ -7,6 +7,7 @@ use App\Models\Menu;
 use App\Models\Cart;
 use App\Models\CartDetail;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
@@ -24,6 +25,9 @@ class CartController extends Controller
     }
 
     public function addToCart(Request $request, $id) {
+        if (Auth::login() == null) {
+            return redirect('/login')->with('error', 'Silahkan login terlebih dahulu');
+        }
         $menu = Menu::find($id);
 
         if ($request->quantity > $menu->quantity) {

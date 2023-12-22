@@ -19,7 +19,7 @@
                                 {{-- Jika tidak ada --}}
                             @else
                                 {{-- Tampilkan image kosong --}}
-                                <img class="img-preview img-fluid mb-3">
+                                <img src="/img/nophoto.png" class="img-preview img-fluid mb-3">
                             @endif
                             <input type="file" id="image" name="image" onchange="previewImage()" class="w-full border rounded-md">
                     </div>
