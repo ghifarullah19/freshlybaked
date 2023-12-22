@@ -4,9 +4,15 @@
 <section class="mt-16">
     <div class="max-w-screen-xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div class="max-w-4xl mx-auto">
+            @if (Auth()->user()->image != null)
             <div class="rounded-full bg-gray-100 mx-auto h-40 w-40 flex items-center justify-center">
                 <img class="rounded-full h-40 w-40" src="{{ asset('storage/' . Auth()->user()->image) }}" alt="">
             </div>
+            @else
+            <div class="rounded-full bg-gray-100 mx-auto h-40 w-40 flex items-center justify-center">
+                <img class="rounded-full h-40 w-40" src="/img/nophoto.png" alt="">
+            </div>
+            @endif
             <div class="mt-8 text-center">
                 <div class="text-2xl font-semibold">Profile Information</div>
                 <div class="mt-4 space-y-4">

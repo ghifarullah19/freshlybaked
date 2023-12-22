@@ -6,6 +6,7 @@
           <span class="nav-title self-center text-xl font-semibold whitespace-nowrap dark:text-white text-opacity-0 md:text-opacity-100 lg:text-opacity-100">FreshlyBaked</span>
         </a>
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+          @auth
           <!-- tombol cart -->
           <button onclick="window.location.href='/checkout'" class="mr-3">
             <svg class="w-6 h-6 text-gray-800 dark:text-white inline mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
@@ -13,15 +14,19 @@
             </svg>
           </button>
           <!-- tombol login -->
-          @auth
           <form action="/logout" method="POST">
             @csrf
         {{--button dropdown navbar--}}
               <button id="dropdownInformationButton" data-dropdown-toggle="dropdown" class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center" type="button">
-                  <div class="h-8 w-10 pr-2">
+                  @if (Auth()->user()->image != null)
+                  <div class="h-8 w-8">
                       <img class="object-cover w-full h-full rounded-full" src="{{ asset('storage/' . Auth()->user()->image) }}">
                   </div>
-                  {{ Auth()->user()->name }}
+                  @else
+                  <div class="h-8 w-10 pr-2">
+                      <img class="object-cover w-full h-full rounded-full" src="/img/nophoto.png">
+                  </div>
+                  @endif
                   <svg class="w-2.5 h-2.5 ms-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
                   </svg>
