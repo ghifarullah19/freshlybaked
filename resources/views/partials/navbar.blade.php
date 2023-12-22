@@ -33,6 +33,9 @@
                           <a href="/dashboard" class="block px-16 py-2 hover:bg-gray-600">Dashboard</a>
                       </li>
                       <li>
+                          <a href="/profile" class="block px-16 py-2 hover:bg-gray-600">Profile</a>
+                      </li>
+                      <li>
                           <button type="submit" class="block px-16 py-2 hover:bg-gray-600">Logout</button>
                       </li>
                   </ul>

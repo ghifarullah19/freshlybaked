@@ -38,7 +38,9 @@ class UserController extends Controller
      */
     public function show(User $user)
     {
-        //
+        return view('profile', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -79,6 +81,36 @@ class UserController extends Controller
         $user->save();
         
         return redirect()->back()->with('success', 'Profile updated successfully');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $rules = [
+            'name' => 'required|string|max:255',
+            'username' => 'required|string|max:255|unique:users,username,' . auth()->id(),
+            'email' => 'required|string|email|max:255|unique:users,email,' . auth()->id(),
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
+
+        $user = User::find(auth()->id());
+
+        $validatedData = $request->validate($rules);
+
+        // Jika ada file image yang dikirim dari form create post maka akan disimpan di storage
+        if ($request->file('image')) {
+            // Jika ada file image lama yang dikirim dari form edit post 
+            if ($request->oldImage) {
+                // Maka file image lama akan dihapus dari storage
+                Storage::delete($request->oldImage);
+            }
+            // Menyimpan file image baru ke dalam storage
+            $validatedData['image'] = $request->file('image')->store('User-images');
+        }
+
+        $user->fill($validatedData);
+        $user->save();
+        
+        return redirect('/profile')->with('success', 'Profile updated successfully');
     }
 
     /**
