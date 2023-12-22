@@ -42,7 +42,7 @@
 
                         <!-- Deskripsi Toko -->
                         <p data-aos="zoom-out" data-aos-duration="1000" class="text-base md:text-lg lg:text-xl text-gray-100 mx-auto mb-8">
-                            Freshly Baked Adalah Sebuah Toko Yang Menjual Berbagai Macam Kue.
+                            Freshly Baked adalah sebuah Toko yang menjual berbagai macam kue.
                             <br>
                             Didirikan pada tahun 2017, Freshly Baked by Origin Bakery didirikan karena kami melihat potensi pertumbuhan industri roti di Indonesia melalui perubahan gaya hidup. Namun, saat ini pilihan roti yang lebih sehat sangat sedikit dan kemungkinan besar harganya mahal.
                         </p>
