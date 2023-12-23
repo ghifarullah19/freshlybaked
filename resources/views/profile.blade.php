@@ -26,7 +26,7 @@
                         <span class="font-semibold">Email :</span> {{ auth()->user()->email }}
                     </div>
                     <div class="text-gray-500">
-                        <span class="font-semibold">Phone :</span> +62853xxxxxxxx
+                        <span class="font-semibold">Phone :</span> {{ auth()->user()->phone_number }}
                     </div>
                 </div>
             </div>
@@ -34,10 +34,10 @@
                 <div class="text-2xl font-semibold">Personal Information</div>
                 <div class="mt-4 space-y-4">
                     <div class="text-gray-500">
-                        <span class="font-semibold">Birthdate :</span> 1 SM
+                        <span class="font-semibold">Birthdate :</span> {{ auth()->user()->date_of_birth }}
                     </div>
                     <div class="text-gray-500">
-                        <span class="font-semibold">Adress :</span> Jawa Barat, Indonesia
+                        <span class="font-semibold">Adress :</span> {{ auth()->user()->address }}
                     </div>
                 </div>
             </div>

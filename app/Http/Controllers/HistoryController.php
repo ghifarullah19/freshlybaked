@@ -10,7 +10,7 @@ use App\Models\CartDetail;
 class HistoryController extends Controller
 {
     public function index() {
-        $histories = Cart::where('user_id', auth()->user()->id)->where('status', 1)->get();
+        $histories = Cart::where('user_id', auth()->user()->id)->where('status', 0)->orWhere('status', 1)->get();
 
         return view('history.index', [
             "title" => "History",

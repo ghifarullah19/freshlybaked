@@ -99,6 +99,7 @@ class CartController extends Controller
         $cart_detail = CartDetail::find($id);
         $cart = Cart::where('id', $cart_detail->cart_id)->first();
         $cart->total_price = $cart->total_price - $cart_detail->total_price;
+        $cart->status = 2;
         $cart->update();
         $cart_detail->delete();
 
@@ -159,17 +160,23 @@ class CartController extends Controller
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
         if ($snapToken) {
-            $cart->status = 1;
-            $cart->update();
-            
-            foreach ($cart_details as $cart_detail) {
-                $menu = Menu::find($cart_detail->menu_id);
-                $menu->quantity = $menu->quantity - $cart_detail->quantity;
-                $menu->update();
-            }
             return redirect('/checkout')->with('token', $snapToken);
         } else {
             return redirect('/checkout')->with('error', 'Checkout gagal');
+        }
+    }
+
+    public function updateDataPayment() {
+        $cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
+        $cart_details = CartDetail::where('cart_id', $cart->id)->get();
+
+        $cart->status = 1;
+        $cart->update();
+        
+        foreach ($cart_details as $cart_detail) {
+            $menu = Menu::find($cart_detail->menu_id);
+            $menu->quantity = $menu->quantity - $cart_detail->quantity;
+            $menu->update();
         }
     }
 }
