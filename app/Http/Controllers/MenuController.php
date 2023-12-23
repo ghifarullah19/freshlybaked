@@ -32,7 +32,6 @@ class MenuController extends Controller
         return view('/products', [
             'title' => "All Posts" . $title,
             'active' => 'products',
-            // 'posts' => Menu::latest()->filter(request(['search', 'category']))->paginate(7)->withQueryString()
             'menus' => Menu::latest()->filter(request(['search', 'category']))->paginate(7)->withQueryString()
         ]);
     }

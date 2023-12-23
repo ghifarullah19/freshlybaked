@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('menu_id')->references('id')->on('menus');
             $table->foreignId('cart_id')->references('id')->on('carts');
             $table->integer('quantity');
+            $table->integer('price');
             $table->integer('total_price');
             $table->timestamps();
         });

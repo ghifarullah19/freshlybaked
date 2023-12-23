@@ -4,7 +4,7 @@
 @section('container')
 
 {{-- New Version --}}
-<section class="py-20 mt-20 overflow-hidden font-poppins sm:py-4">
+<section class="py-20 overflow-hidden font-poppins sm:py-4">
   <div class="block text-black text-center font-semibold">
     Tabel Cart
   </div>

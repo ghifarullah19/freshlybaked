@@ -1,0 +1,244 @@
+
+/* navbar */
+/* .navbar {
+    position: relative;
+    z-index: 2;
+} */
+.navbar-brand {
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+    font-size: 32px;
+}
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.nav-item-footer {
+    color: white !important;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+    text-transform: uppercase;
+    margin-right: 30px;
+}
+
+/* jumbotron */
+.jumbotron {
+    background-image: url(../img/bg.jpg);
+    background-size: cover;
+    height: 540px;
+    text-align: center;
+    position: relative;
+}
+.jumbotron .container {
+    position: relative;
+    z-index: 1;
+}
+.jumbotron::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 1) rgba(0, 0, 0, 0)
+    );
+    position: absolute;
+    bottom: 0;
+}
+
+.jumbotron .display-4 {
+    color: white;
+    margin-top: 150px;
+    font-weight: 200;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
+    font-size: 40px;
+    margin-bottom: 30px;
+}
+
+.jumbotron .lead {
+    color: white;
+    margin-top: -20px;
+}
+
+/* About */
+/* .about {
+    padding: 2rem 1rem;
+} */
+.about-title {
+    margin-bottom: 50px;
+    color: #f68b1e;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.8;
+}
+.about-title::before {
+    content: "";
+    width: 127px;
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-bottom: 0.25rem;
+    border: 1px solid #f68b1e;
+}
+.about-title::after {
+    content: "";
+    width: 127px;
+    display: inline-block;
+    margin-left: 0.5rem;
+    margin-bottom: 0.25rem;
+    border: 1px solid #f68b1e;
+}
+/* Highlight */
+.highlight {
+    padding: 2rem 1rem;
+}
+.highlight .container .card-deck {
+    border-left: 1px solid #f68b1e;
+    border-right: 1px solid #f68b1e;
+}
+.highlight-title {
+    /* margin-bottom: 20px; */
+    color: #f68b1e;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.8;
+}
+.highlight-title::before {
+    content: "";
+    width: 127px;
+    display: inline-block;
+    margin-right: 0.5rem;
+    margin-bottom: 0.25rem;
+    border: 1px solid #f68b1e;
+}
+.highlight-title::after {
+    content: "";
+    width: 127px;
+    display: inline-block;
+    margin-left: 0.5rem;
+    margin-bottom: 0.25rem;
+    border: 1px solid #f68b1e;
+}
+.highlight .card .card-text {
+    color: #f68b1e;
+    font-size: 1.3rem;
+}
+/* Footer */
+.mb-2 {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+.bt-footer {
+    margin-top: 50px;
+}
+
+/* menu */
+.menu {
+    padding: 2rem 1rem;
+}
+.menu-title {
+    margin-bottom: 20px;
+    margin-left: 20px;
+    color: #f68b1e;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.8;
+}
+.menu-title::after {
+    content: "";
+    width: 106px;
+    display: inline-block;
+    margin-left: 0.5rem;
+    margin-bottom: 0.25rem;
+    border: 1px solid #f68b1e;
+}
+.card {
+    margin: 2rem 1rem;
+}
+.dish-title {
+    margin-top: 50px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+    color: #f68b1e;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.8;
+}
+.dish-title::after {
+    content: "";
+    width: 106px;
+    display: inline-block;
+    margin-left: 0.5rem;
+    margin-bottom: 0.25rem;
+    border: 1px solid #f68b1e;
+}
+/* contact */
+.contact {
+    margin-top: 50px;
+}
+.contact-title {
+    margin-bottom: 20px;
+    /* margin-left: 20px; */
+    color: #f68b1e;
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.8;
+}
+.contact-title::after {
+    content: "";
+    width: 106px;
+    display: inline-block;
+    margin-left: 0.5rem;
+    margin-bottom: 0.25rem;
+    border: 1px solid #f68b1e;
+}
+/* tombol */
+.tombol {
+    text-transform: uppercase;
+    border-radius: 40px;
+}
+.sticky-top {
+    position: sticky;
+}
+
+
+@media (min-width: 992px) {
+    .navbar-brand,
+    .nav-link {
+        color: white !important;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+    }
+    .nav-link {
+        text-transform: uppercase;
+        margin-right: 30px;
+    }
+    .nav-link:hover::after {
+        content: "";
+        display: block;
+        border-bottom: 3px solid #f68b1e;
+        width: 50%;
+        margin: auto;
+        padding-bottom: 5px;
+        margin-bottom: -8px;
+    }
+
+    .jumbotron {
+        /* margin-top: -75px; */
+        height: 640px;
+    }
+    .jumbotron .display-4 {
+        font-size: 62px;
+    }
+}
+
+@media (max-width: 375px) {
+    .grid-cols-2 {
+        grid-template-columns: (1, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 430px) {
+    nav div a span.nav-title {
+        display: none !important;
+    }
+}

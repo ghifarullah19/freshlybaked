@@ -60,6 +60,9 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . auth()->id(),
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'phone_number' => 'required|numeric',
+            'address' => 'required|string|max:255',
+            'date_of_birth' => 'required|date',
         ];
 
         $user = User::find(auth()->id());
@@ -90,6 +93,9 @@ class UserController extends Controller
             'username' => 'required|string|max:255|unique:users,username,' . auth()->id(),
             'email' => 'required|string|email|max:255|unique:users,email,' . auth()->id(),
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'phone_number' => 'required|numeric',
+            'address' => 'required|string|max:255',
+            'date_of_birth' => 'required|date',
         ];
 
         $user = User::find(auth()->id());

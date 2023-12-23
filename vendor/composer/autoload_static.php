@@ -118,6 +118,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         array (
             'Monolog\\' => 8,
             'Mockery\\' => 8,
+            'Midtrans\\' => 9,
         ),
         'L' => 
         array (
@@ -408,6 +409,10 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         array (
             0 => __DIR__ . '/..' . '/mockery/mockery/library/Mockery',
         ),
+        'Midtrans\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans',
+        ),
         'League\\OAuth1\\Client\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/oauth1-client/src',
@@ -570,15 +575,17 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartController.php',
+        'App\\Http\\Controllers\\CartDetailController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartDetailController.php',
         'App\\Http\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoryController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DashboardMenuController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardMenuController.php',
         'App\\Http\\Controllers\\DashboardUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/DashboardUserController.php',
         'App\\Http\\Controllers\\GoogleController' => __DIR__ . '/../..' . '/app/Http/Controllers/GoogleController.php',
+        'App\\Http\\Controllers\\HistoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/HistoryController.php',
         'App\\Http\\Controllers\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/LoginController.php',
         'App\\Http\\Controllers\\MenuController' => __DIR__ . '/../..' . '/app/Http/Controllers/MenuController.php',
         'App\\Http\\Controllers\\RegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegisterController.php',
-        'App\\Http\\Controllers\\SaleController' => __DIR__ . '/../..' . '/app/Http/Controllers/SaleController.php',
         'App\\Http\\Controllers\\UserController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserController.php',
         'App\\Http\\Kernel' => __DIR__ . '/../..' . '/app/Http/Kernel.php',
         'App\\Http\\Middleware\\Authenticate' => __DIR__ . '/../..' . '/app/Http/Middleware/Authenticate.php',
@@ -598,9 +605,10 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Http\\Requests\\UpdateMenuRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateMenuRequest.php',
         'App\\Http\\Requests\\UpdatePenjualanRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdatePenjualanRequest.php',
         'App\\Http\\Requests\\UpdateUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateUserRequest.php',
+        'App\\Models\\Cart' => __DIR__ . '/../..' . '/app/Models/Cart.php',
+        'App\\Models\\CartDetail' => __DIR__ . '/../..' . '/app/Models/CartDetail.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
         'App\\Models\\Menu' => __DIR__ . '/../..' . '/app/Models/Menu.php',
-        'App\\Models\\Sale' => __DIR__ . '/../..' . '/app/Models/Sale.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Policies\\MenuPolicy' => __DIR__ . '/../..' . '/app/Policies/MenuPolicy.php',
         'App\\Policies\\PenjualanPolicy' => __DIR__ . '/../..' . '/app/Policies/PenjualanPolicy.php',
@@ -3372,6 +3380,14 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'League\\OAuth1\\Client\\Signature\\RsaSha1Signature' => __DIR__ . '/..' . '/league/oauth1-client/src/Signature/RsaSha1Signature.php',
         'League\\OAuth1\\Client\\Signature\\Signature' => __DIR__ . '/..' . '/league/oauth1-client/src/Signature/Signature.php',
         'League\\OAuth1\\Client\\Signature\\SignatureInterface' => __DIR__ . '/..' . '/league/oauth1-client/src/Signature/SignatureInterface.php',
+        'Midtrans\\ApiRequestor' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/ApiRequestor.php',
+        'Midtrans\\Config' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Config.php',
+        'Midtrans\\CoreApi' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/CoreApi.php',
+        'Midtrans\\Notification' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Notification.php',
+        'Midtrans\\Sanitizer' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Sanitizer.php',
+        'Midtrans\\Snap' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Snap.php',
+        'Midtrans\\SnapApiRequestor' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/SnapApiRequestor.php',
+        'Midtrans\\Transaction' => __DIR__ . '/..' . '/midtrans/midtrans-php/Midtrans/Transaction.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegration' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegration.php',
         'Mockery\\Adapter\\Phpunit\\MockeryPHPUnitIntegrationAssertPostConditions' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryPHPUnitIntegrationAssertPostConditions.php',
         'Mockery\\Adapter\\Phpunit\\MockeryTestCase' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery/Adapter/Phpunit/MockeryTestCase.php',

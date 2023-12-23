@@ -40,13 +40,13 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="phone" class="block text-gray-700 font-medium">Phone :</label>
-                        <input type="tel" id="phone" name="phone" class="mt-1 p-2 w-full border rounded-md">
+                        <label for="phone_number" class="block text-gray-700 font-medium">Phone :</label>
+                        <input type="tel" id="phone_number" name="phone_number" class="mt-1 p-2 w-full border rounded-md">
                     </div>
 
                     <div class="mb-4">
-                        <label for="birthdate" class="block text-gray-700 font-medium">Birthdate :</label>
-                        <input type="date" id="birthdate" name="birthdate" class="mt-1 p-2 w-full border rounded-md">
+                        <label for="date_of_birth" class="block text-gray-700 font-medium">Birthdate :</label>
+                        <input type="date" id="date_of_birth" name="date_of_birth" class="mt-1 p-2 w-full border rounded-md">
                     </div>
 
                     <div class="mb-4">

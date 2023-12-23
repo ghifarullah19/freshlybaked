@@ -21,21 +21,11 @@
 
     <title>FreshlyBaked</title>
 </head>
-
 <body>
     @include('partials.navbar')
-    <div>
+    <div class="mt-[64px] min-h-[360px]">
         @yield('container')
     </div>
     @include('partials.footer')
 </body>
-
-{{-- <script>
-    const navLinks = document.querySelector('.nav-links')
-    function onToggleMenu(e){
-        e.name = e.name === 'menu' ? 'close' : 'menu'
-        navLinks.classList.toggle('top-[13%]')
-    }
-</script> --}}
-
 </html>

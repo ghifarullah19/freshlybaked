@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->date("date_of_birth")->nullable();
+            $table->bigInteger("phone_number")->nullable();
+            $table->string("address")->nullable();
             $table->boolean('is_admin')->default(false);
             $table->string('image', 2048)->nullable();
             $table->rememberToken();
