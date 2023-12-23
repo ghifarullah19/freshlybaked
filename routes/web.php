@@ -130,5 +130,6 @@ Route::get('/products/cart/{menu:id}', [CartController::class, 'addToCart'])->mi
 Route::get('/checkout', [CartController::class, 'checkOut'])->middleware('auth');
 Route::delete('/checkout/{menu:id}', [CartController::class, 'delete'])->middleware('auth');
 Route::get('/confirm-checkout', [CartController::class, 'confirm'])->middleware('auth');
+Route::get('/payment', [CartController::class, 'payment'])->middleware('auth');
 Route::get('/history', [HistoryController::class, 'index'])->middleware('auth');
 Route::get('/history/{cart:id}', [HistoryController::class, 'detail'])->middleware('auth');

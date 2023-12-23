@@ -25,9 +25,6 @@ class CartController extends Controller
     }
 
     public function addToCart(Request $request, $id) {
-        if (Auth::login() == null) {
-            return redirect('/login')->with('error', 'Silahkan login terlebih dahulu');
-        }
         $menu = Menu::find($id);
 
         if ($request->quantity > $menu->quantity) {
@@ -45,7 +42,6 @@ class CartController extends Controller
             $cart->save();
         }
 
-
         $new_cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
 
         $check_cart_detail = CartDetail::where('menu_id', $menu->id)->where('cart_id', $new_cart->id)->first();
@@ -56,11 +52,13 @@ class CartController extends Controller
             $cartDetail->menu_id = $menu->id;
             $cartDetail->cart_id = $new_cart->id;
             $cartDetail->quantity = $request->quantity;
+            $cartDetail->price = $menu->price;
             $cartDetail->total_price = $menu->price * $request->quantity;
             $cartDetail->save();
         } else {
             $cartDetail = CartDetail::where('menu_id', $menu->id)->where('cart_id', $new_cart->id)->first();
             $cartDetail->quantity = $cartDetail->quantity + $request->quantity;
+            $cartDetail->price = $menu->price;
             $cartDetail->total_price = $cartDetail->total_price + ($menu->price * $request->quantity);
             $cartDetail->update();
         }
@@ -110,16 +108,68 @@ class CartController extends Controller
     public function confirm() {
         $cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
         $cart_id = $cart->id;
-        $cart->status = 1;
-        $cart->update();
 
         $cart_details = CartDetail::where('cart_id', $cart_id)->get();
+
+        $cart_details_array = [];
+
         foreach ($cart_details as $cart_detail) {
             $menu = Menu::find($cart_detail->menu_id);
-            $menu->quantity = $menu->quantity - $cart_detail->quantity;
-            $menu->update();
+            $cart_details_array[] = array(
+                'id' => $menu->id,
+                'price' => $menu->price,
+                'quantity' => $cart_detail->quantity,
+                'name' => $menu->name
+            );
         }
 
-        return redirect('/checkout')->with('success', 'Pesanan berhasil dibuat');
+        /*Install Midtrans PHP Library (https://github.com/Midtrans/midtrans-php)
+        `composer require midtrans/midtrans-php
+
+        Alternatively, if you are not using **Composer**, you can download midtrans-php library 
+        (https://github.com/Midtrans/midtrans-php/archive/master.zip), and then require 
+        the file manually.   
+
+        require_once dirname(__FILE__) . '/pathofproject/Midtrans.php'; */
+
+        //SAMPLE REQUEST START HERE
+
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-f-IjwMbNeRBfsRPqLP8E7bZA';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $params = array(
+            'transaction_details' => array(
+                'order_id' => rand(),
+                'gross_amount' => $cart->total_price,
+            ),
+            'item_details' => $cart_details_array,
+            'customer_details' => array(
+                'first_name' => $cart->user->name,
+                'email' => $cart->user->email,
+                'phone' => '08111222333',
+            ),
+        );
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+
+        if ($snapToken) {
+            $cart->status = 1;
+            $cart->update();
+            
+            foreach ($cart_details as $cart_detail) {
+                $menu = Menu::find($cart_detail->menu_id);
+                $menu->quantity = $menu->quantity - $cart_detail->quantity;
+                $menu->update();
+            }
+            return redirect('/checkout')->with('token', $snapToken);
+        } else {
+            return redirect('/checkout')->with('error', 'Checkout gagal');
+        }
     }
 }
