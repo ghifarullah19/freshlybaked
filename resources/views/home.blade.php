@@ -29,8 +29,8 @@
             {{-- Akhir Header --}}
 
                         {{-- A --}}
-                        <section class="bg-[#85603F]">
-                            <div class="container mx-auto flex items-center justify-center py-8">
+                        <section class="bg-[#85603F]" id="about">
+                            <div class="container mx-auto flex items-center justify-center py-8 " >
                                 <div class="max-w-4xl w-full bg-gray-100 p-8 rounded-md shadow-md flex items-center">
                                     <div class="w-1/3 pr-8">
                                         <h2 class="text-2xl font-bold mb-4 text-gray-900 italic">About</h2>
@@ -70,11 +70,11 @@
                 </div>
             {{-- Akhir Highlight --}}
             {{-- Akhir --}}
-        <section class="text-white body-font relative">
+        <section class="text-white body-font relative mt-10">
             <div class="absolute inset-0 bg-gray-300" id="contact">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126754.16878830967!2d107.43259844335937!3d-6.88248469999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7b7c62b117b%3A0x5afbf7beb8b7a5d7!2sSi%20Apih%20freshly%20baked!5e0!3m2!1sid!2sid!4v1703387343381!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-            <div class="container px-5 py-20 mx-10 shadow-2xl flex">
+            <div class="container px-5 py-20 mx-10 shadow-2xl flex mt-10" >
                 <div class="lg:w-1/3 md:w-1/2 bg-[#BD9354] rounded-lg p-6 flex flex-col md:ml-auto w-1/2 mt-10 md:mt-0 relative z-10 shadow-md">
                     <h2 class="text-white text-3xl mb-1 font-medium title-font">Contact Us</h2>
                     <p class="leading-relaxed mb-5 text-gray-600"></p>

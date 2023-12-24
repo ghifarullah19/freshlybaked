@@ -1,4 +1,4 @@
-<header class="fixed right-0 top-0 left-60 bg-gray-600 py-3 px-4 h-16">
+<header class="fixed right-0 top-0 left-60 bg-[#994D1C] py-3 px-4 h-16">
     <div class="max-w-4xl mx-auto">
         <div class="flex items-center justify-between">
             <div>

@@ -15,7 +15,15 @@
         rel="stylesheet"
         href="https://unpkg.com/@material-tailwind/html@latest/styles/material-tailwind.css"
     />
-
+    <style>
+        @layer utilities {
+            input[type="number"]::-webkit-inner-spin-button,
+            input[type="number"]::-webkit-outer-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+        }
+    </style>
     {{-- TailwindCSS & Flowbite --}}
     @vite(['resources/css/app.css','resources/js/app.js'])
 
@@ -23,9 +31,9 @@
 </head>
 <body>
     @include('partials.navbar')
-    <div class="mt-[64px] mb-[-20px] min-h-[360px]">
+    <div class="mt-[64px] mb-[-20px] min-h-screen">
         @yield('container')
     </div>
-    @include('partials.footer')
+@include('partials.footer')
 </body>
 </html>

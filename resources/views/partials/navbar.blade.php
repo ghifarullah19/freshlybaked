@@ -7,11 +7,21 @@
     <div class="flex flex-row md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
       @auth
       <!-- tombol cart -->
-      <button onclick="window.location.href='/checkout'" class="mr-3 mb-2">
-        <svg class="w-5 h-5 text-gray-800 dark:text-white inline mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
-          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1" />
-        </svg>
-      </button>
+            <div slot="icon" class="relative pr-6">
+                <button onclick="window.location.href='/checkout'">
+                    <div class="absolute text-xs rounded-full -mt-1 -mr-2 px-1 font-bold top-0 right-6 bg-red-700 text-white">1</div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather text-white feather-shopping-cart w-6 h-6 mt-2">
+                        <circle cx="9" cy="21" r="1"></circle>
+                        <circle cx="20" cy="21" r="1"></circle>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                    </svg>
+                </button>
+            </div>
+{{--      <button onclick="window.location.href='/checkout'" class="mr-3 mb-2">--}}
+{{--        <svg class="w-5 h-5 text-gray-800 dark:text-white inline mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">--}}
+{{--          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1" />--}}
+{{--        </svg>--}}
+{{--      </button>--}}
       <!-- tombol login -->
       <form action="/logout" method="POST">
         <input type="hidden" name="_token" value="{{csrf_token ()}}">

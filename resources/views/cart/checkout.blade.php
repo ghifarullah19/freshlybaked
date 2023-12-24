@@ -7,7 +7,7 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
 
 @section('container')
 {{-- New Version --}}
-<section class="flex flex-col justify-center h-[360px] gap-5 overflow-hidden font-poppins sm:py-4"> 
+<section class="flex flex-col justify-center h-[360px] gap-5 overflow-hidden font-poppins sm:py-4">
     {{-- Midtrans snap --}}
     @if (session()->has('token'))
         <script>
@@ -43,7 +43,7 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
             })
         </script>
     @endif
-    
+
     <div class="w-full">
     @if (!empty($cart) || !empty($cart_details))
         <div class="block text-black text-center font-semibold">
@@ -101,7 +101,7 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
                         <td class="px-6 py-3 flex font-medium whitespace-nowrap">
                             <form action="/checkout/{{ $cart->id }}" method="post">
                                 @method('delete')
-                                <input type="hidden" name="_token" value="{{csrf_token()}}"/> 
+                                <input type="hidden" name="_token" value="{{csrf_token()}}"/>
                                 <button type="submit" class="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-3 py-1 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-800">Delete</button>
                             </form>
                         </td>
