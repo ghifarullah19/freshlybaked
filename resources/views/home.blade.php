@@ -52,8 +52,8 @@
                         {{-- A --}}
 
             {{-- Awal Highlight Produk --}}
-                <div class="container mx-auto mt-10 mb-16">
-                    <h1  class="font-bold text-2xl pt-20 text-center highlight-title" id="highlight"> Highlight </h1>
+                <div class="container mx-auto pt-20 mb-24" id="highlight">
+                    <h1  class="font-bold text-2xl text-center highlight-title" > Highlight </h1>
                     <div class="mt-4 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-3 mx-5 md:mx-0">
                         @foreach ($menus as $menu)
                             <div class="bg-[#85603F] w-72 h-96 shadow-md m-3 hover:-translate-y-5 transition rounded-2xl">

@@ -23,7 +23,7 @@
 </head>
 <body>
     @include('partials.navbar')
-    <div class="mt-[64px] min-h-[360px]">
+    <div class="mt-[64px] mb-[-20px] min-h-[360px]">
         @yield('container')
     </div>
     @include('partials.footer')
