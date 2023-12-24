@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 
 @section('container')
-<body class="relative bg-gray-700 overflow-hidden max-h-screen">
+<body class="relative bg-[#6B240C] overflow-hidden max-h-screen">
 @include('dashboard.layouts.sidebar')
 <main class="ml-60 max-h-screen overflow-auto">
     <div class="px-6 py-7">

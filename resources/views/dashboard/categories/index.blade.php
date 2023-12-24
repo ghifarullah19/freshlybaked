@@ -4,7 +4,7 @@
 <script src="https://cdn.tailwindcss.com"></script>
 @include('dashboard.layouts.header')
 @include('dashboard.layouts.sidebar')
-<body class="relative bg-gray-700 overflow-hidden max-h-screen">
+<body class="relative bg-[#6B240C] overflow-hidden max-h-screen">
 <hr class="border-t border-gray-600 my-4 mx-4 px-[610px]">
 <main class="ml-60 pt-8 max-h-screen overflow-auto">
     <div class="px-6 py-8">

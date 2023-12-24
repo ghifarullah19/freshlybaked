@@ -8,7 +8,7 @@
 @include('dashboard.layouts.header')
 @include('dashboard.layouts.sidebar')
 
-<body class="relative bg-gray-700 overflow-hidden max-h-screen">
+<body class="relative bg-[#6B240C] overflow-hidden max-h-screen">
 <div class="text-4xl font-bold mb-4 mx-3 my-3"></div>
 <hr class="border-t border-gray-600 my-4 mx-4 px-[610px]"> <!-- Separator line -->
 
@@ -41,7 +41,7 @@
                         <button onclick="window.location.href='/dashboard/print/products'" class="mr-1 block text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center h-fit" type="button">
                             Cetak Data
                         </button>
-                        <form action="/dashboard/products">         
+                        <form action="/dashboard/products">
                             <select name="sort" for="sort" id="sort" class="text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2.5">
                                 <option value="default">Awal</option>
                                 <option value="name">Nama</option>
