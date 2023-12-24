@@ -2,7 +2,7 @@
 <!-- component -->
 <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
-<footer class="relative bg-[#85603F] pt-8 pb-6">
+<footer class="relative bg-[#85603F] pt-8 pb-6 mt">
     <div class="flex flex-wrap items-center md:justify-between justify-center">
         <div class="w-full md:w-4/12 px-4 mx-auto text-center">
             <span class="font-semibold text-white">Sosial Media Kami</span>
@@ -22,7 +22,7 @@
         <div class="flex flex-wrap items-center md:justify-between justify-center">
             <div class="w-full md:w-4/12 px-4 mx-auto text-center">
                 <div class="text-sm text-white font-semibold pt-3 ">
-                    Copyright © <span id="get-current-year">2023</span> Deus Ex-Machina Creative Tim
+                    Copyright © <span id="get-current-year">2023</span> Deus Ex-Machina Creative Team
                 </div>
             </div>
         </div>
