@@ -5,12 +5,12 @@
 <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 
-<div class="block text-black text-center font-semibold">
+<div class="block text-black text-center bg-[#BD9354] font-semibold">
   Tabel Produk
 </div>
 <div class="flex overflow-x-auto shadow-md sm:rounded-lg mx-3">
   <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-800 ">
+      <thead class="text-xs text-gray-700 uppercase bg-[#BD9354]">
       <tr>
           <th scope="col" class="px-6 py-3 text-white">
               No
