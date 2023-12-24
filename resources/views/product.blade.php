@@ -34,7 +34,7 @@
 {{-- Akhir Breadcumbs --}}
 
 {{-- New Version --}}
-<section class="py-20 overflow-hidden font-poppins sm:py-4">
+<section class="py-20 overflow-hidden font-poppins sm:py-4 my-20">
   @if (session()->has('success'))
       <div class="p-4 mb-4 text-sm bg-gray-800 text-green-400" role="alert">
           <span class="font-medium">Success!</span>

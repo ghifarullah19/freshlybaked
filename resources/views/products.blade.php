@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('container')
-<section class="bg-[#FAEED1]">
+<section class="bg-[#FAEED1] pb-8">
     <div class="text-center text-black ">
         <h1 class="text-2xl font-bold pt-5 text-black">Menu</h1>
     </div>
@@ -29,51 +29,55 @@
         </div>
     </form>
     {{-- Produts --}}
-    <div class="mx-5 my-5 grid grid-cols-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
-        @if ($menus->count() > 0)
+    @if ($menus->count() > 0)
+    <section class="mx-5 my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
             @foreach ($menus as $menu)
-                {{-- Border --}}
-                <div class="bg-white opacity-80 rounded-lg overflow-hidden shadow-2xl w-full">
-                    <a href="/products/{{ $menu->slug }}">
-                        {{-- Image --}}
-                        <div class="relative">
-                            <img class="w-full rounded-lg px-5 pt-10" src="https://source.unsplash.com/250x200?{{ $menu->category->name }}" alt="Product Image">
-                            @if ($menu->quantity == 0)
-                                <div class="absolute top-0 right-0 bg-red-500 text-white px-2 items-center py-1 m-2 rounded-md text-sm font-medium">OUT OF STOCK
-                                </div>
-                            @else
-                                <div class="absolute top-0 right-0 bg-green-500 text-white px-2 py-1 m-2 rounded-md text-sm font-medium">IN STOCK
-                                </div>
-                            @endif
-                        </div>
-                    </a>
-
-                    {{-- Menu's name --}}
-                    <div class="p-5 card">
+                <div class="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
+                    {{-- Image --}}
+                    <div class="relative mx-4 mt-4 h-96 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
                         <a href="/products/{{ $menu->slug }}">
-                            <h3 class="text-lg font-semibold antialiased mb-2 text-black">{{ $menu->name }}</h3>
+                            <img
+                                src="https://source.unsplash.com/350x350?{{ $menu->category->name }}"
+                                class="h-full w-full object-cover"
+                            />
                         </a>
-
-                        {{-- Menu's desc --}}
-                        <a href="/products?category={{ $menu->category->slug }}">
-                            <p class="text-gray-600 text-sm mb-4">{{ $menu->category->name }}</p>
-                        </a>
-                        <div class="flex items-center justify-between">
-                            {{-- Menu's price --}}
-                            <span class="font-bold text-lg">Rp.{{ $menu->price }}</span>
-                            {{-- Button Cart --}}
-                            <button onclick="window.location.href='/products/{{ $menu->slug }}'" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                                Add to Cart
-                            </button>
+                        <div class="absolute top-0 right-0 bg-red-500 text-white px-2 items-center py-1 m-2 rounded-md text-sm font-medium">OUT OF STOCK
                         </div>
+                    </div>
+                    <div class="p-6">
+                        <div class="mb-2 flex items-center justify-between">
+                            <a href="/products/{{ $menu->slug }}">
+                                <p class="block font-sans text-lg font-bold leading-relaxed text-blue-gray-900 antialiased">
+                                {{ $menu->name }}
+                                </p>
+                            </a>
+                            {{-- Menu's price --}}
+                                <p class="block font-sans text-base font-bold leading-relaxed text-blue-gray-900 antialiased">
+                                Rp.{{ $menu->price }}
+                                </p>
+                        </div>
+                        {{-- Menu's category/desc --}}
+                        <a href="/products?category={{ $menu->category->slug }}">
+                            <p class="block font-sans text-sm font-normal leading-normal text-gray-900 antialiased opacity-90">
+                                {{ $menu->category->name }}
+                            </p>
+                        </a>
+                    </div>
+                    {{-- Button --}}
+                    <div class="p-6 pt-0">
+                        <button onclick="window.location.href='/products/{{ $menu->slug }}'"
+                            class="block bg-blue-500 text-white w-full select-none rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            type="button"
+                        >
+                            Add to Cart
+                        </button>
                     </div>
                 </div>
             @endforeach
         @else
-            <p class="text-center text-gray-600 dark:text-gray-400">No menu found.</p>
+            <p class="text-center text-gray-600 dark:text-gray-400 py-60">No menu found.</p>
         @endif
-    </div>
-</section>
+    </section>
 @endsection
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
