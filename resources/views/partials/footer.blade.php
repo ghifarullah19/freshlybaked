@@ -1,11 +1,10 @@
-
 <!-- component -->
 <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
-<footer class="relative bg-[#85603F] pt-8 pb-6 mt">
+<footer class="relative bg-[#E1E1E1] pt-8 pb-6 mt">
     <div class="flex flex-wrap items-center md:justify-between justify-center">
         <div class="w-full md:w-4/12 px-4 mx-auto text-center">
-            <span class="font-semibold text-white">Sosial Media Kami</span>
+            <span class="font-semibold text-black">Sosial Media Kami</span>
             <div class="text-sm text-blueGray-500 font-semibold pt-3 ">
                 <button class="bg-white text-lightBlue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2" type="button">
                     <i class="fab fa-twitter"></i>
@@ -21,7 +20,7 @@
     </div>
         <div class="flex flex-wrap items-center md:justify-between justify-center">
             <div class="w-full md:w-4/12 px-4 mx-auto text-center">
-                <div class="text-sm text-white font-semibold pt-3 ">
+                <div class="text-sm text-black font-semibold pt-3 ">
                     Copyright © <span id="get-current-year">2023</span> Deus Ex-Machina Creative Team
                 </div>
             </div>
