@@ -62,6 +62,11 @@ Route::get('/ubahprofile', function () {
     return view('ubahprofile');
 });
 
+// View untuk About Developer
+Route::get('/aboutdev', function () {
+    return view('aboutdev');
+});
+
 Route::post('/ubahprofile', [UserController::class, 'updateProfile']);
 
 

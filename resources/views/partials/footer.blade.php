@@ -2,7 +2,7 @@
 <!-- component -->
 <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
-<footer class="relative bg-[#85603F] pt-8 pb-6 mt">
+<footer class="relative bg-[#85603F] pt-8 pb-6">
     <div class="flex flex-wrap items-center md:justify-between justify-center">
         <div class="w-full md:w-4/12 px-4 mx-auto text-center">
             <span class="font-semibold text-white">Sosial Media Kami</span>
