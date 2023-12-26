@@ -13,9 +13,10 @@
 <hr class="border-t border-gray-600 my-4 mx-4 px-[610px]"> <!-- Separator line -->
 
 <main class="ml-60 pt-8 max-h-screen overflow-auto">
+
     <div class="px-6 py-8">
         <div class="max-w-4xl mx-auto">
-            <div class="bg-white rounded-3xl p-8 mb-5">
+            <div class="bg-white rounded-3xl shadow-gray-900 drop-shadow-2xll p-8 mb-5">
                 @if (session()->has('success'))
                     <div class="p-4 mb-4 text-sm bg-gray-800 text-green-400" role="alert">
                         <span class="font-medium">Success!</span>
@@ -31,18 +32,19 @@
                 @endif
 
 {{--                    modal button product--}}
-
+                    <div class="block text-black mb-5 text-center font-semibold">
+                        Tabel Produk
+                    </div>
 
                     <!-- Modal toggle -->
                     <div class="flex flex-row">
-                        <button data-modal-target="modal-product" data-modal-toggle="modal-product" class="mr-1 block text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center h-fit" type="button">
+                        <button data-modal-target="modal-product" data-modal-toggle="modal-product" class="mr-1 block text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm px-5 py-2.5 text-center h-fit" type="button">
                             Tambah Data
                         </button>
-                        <button onclick="window.location.href='/dashboard/print/products'" class="mr-1 block text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center h-fit" type="button">
-                            Cetak Data
-                        </button>
+{{--                        end modal toggle --}}
+{{--                        button urut--}}
                         <form action="/dashboard/products">
-                            <select name="sort" for="sort" id="sort" class="text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2.5">
+                            <select name="sort" for="sort" id="sort" class="text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm pl-2 py-2.5">
                                 <option value="default">Awal</option>
                                 <option value="name">Nama</option>
                                 <option value="category">Kategori</option>
@@ -105,6 +107,7 @@
                                             </div>
                                             @enderror
                                         </div>
+{{--                                        dropdown sorting--}}
                                         <div class="col-span-2 sm:col-span-1">
                                             <label for="category" class="block mb-2 text-sm font-medium text-gray-900   ">Category</label>
                                             <select id="category_id" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5">
@@ -156,28 +159,24 @@
                             </div>
                         </div>
                     </div>
-
                     {{--                    end modal button product--}}
-                <div class="block text-black text-center font-semibold">
-                    Tabel Produk
-                </div>
-                <div class="flex overflow-x-auto shadow-md sm:rounded-lg mx-3">
+                <div class="flex overflow-x-auto shadow-md sm:rounded-lg mx-3 mt-5">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-800 ">
                         <tr>
-                            <th scope="col" class="px-6 py-3 text-white">
+                            <th scope="col" class="px-5 py-3 border-b-2 border-gray-200 bg-[#6B240C] text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 No
                             </th>
-                            <th scope="col" class="px-6 py-3 text-white">
+                            <th scope="col" class="px-5 py-3 border-b-2 border-gray-200 bg-[#6B240C] text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 Nama Produk
                             </th>
-                            <th scope="col" class="px-6 py-3 text-white">
+                            <th scope="col" class="px-5 py-3 border-b-2 border-gray-200 bg-[#6B240C] text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 Kategori
                             </th>
-                            <th scope="col" class="px-6 py-3 text-white">
+                            <th scope="col" class="px-5 py-3 border-b-2 border-gray-200 bg-[#6B240C] text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 Harga
                             </th>
-                            <th scope="col" class="px-6 py-3 text-white">
+                            <th scope="col" class="px-5 py-3 border-b-2 border-gray-200 bg-[#6B240C] text-center text-xs font-semibold text-white uppercase tracking-wider">
                                 Action
                             </th>
                         </tr>
@@ -185,26 +184,26 @@
 
                         <tbody>
                             @foreach ($menus as $menu)
-                            <tr class="odd:bg-white odd:dark:bg-amber-50 even:bg-gray-50 even:dark:bg-gray-300 dark:border-gray-700 border-b-2">
+                            <tr>
                                 {{-- Isi Tabel No --}}
-                                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                <th scope="row" class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     {{ $loop->iteration }}
                                 </th>
                                 {{-- Isi Tabel Name --}}
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     {{ $menu->name  }}
                                 </td>
                                 {{-- Isi Tabel Categories --}}
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     {{ $menu->category->name }}
                                 </td>
                                 {{-- Isi Tabel Price --}}
-                                <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
                                     Rp.{{ $menu->price }}
                                 </td>
                                 {{-- Isi Tabel Button --}}
                                 <td class="px-6 flex">
-                                <td class="px-6 my-2 py-1 inline-flex bg-transparent">
+                                <td class="px-6 ml-10 my-2 py-1 inline-flex bg-transparent">
                                     <button onclick="window.location.href='/dashboard/products/{{ $menu->slug }}'" type="button" class="ml-2 px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-s-lg hover:bg-blue-500 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
                                         <svg class="w-3 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
                                             <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">

@@ -38,13 +38,24 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/dashboard/pdf" class="flex bg-[#E48F45] hover:bg-[#6B240C] rounded-xl font-bold text-sm text-white py-3 px-4">
+                        <button type="button" class="flex bg-[#E48F45] hover:bg-[#6B240C] rounded-xl font-bold text-sm text-white py-3 px-4 pr-4" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 28 28"><g fill="currentColor"><path d="M14 2v8a2 2 0 0 0 2 2h7.999l.001.078V23.6a2.4 2.4 0 0 1-2.4 2.4H6.4A2.4 2.4 0 0 1 4 23.6V4.4A2.4 2.4 0 0 1 6.4 2z"/>
                                     <path d="M15.5 2.475V10a.5.5 0 0 0 .5.5h7.502a2.739 2.739 0 0 0-.307-.366l-7.431-7.431a2.401 2.401 0 0 0-.264-.228"/>
                                 </g>
                             </svg>
-                            <div class="ml-3">PDF Reporting</div>
-                        </a>
+                            <span class="flex-1 ml-3 text-left whitespace-nowrap mr-6" sidebar-toggle-item>PDF Reporting</span>
+                            <svg sidebar-toggle-item class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                        </button>
+                        <ul id="dropdown-example" class="hidden pt-0.5 py-2 space-y-1 transition duration-350">
+                            <li>
+                                <a href="#"
+                                   class="flex bg-[#6B240C] hover:bg-[#E48F45] rounded-xl font-bold text-sm text-white py-3 px-4 ml-8 shadow-2xl">Daftar Produk</a>
+                            </li>
+                            <li>
+                                <a href="#"
+                                   class="flex bg-[#6B240C] hover:bg-[#E48F45] rounded-xl font-bold text-sm text-white py-3 px-4 ml-8">Histori Transaksi</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
