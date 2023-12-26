@@ -63,6 +63,11 @@ Route::get('/aboutdev', function () {
     return view('aboutdev');
 });
 
+// View untuk Cart sementara
+Route::get('/cart', function () {
+    return view('cart');
+});
+
 Route::post('/ubahprofile', [UserController::class, 'updateProfile']);
 
 Route::get('/dashboard', function () {
