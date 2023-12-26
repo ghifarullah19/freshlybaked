@@ -13,7 +13,6 @@
 <hr class="border-t border-gray-600 my-4 mx-4 px-[610px]"> <!-- Separator line -->
 
 <main class="ml-60 pt-8 max-h-screen overflow-auto">
-
     <div class="px-6 py-8">
         <div class="max-w-4xl mx-auto">
             <div class="bg-white rounded-3xl shadow-gray-900 drop-shadow-2xll p-8 mb-5">
@@ -31,7 +30,7 @@
                     </div>
                 @endif
 
-{{--                    modal button product--}}
+                   {{-- modal button product --}}
                     <div class="block text-black mb-5 text-center font-semibold">
                         Tabel Produk
                     </div>
@@ -41,8 +40,9 @@
                         <button data-modal-target="modal-product" data-modal-toggle="modal-product" class="mr-1 block text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm px-5 py-2.5 text-center h-fit" type="button">
                             Tambah Data
                         </button>
-{{--                        end modal toggle --}}
-{{--                        button urut--}}
+                       {{-- end modal toggle --}}
+                       
+                       {{-- button urut --}}
                         <form action="/dashboard/products">
                             <select name="sort" for="sort" id="sort" class="text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm pl-2 py-2.5">
                                 <option value="default">Awal</option>

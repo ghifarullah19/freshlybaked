@@ -48,7 +48,8 @@
                         </button>
                         <ul id="dropdown-example" class="hidden pt-0.5 py-2 space-y-1 transition duration-350">
                             <li>
-                                <a href="#"
+                                <a href="/dashboard/print/products"
+                                    target="_blank"
                                    class="flex bg-[#6B240C] hover:bg-[#E48F45] rounded-xl font-bold text-sm text-white py-3 px-4 ml-8 shadow-2xl">Daftar Produk</a>
                             </li>
                             <li>

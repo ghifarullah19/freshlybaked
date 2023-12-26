@@ -123,46 +123,44 @@
                                 </div>
                             </div>
                             <div class="p-4 bg-yellow-100 rounded-xl text-gray-800">
-                                <div class="font-bold text-2xl leading-none">5</div>
-                                <div class="mt-2">Pesanan Selesai</div>
+                                <div class="font-bold text-2xl leading-none">{{ $antrianPending }}</div>
+                                <div class="mt-2">Antrian tersisa</div>
                             </div>
                             <div class="p-4 bg-yellow-100 rounded-xl text-gray-800">
-                                <div class="font-bold text-2xl leading-none">3</div>
-                                <div class="mt-2">Antrian tersisa</div>
+                                <div class="font-bold text-2xl leading-none">{{ $antrianDiproses }}</div>
+                                <div class="mt-2">Pesanan Selesai</div>
                             </div>
                             <div class="col-span-2">
                                 <div class="p-4 bg-purple-100 rounded-xl text-gray-800">
                                     <div class="font-bold text-xl leading-none">Maksimal Pesanan Perhari</div>
-                                    <div class="mt-2">5 of 8 selesai</div>
+                                    <div class="mt-2">{{ $totalAntrianPerhari }} of {{ env('MAX_ORDER') }} selesai</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div>
                         <h2 class="text-2xl font-bold mb-4">Histori Pesanan</h2>
-
                         <div class="space-y-4">
+                            @if ($cart->count() > 0)
+                            @foreach ($cart as $c)
                             <div class="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
                                 <div class="flex justify-between">
-                                    <div class="text-gray-400 text-xs">Antrian 1</div>
-                                    <div class="text-gray-400 text-xs">4h</div>
+                                    <div class="text-gray-400 text-xs">Antrian {{ $loop->iteration }}</div>
+                                    <div class="text-gray-400 text-xs">{{ $c->date }}</div>
                                 </div>
-                                <a href="javascript:void(0)" class="font-bold hover:text-yellow-800 hover:underline">Cheezy Cake</a>
-                            </div>
-                            <div class="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
                                 <div class="flex justify-between">
-                                    <div class="text-gray-400 text-xs">Antrian 2</div>
-                                    <div class="text-gray-400 text-xs">3h</div>
+                                    <div class="font-bold hover:text-yellow-800 hover:underline">{{ $c->user->name }}</div>
+                                    <div class="font-bold hover:text-yellow-800 hover:underline">SAB{{ $c->id }}</div>
                                 </div>
-                                <a href="javascript:void(0)" class="font-bold hover:text-yellow-800 hover:underline">Redvelvet Cake</a>
                             </div>
-                            <div class="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
-                                <div class="flex justify-between">
-                                    <div class="text-gray-400 text-xs">Antrian 3</div>
-                                    <div class="text-gray-400 text-xs">2h</div>
-                                </div>
-                                <a href="javascript:void(0)" class="font-bold hover:text-yellow-800 hover:underline">Normal Cake</a>
+                            @endforeach
+                            @else
+                            <div class="p-4 h-[300px] bg-white border rounded-xl text-gray-800 flex justify-center align-middle">
+                                <h1 class="text-2xl font-bold my-auto">
+                                    Belum ada pesanan.
+                                </h1>
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>

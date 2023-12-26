@@ -53,5 +53,6 @@
 </div>
 
 <script>
-  window.print();
+    window.print();
+  window.close();
 </script>

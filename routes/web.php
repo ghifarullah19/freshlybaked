@@ -1,19 +1,20 @@
 <?php
 
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\GoogleController;
-use App\Http\Controllers\LoginController;
+use App\Models\Cart;
+use App\Models\Menu;
+use App\Models\Category;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\MenuController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\HistoryController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardMenuController;
 use App\Http\Controllers\DashboardUserController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\HistoryController;
-use App\Models\Category;
-use Illuminate\Support\Facades\Route;
-use App\Models\Menu;
-use Illuminate\Support\Facades\Auth;
 
 
 /*
@@ -34,11 +35,6 @@ Route::get('/', function () {
         "menus" => Menu::take(4)->get()
     ]);
 });
-
-// Halaman Products
-// Route::get('/products', function () {
-//     return view('products');
-// });
 
 Route::get('/products', [MenuController::class, 'index']);
 Route::get('/products/{menu:slug}', [MenuController::class, 'show']);
@@ -69,29 +65,25 @@ Route::get('/aboutdev', function () {
 
 Route::post('/ubahprofile', [UserController::class, 'updateProfile']);
 
-
 Route::get('/dashboard', function () {
-    return view('dashboard.index');
+    return view('dashboard.index', [
+        "antrianPending" => Cart::where('status', 0)->count(),
+        "antrianDiproses" => Cart::where('status', 1)->count(),
+        "totalAntrianPerhari" => Cart::where(['date' => date('Y-m-d'), 'status' => 1])->count(),
+        "cart" => Cart::where('status', 1)->latest()->take(3)->get(),
+    ]);
 })->middleware('auth');
 
-Route::get('/dashboard/products/checkSlug', [DashboardMenuController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/products', DashboardMenuController::class)->middleware('auth');
-Route::get('/dashboard/users/checkSlug', [DashboardUserController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/users', DashboardUserController::class)->middleware('auth');
+Route::get('/dashboard/products/checkSlug', [DashboardMenuController::class, 'checkSlug'])->middleware('auth');
+Route::get('/dashboard/users/checkSlug', [DashboardUserController::class, 'checkSlug'])->middleware('auth');
 
 Route::post('/settings', [UserController::class, 'update'])->name('settings.update');
 Route::post('/create-product', [MenuController::class, 'store'])->name('product.create');
 
 Route::get('/dashboard/print/products', [DashboardMenuController::class, 'print'])->middleware('auth');
 Route::get('/dashboard/products/sortByPrice', [DashboardMenuController::class, 'sortByPrice'])->middleware('auth');
-
-// Route::get('/dashboard/products', function () {
-//     return view('dashboard.products.index', [
-//         "title" => "Products",
-//         "active" => "products",
-//         "menus" => Menu::all()
-//     ]);
-// });
 
 Route::get('/dashboard/products/create', function () {
     return view('dashboard.products.create', [
@@ -108,22 +100,6 @@ Route::get('/register', [RegisterController::class, 'index'])->middleware('guest
 Route::post('/register', [RegisterController::class, 'store']);
 
 Route::get('/dashboard/categories', [CategoryController::class, 'index']);
-
-// Route::get('/dashboard/products.create', function () {
-//     return view('dashboard.products.create');
-// });
-
-// Route::get('/dashboard/users', function () {
-//     return view('dashboard.users.index', [
-//         "title" => "Users",
-//         "active" => "users",
-//         "users" => User::all()
-//     ]);
-// });
-
-// Route::get('/dashboard/categories', function () {
-//     return view('dashboard.categories.index');
-// });
 
 //login google
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');

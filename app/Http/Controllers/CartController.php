@@ -81,14 +81,14 @@ class CartController extends Controller
             return view('cart.checkout', [
                 "title" => "Checkout",
                 "active" => "cart",
-                "carts" => $cart,
+                // "carts" => $cart,
                 "cart_details" => $cart_details
             ]);
         } else {
             return view('cart.checkout', [
                 "title" => "Checkout",
                 "active" => "cart",
-                "carts" => [],
+                // "carts" => [],
                 "cart_details" => []
             ]);
         }
@@ -99,7 +99,7 @@ class CartController extends Controller
         $cart_detail = CartDetail::find($id);
         $cart = Cart::where('id', $cart_detail->cart_id)->first();
         $cart->total_price = $cart->total_price - $cart_detail->total_price;
-        $cart->status = 2;
+        $cart->status = 0;
         $cart->update();
         $cart_detail->delete();
 
@@ -111,11 +111,13 @@ class CartController extends Controller
         $cart_id = $cart->id;
 
         $cart_details = CartDetail::where('cart_id', $cart_id)->get();
-
         $cart_details_array = [];
 
         foreach ($cart_details as $cart_detail) {
             $menu = Menu::find($cart_detail->menu_id);
+            if ($menu->quantity < $cart_detail->quantity) {
+                return redirect('/checkout')->with('error', $menu->name . 'Stok tidak cukup');
+            }
             $cart_details_array[] = array(
                 'id' => $menu->id,
                 'price' => $menu->price,
