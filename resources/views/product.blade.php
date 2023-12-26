@@ -76,7 +76,7 @@
                       
                       {{-- Product Availability/quantity --}}
                       <div class="flex">
-                        <span class="text-xl mb-5 font-bold">Availability: </span>
+                        <span class="text-xl mb-5 font-bold">Availability : </span>
                         <span class="text-xl ml-2">{{ $menu->quantity }}</span>
                       </div>
                       {{-- Products's price --}}

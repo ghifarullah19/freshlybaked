@@ -70,7 +70,7 @@
                 </div>
             {{-- Akhir Highlight --}}
             {{-- Akhir --}}
-        <section class="text-white body-font relative mt-10">
+        <section class="text-white body-font relative mt-10 mb-10">
             <div class="absolute inset-0 bg-gray-300" id="contact">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126754.16878830967!2d107.43259844335937!3d-6.88248469999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7b7c62b117b%3A0x5afbf7beb8b7a5d7!2sSi%20Apih%20freshly%20baked!5e0!3m2!1sid!2sid!4v1703387343381!5m2!1sid!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>

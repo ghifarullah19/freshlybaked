@@ -75,7 +75,7 @@
                 </div>
             @endforeach
         @else
-            <p class="text-center text-gray-600 dark:text-gray-400 py-60">No menu found.</p>
+            <p class="text-center text-gray-600 dark:text-gray-400 py-80">No menu found.</p>
         @endif
     </section>
 @endsection
