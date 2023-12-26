@@ -7,6 +7,20 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
 
 @section('container')
 {{-- New Version --}}
+@if (session()->has('success'))
+    <div class="p-4 mb-4 text-sm bg-gray-800 text-green-400" role="alert">
+        <span class="font-medium">Success!</span>
+        {{ session('success') }}
+    </div>
+@endif
+
+@if (session()->has('error'))
+    <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
+        <span class="font-medium">Danger alert!</span>
+        {{ session('error') }}
+    </div>
+@endif
+
 <section class="flex flex-col justify-center h-[360px] gap-5 overflow-hidden font-poppins sm:py-4">
     {{-- Midtrans snap --}}
     @if (session()->has('token'))

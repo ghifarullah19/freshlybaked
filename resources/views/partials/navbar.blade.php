@@ -1,3 +1,14 @@
+<?php
+if (!Auth::guest()) {
+  $cart_first = \App\Models\Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
+  if (!empty($cart_first)) {
+      $cart_details = \App\Models\CartDetail::where('cart_id', $cart_first->id)->get();
+  } else {
+      $cart_details = null;
+  }
+}
+?>
+
 <nav class="bg-[#9E7540] fixed h-[65px] w-full z-20 top-0 start-0 z20">
   <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -9,7 +20,13 @@
       <!-- tombol cart -->
             <div slot="icon" class="relative pr-6">
                 <button onclick="window.location.href='/checkout'">
-                    <div class="absolute text-xs rounded-full -mt-1 -mr-2 px-1 font-bold top-0 right-6 bg-red-700 text-white">1</div>
+                    <div class="absolute text-xs rounded-full -mt-1 -mr-2 px-1 font-bold top-0 right-6 bg-red-700 text-white">
+                      @if (!empty($cart_details))
+                        {{ $cart_details->count() }}
+                      @else
+                        0
+                      @endif
+                    </div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather text-white feather-shopping-cart w-6 h-6 mt-2">
                         <circle cx="9" cy="21" r="1"></circle>
                         <circle cx="20" cy="21" r="1"></circle>
