@@ -38,8 +38,17 @@
 
         <!-- Product List -->
         <div class="w-full h-full sm:w-2/3 pl-0">
-            <h2 class="text-2xl font-bold mb-4">Products Bought</h2>
-                
+            <div class="flex flex-row justify-between align-bottom mb-4">
+                <div class="flex flex-col">
+                    {{-- Tambah icon di sini --}}
+                    <h2 class="text-2xl font-bold">Latest Products Bought</h2>
+                </div>
+                <div class="flex flex-col justify-end">
+                    {{-- Tambah icon di sini --}}
+                    <a href="/history" class="text-blue-500 hover:underline">History Order</a>
+                </div>
+            </div>
+            
             <div class="flex flex-col flex-wrap justify-between">
                 @foreach ($cart_details as $detail)
                     <!-- Product Card -->
