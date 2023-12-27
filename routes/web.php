@@ -15,7 +15,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardMenuController;
 use App\Http\Controllers\DashboardUserController;
-
+use App\Models\CartDetail;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,22 +46,27 @@ Route::get('/contact', function () {
 
 Route::get('/about', function () {
     return view('about');
-});
+})->middleware('auth');
 
 // View untuk Halaman Profile sementara
 Route::get('/profile', function () {
-    return view('profile');
-});
+    $cart_first = Cart::where('user_id', auth()->user()->id)->where('status', 1)->latest()->get();
+    $cart_details = CartDetail::where('cart_id', $cart_first[0]->id)->orWhere('cart_id', $cart_first[1]->id)->latest()->take(4)->get();
+
+    return view('profile', [
+        "cart_details" => $cart_details,
+    ]);
+})->middleware('auth');
 
 // View untuk ubah profile sementara
 Route::get('/ubahprofile', function () {
     return view('ubahprofile');
-});
+})->middleware('auth');
 
 // View untuk About Developer
 Route::get('/aboutdev', function () {
     return view('aboutdev');
-});
+})->middleware('auth');
 
 Route::post('/ubahprofile', [UserController::class, 'updateProfile']);
 

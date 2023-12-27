@@ -114,9 +114,10 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
   <!-- Sub total -->
   <div class="flex items-center justify-center pb-10">
     <div class="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 w-5/6 md:w-2/4 lg:w-2/4 xl:w-2/4">
+      @if ($cart != null)
       <div class="mb-2 flex justify-between">
         <p class="text-gray-700">Subtotal</p>
-        <p class="text-gray-700">Rp. {{ $cart[0]->total_price }}</p>
+        <p class="text-gray-700">Rp. {{ $cart->total_price }}</p>
       </div>
       <div class="flex justify-between">
         <p class="text-gray-700">Shipping</p>
@@ -126,13 +127,18 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
       <div class="flex justify-between">
         <p class="text-lg font-bold">Total</p>
         <div class="">
-          <p class="mb-1 text-lg font-bold">Rp. {{ $cart[0]->total_price + 10000 }}</p>
+          <p class="mb-1 text-lg font-bold">Rp. {{ $cart->total_price + 10000 }}</p>
           <p class="text-sm text-gray-700">Termasuk pajak</p>
         </div>
       </div>
       <form action="/confirm-checkout" method="get">
         <button type="submit" class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check out</button>
       </form>
+      @else
+      <div class="flex flex-col justify-center">
+        <h1 class="text-center text-3xl font-bold">Keranjang masih koson</h1>
+      </div>
+      @endif
     </div>
   </div>
   

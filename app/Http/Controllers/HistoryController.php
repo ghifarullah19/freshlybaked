@@ -30,4 +30,25 @@ class HistoryController extends Controller
             "history_details" => $history_details
         ]);
     }
+
+    public function all($id) {
+        $history = Cart::where('id', $id)->get();
+
+        $history_details = [];
+
+        foreach ($history as $h) {
+            $history_details[] = CartDetail::where('cart_id', $h->id)->get();
+        }
+
+        dd($history_details);
+
+        // $history_details = CartDetail::where('cart_id', $history->id)->get();
+
+        return view('history.detail', [
+            "title" => "History",
+            "active" => "history",
+            "history" => $history,
+            "history_details" => $history_details
+        ]);
+    }
 }

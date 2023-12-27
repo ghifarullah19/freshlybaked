@@ -71,7 +71,7 @@ class CartController extends Controller
     }
 
     public function cart() {
-        $cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->latest()->get();
+        $cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->latest()->first();
         
         $cart_first = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
 
@@ -88,7 +88,7 @@ class CartController extends Controller
             return view('cart.cart', [
                 "title" => "cart",
                 "active" => "cart",
-                "carts" => [],
+                "cart" => [],
                 "cart_details" => []
             ]);
         }
@@ -100,8 +100,19 @@ class CartController extends Controller
         $cart = Cart::where('id', $cart_detail->cart_id)->first();
         $cart->total_price = $cart->total_price - $cart_detail->total_price;
         $cart->status = 0;
-        $cart->update();
+
         $cart_detail->delete();
+        if ($cart->total_price == 0) {
+            $cart->delete();
+            return view('cart.cart', [
+                "title" => "cart",
+                "active" => "cart",
+                "cart" => [],
+                "cart_details" => []
+            ])->with('success', 'Menu berhasil dihapus dari keranjang');
+        }
+        
+        $cart->update();
 
         return redirect('/cart')->with('success', 'Menu berhasil dihapus dari keranjang');
     }
