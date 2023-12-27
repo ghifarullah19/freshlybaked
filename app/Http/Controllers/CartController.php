@@ -70,25 +70,25 @@ class CartController extends Controller
         return redirect('/products/'. $menu->slug)->with('success', 'Menu berhasil ditambahkan ke keranjang');
     }
 
-    public function checkOut() {
-        $cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->get();
+    public function cart() {
+        $cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->latest()->get();
         
         $cart_first = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
 
         if (!empty($cart_first)) {
             $cart_details = CartDetail::where('cart_id', $cart_first->id)->get();
 
-            return view('cart.checkout', [
-                "title" => "Checkout",
+            return view('cart.cart', [
+                "title" => "cart",
                 "active" => "cart",
-                // "carts" => $cart,
+                "cart" => $cart,
                 "cart_details" => $cart_details
             ]);
         } else {
-            return view('cart.checkout', [
-                "title" => "Checkout",
+            return view('cart.cart', [
+                "title" => "cart",
                 "active" => "cart",
-                // "carts" => [],
+                "carts" => [],
                 "cart_details" => []
             ]);
         }
@@ -103,7 +103,7 @@ class CartController extends Controller
         $cart->update();
         $cart_detail->delete();
 
-        return redirect('/checkout')->with('success', 'Menu berhasil dihapus dari keranjang');
+        return redirect('/cart')->with('success', 'Menu berhasil dihapus dari keranjang');
     }
 
     public function confirm() {
@@ -116,7 +116,7 @@ class CartController extends Controller
         foreach ($cart_details as $cart_detail) {
             $menu = Menu::find($cart_detail->menu_id);
             if ($menu->quantity < $cart_detail->quantity) {
-                return redirect('/checkout')->with('error', $menu->name . 'Stok tidak cukup');
+                return redirect('/cart')->with('error', $menu->name . 'Stok tidak cukup');
             }
             $cart_details_array[] = array(
                 'id' => $menu->id,
@@ -162,9 +162,9 @@ class CartController extends Controller
         $snapToken = \Midtrans\Snap::getSnapToken($params);
 
         if ($snapToken) {
-            return redirect('/checkout')->with('token', $snapToken);
+            return redirect('/cart')->with('token', $snapToken);
         } else {
-            return redirect('/checkout')->with('error', 'Checkout gagal');
+            return redirect('/cart')->with('error', 'Checkout gagal');
         }
     }
 
@@ -180,5 +180,19 @@ class CartController extends Controller
             $menu->quantity = $menu->quantity - $cart_detail->quantity;
             $menu->update();
         }
+    }
+
+    public function ubah(Request $request, $id) {
+        $rules = [
+            'quantity' => 'required',
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        // $validatedData['user_id'] = auth()->user()->id;
+
+        CartDetail::where('id', $id)->update($validatedData);
+
+        return $this->cart();
     }
 }

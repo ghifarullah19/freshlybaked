@@ -63,11 +63,6 @@ Route::get('/aboutdev', function () {
     return view('aboutdev');
 });
 
-// View untuk Cart sementara
-Route::get('/cart', function () {
-    return view('cart');
-});
-
 Route::post('/ubahprofile', [UserController::class, 'updateProfile']);
 
 Route::get('/dashboard', function () {
@@ -113,8 +108,9 @@ Route::get('/register/google', [GoogleController::class, 'index']);
 Route::post('/register/google', [GoogleController::class, 'store']);
 
 Route::get('/products/cart/{menu:id}', [CartController::class, 'addToCart'])->middleware('auth');
-Route::get('/checkout', [CartController::class, 'checkOut'])->middleware('auth');
-Route::delete('/checkout/{menu:id}', [CartController::class, 'delete'])->middleware('auth');
+Route::get('/cart', [CartController::class, 'cart'])->middleware('auth');
+Route::delete('/cart/{menu:id}', [CartController::class, 'delete'])->middleware('auth');
+Route::post('/cart/ubah/{detail:id}', [CartController::class, 'ubah'])->middleware('auth');
 Route::get('/confirm-checkout', [CartController::class, 'confirm'])->middleware('auth');
 Route::get('/updateDataPayment', [CartController::class, 'updateDataPayment'])->middleware('auth');
 Route::get('/history', [HistoryController::class, 'index'])->middleware('auth');
