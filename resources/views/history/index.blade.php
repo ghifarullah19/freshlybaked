@@ -1,80 +1,103 @@
-{{-- {{ dd($Historys->id) }} --}}
 @extends('layouts.main')
 
 @section('container')
+<section class="mt-16">
+    <div class="container mx-auto p-4 sm:p-8 flex flex-col sm:flex-row my-12">
 
-{{-- New Version --}}
-<section class="flex flex-col gap-5 py-20 mt-20 overflow-hidden font-poppins sm:py-4">
-  <div class="block text-black text-center font-semibold">
-    Tabel History
-  </div>
-  <div class="w-full">
-      <div class="container overflow-x-auto shadow-md sm:rounded-lg mx-auto">
-          <table class="w-full rounded-full text-sm text-left rtl:text-right text-gray-500 ">
-              <thead class="text-xs text-gray-700 uppercase bg-gray-800 ">
-              <tr>
-                  <th scope="col" class="px-6 py-3 text-white">
-                      No
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-white">
-                      Tanggal
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-white">
-                      Status
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-white">
-                      Harga Total
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-white">
-                      Action
-                  </th>
-              </tr>
-              </thead>
-    
-              <tbody>
-                  {{-- {{ dd($histories->id) }} --}}
-                  @foreach ($histories as $history)
-                  <tr class="odd:bg-white odd:dark:bg-amber-50 even:bg-gray-50 even:dark:bg-gray-300 dark:border-gray-700 border-b-2">
-                      {{-- Isi Tabel No --}}
-                      <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                          {{ $loop->iteration }}
-                      </th>
-                      {{-- Isi Tabel Categories --}}
-                      <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                          {{ $history->date }}
-                      </td>
-                      {{-- Isi Tabel Price --}}
-                      <td class="px-6 py-4 font-medium whitespace-nowrap">
-                        @if ($history->status == 0)
-                        <span class="bg-red-600 text-white p-1 rounded-[5px]">
-                            Belum Dibayar
-                        </span>
-                        @elseif ($history->status == 1)
-                        <span class="bg-green-600 text-white p-1 rounded-[5px]">
-                            Sudah Dibayar
-                        </span>
-                        @elseif ($history->status == 2)
-                        <span class="bg-yellow-600 text-white p-1 rounded-[5px]">
-                            Pesanan Dihapus
-                        </span>
-                        @endif
-                      </td>
-                      {{-- Isi Tabel Price --}}
-                      <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                          Rp.{{ $history->total_price }}
-                      </td>
-                      {{-- Isi Tabel Button --}}
-                      <td class="px-6 py-2 font-medium whitespace-nowrap">
-                          <form action="/history/{{ $history->id }}" method="get">
-                              <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-3 py-1 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Detail</button>
-                          </form>
-                      </td>
-                  </tr>
-              @endforeach
-              </tbody>
-          </table>
-      </div>
-  </div>
+        <!-- Personal Information-->
+        <div class="sm:w-1/3 pr-0 sm:pr-8 mb-4 sm:mb-0">
+            <img class="rounded-full h-60 w-60 object-cover mb-2" src="/img/nophoto.png" alt="Profile Image">
+                <span class="font-bold text-xl">{{ auth()->user()->name }}</span>
+            <div class="mt-2">
+                <a href="/ubahprofile">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded h-8 w-full">
+                        Edit Profile
+                    </button>
+                </a>
+            </div>
+            <div class="mt-4 space-y-2">
+                <div class="text-gray-500">
+                    <span class="font-semibold">Username :</span> {{ auth()->user()->username }}
+                </div>
+                <div class="text-gray-500">
+                    <span class="font-semibold">Email :</span> {{ auth()->user()->email }}
+                </div>
+                <div class="text-gray-500">
+                    <span class="font-semibold">Phone :</span> {{ auth()->user()->phone_number }}
+                </div>
+                <div class="text-gray-500">
+                    <span class="font-semibold">Birthdate :</span> {{ auth()->user()->date_of_birth }}
+                </div>
+                <div class="text-gray-500">
+                    <span class="font-semibold">Address :</span> {{ auth()->user()->address }}
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Product List -->
+        <div class="w-full h-full sm:w-2/3 pl-0">
+            <div class="flex flex-row justify-between align-bottom mb-4">
+                <div class="flex flex-col">
+                    {{-- Tambah icon di sini --}}
+                    <h2 class="text-2xl font-bold">History Products Bought</h2>
+                </div>
+                <div class="flex flex-col justify-end">
+                    {{-- Tambah icon di sini --}}
+                    <a href="/profile" class="text-blue-500 hover:underline">Back to Profile</a>
+                </div>
+            </div>
+            
+            <div class="flex flex-col flex-wrap justify-between">
+                @foreach ($history_details as $details)
+                    @if ($loop->iteration-1 < $histories->count())
+                        <?php 
+                            $id = $histories[$loop->iteration-1]->id;
+                        ?>
+                    @endif
+                    @foreach ($details as $detail)
+                    <!-- Product Card -->
+                    <div class="bg-white flex flex-row justify-between w-full rounded overflow-hidden shadow-md mb-4">
+                        <div class="flex flex-col">
+                            <div class="flex felx-row">
+                                <div class="p-4 flex flex-col bg-slate-600">
+                                    <img class="rounded-full inline h-20 w-20 object-cover" src="/img/nophoto.png" alt="Profile Image">
+                                </div>
+                                <div class="p-4 flex flex-col">
+                                    <a href="#" class="font-bold text-lg text-blue-500 hover:underline">
+                                        {{ $detail->menu->name }}
+                                    </a>
+                                    <div class="flex items-center">
+                                        <p class="text-gray-700 text-base">Total quantity :</p>
+                                        <span class="text-gray-700 text-md ml-1">{{ $detail->quantity }}</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <p class="text-gray-700 text-base">Date :</p>
+                                        <span class="text-gray-700 text-md ml-1">{{ $detail->cart->date }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex flex-col justify-between h-1/2 gap-5 pr-3">
+                            <div class="flex flex-row justify-end">
+                                <p class="text-gray-700 text-base">SAB{{ $id . $detail->id }}</p>
+                            </div>
+                            <div class="flex flex-row">
+                                <a href="/products/{{ $detail->menu->slug }}">
+                                    <button class="bg-green-500 hover:bg-green-700 text-white font-bold px-4 rounded h-8 w-full">
+                                        Reorder
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                @endforeach
+            </div>
+                
+        </div>
+    </div>
 </section>
 
 @endsection
