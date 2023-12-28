@@ -82,14 +82,16 @@ class CartController extends Controller
                 "title" => "cart",
                 "active" => "cart",
                 "cart" => $cart,
-                "cart_details" => $cart_details
+                "cart_details" => $cart_details,
+                "order_count" => Cart::where('user_id', auth()->user()->id)->where('date', Carbon::now()->format('Y-m-d'))->count()
             ]);
         } else {
             return view('cart.cart', [
                 "title" => "cart",
                 "active" => "cart",
                 "cart" => [],
-                "cart_details" => []
+                "cart_details" => [],
+                "order_count" => Cart::where('user_id', auth()->user()->id)->where('date', Carbon::now()->format('Y-m-d'))->count()
             ]);
         }
         
@@ -159,7 +161,7 @@ class CartController extends Controller
 
         $params = array(
             'transaction_details' => array(
-                'order_id' => rand(),
+                'order_id' => "SAB" . '-' . Carbon::now()->format('Ymd') . '-' . rand('100', '999'),
                 'gross_amount' => $cart->total_price,
             ),
             'item_details' => $cart_details_array,
@@ -171,9 +173,15 @@ class CartController extends Controller
         );
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
-
+        $data = $params['transaction_details'];
+        $cart->code = $data['order_id'];
+        $cart->update();
+        
         if ($snapToken) {
-            return redirect('/cart')->with('token', $snapToken);
+            return redirect('/cart')->with([
+                'token' => $snapToken,
+                'data' => $cart->code
+            ]);
         } else {
             return redirect('/cart')->with('error', 'Checkout gagal');
         }
@@ -205,5 +213,27 @@ class CartController extends Controller
         CartDetail::where('id', $id)->update($validatedData);
 
         return $this->cart();
+    }
+
+    public function getStatus($id) {
+        // Set your Merchant Server Key
+        \Midtrans\Config::$serverKey = 'SB-Mid-server-f-IjwMbNeRBfsRPqLP8E7bZA';
+        // Set to Development/Sandbox Environment (default). Set to true for Production Environment (accept real transaction).
+        \Midtrans\Config::$isProduction = false;
+        // Set sanitization on (default)
+        \Midtrans\Config::$isSanitized = true;
+        // Set 3DS transaction for credit card to true
+        \Midtrans\Config::$is3ds = true;
+
+        $cart = Cart::where('id', $id)->first();
+        $status = \Midtrans\Transaction::status($cart->code);
+        $data_status = json_decode(json_encode($status), true);
+
+        if ($data_status['transaction_status'] == 'settlement') {
+            $this->updateDataPayment();
+            return redirect('/cart')->with('success', 'Pembayaran berhasil');
+        } else {
+            return redirect('/cart')->with('error', 'Pembayaran belum dilakukan/gagal');
+        }
     }
 }

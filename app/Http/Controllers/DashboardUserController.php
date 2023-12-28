@@ -15,10 +15,15 @@ class DashboardUserController extends Controller
      */
     public function index()
     {
-        return view('dashboard.users.index', [
-            // 'posts' => Post::where('user_id', auth()->user()->id)->get()
-            'users' => User::all()
-        ]);
+        if (request('col') && request('sort')) {
+            return view('dashboard.users.index', [
+                'users' => User::orderBy('users.' . request('col'), request('sort'))->get(),
+            ]);
+        } else {
+            return view('dashboard.users.index', [
+                'users' => User::all(),
+            ]);
+        }
     }
 
     /**

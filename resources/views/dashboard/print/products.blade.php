@@ -5,7 +5,7 @@
 <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 <script src="https://cdn.tailwindcss.com"></script>
 
-<div class="block text-black text-center bg-[#BD9354] font-semibold">
+<div class="block text-black text-2xl text-center font-semibold mb-5">
   Tabel Produk
 </div>
 <div class="flex overflow-x-auto shadow-md sm:rounded-lg mx-3">
@@ -54,5 +54,7 @@
 
 <script>
     window.print();
-  window.close();
+    window.onafterprint = function(){
+        window.close();
+    }
 </script>
