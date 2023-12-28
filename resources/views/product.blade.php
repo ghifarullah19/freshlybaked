@@ -49,7 +49,7 @@
       </div>
   @endif
   <div class="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
-    <form action="/products/cart/{{ $menu->id }}" action="get">
+    <form action="/cart/{{ $menu->id }}" action="get">
       <div class="flex flex-wrap -mx-4">
           <div class="w-full px-4 md:w-1/2 ">
               <div class="sticky top-0 z-0 overflow-hidden ">

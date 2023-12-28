@@ -65,17 +65,20 @@ class DashboardUserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
         $rules = [
             'name' => 'required|max:255',
-            // 'email' => 'required|email:dns|unique:users',
             'image' => 'image|file|max:1024',
-            'password' => 'required|min:8|max:255',
-            'is_admin' => 'required'
         ];
+        
+        $user = User::find(auth()->id());
 
-        if ($request->slug != $user->slug) {
+        if ($request->email != $user->email) {
+            $rules['email'] = 'required|email:dns|unique:users';
+        }
+
+        if ($request->username != $user->username) {
             $rules['username'] = 'required|unique:users';
         }
 
@@ -92,7 +95,8 @@ class DashboardUserController extends Controller
             $validatedData['image'] = $request->file('image')->store('user-images');
         }
 
-        User::where('id', $user->id)->update($validatedData);
+        $user->fill($validatedData);
+        $user->save();
 
         return redirect('/dashboard/users')->with('success', 'New post has been updated!');
     }

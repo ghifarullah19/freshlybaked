@@ -17,6 +17,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardCartController;
 use App\Http\Controllers\DashboardMenuController;
 use App\Http\Controllers\DashboardUserController;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ use App\Http\Controllers\DashboardUserController;
 |
 */
 
+// User
 Route::get('/', function () {
     return view('home', [
         "title" => "Home",
@@ -64,46 +66,18 @@ Route::get('/profile', function () {
 })->middleware('auth');
 
 // View untuk ubah profile sementara
-Route::get('/ubahprofile', function () {
-    return view('ubahprofile');
+Route::get('/update-profile', function () {
+    return view('update-profile');
 })->middleware('auth');
+
+// ubah 
+Route::post('/update-profile', [UserController::class, 'updateProfile'])->middleware('auth');
 
 // View untuk About Developer
 Route::get('/aboutdev', function () {
     return view('aboutdev');
 })->middleware('auth');
 
-Route::post('/ubahprofile', [UserController::class, 'updateProfile']);
-
-Route::get('/dashboard', function () {
-    return view('dashboard.index', [
-        "antrianPending" => Cart::where('status', 0)->count(),
-        "antrianDiproses" => Cart::where('status', 1)->count(),
-        "totalAntrianPerhari" => Cart::where(['date' => date('Y-m-d'), 'status' => 1])->count(),
-        "cart" => Cart::where('status', 1)->latest()->take(3)->get(),
-    ]);
-})->middleware('auth');
-
-Route::resource('/dashboard/products', DashboardMenuController::class)->middleware('auth');
-Route::resource('/dashboard/users', DashboardUserController::class)->middleware('auth');
-Route::resource('/dashboard/orders', DashboardCartController::class)->middleware('auth');
-Route::get('/dashboard/products/checkSlug', [DashboardMenuController::class, 'checkSlug'])->middleware('auth');
-Route::get('/dashboard/users/checkSlug', [DashboardUserController::class, 'checkSlug'])->middleware('auth');
-
-Route::post('/settings', [UserController::class, 'update'])->name('settings.update');
-Route::post('/create-product', [MenuController::class, 'store'])->name('product.create');
-
-Route::get('/dashboard/print/histories', [DashboardCartController::class, 'print'])->middleware('auth');
-Route::get('/dashboard/print/products', [DashboardMenuController::class, 'print'])->middleware('auth');
-Route::get('/dashboard/products/sortByPrice', [DashboardMenuController::class, 'sortByPrice'])->middleware('auth');
-
-Route::get('/dashboard/products/create', function () {
-    return view('dashboard.products.create', [
-        "title" => "Create Product",
-        "active" => "products",
-        "categories" => Category::all()
-    ]);
-});
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
@@ -111,20 +85,45 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
-Route::get('/dashboard/categories', [CategoryController::class, 'index']);
-
 //login google
 Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle'])->name('google.login');
 Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
 Route::get('/register/google', [GoogleController::class, 'index']);
 Route::post('/register/google', [GoogleController::class, 'store']);
 
-Route::get('/products/cart/{menu:id}', [CartController::class, 'addToCart'])->middleware('auth');
+// cart
 Route::get('/cart', [CartController::class, 'cart'])->middleware('auth');
+Route::get('/cart/{menu:id}', [CartController::class, 'addToCart'])->middleware('auth');
 Route::delete('/cart/{menu:id}', [CartController::class, 'delete'])->middleware('auth');
-Route::post('/cart/ubah/{detail:id}', [CartController::class, 'ubah'])->middleware('auth');
 Route::get('/confirm-checkout', [CartController::class, 'confirm'])->middleware('auth');
-Route::get('/getStatus/{cart:id}', [CartController::class, 'getStatus'])->middleware('auth');
-Route::get('/updateDataPayment', [CartController::class, 'updateDataPayment'])->middleware('auth');
+Route::get('/status/{cart:id}', [CartController::class, 'getStatus'])->middleware('auth');
+Route::get('/cart/update-data', [CartController::class, 'updateDataPayment'])->middleware('auth');
+Route::post('/cart/update/{detail:id}', [CartController::class, 'ubah'])->middleware('auth');
+
+// history
 Route::get('/history', [HistoryController::class, 'index'])->middleware('auth');
 Route::get('/history/{cart:id}', [HistoryController::class, 'detail'])->middleware('auth');
+
+// Admin
+Route::get('/dashboard', function () {
+    return view('dashboard.index', [
+        "antrianPending" => Cart::where('status', 0)->count(),
+        "antrianDiproses" => Cart::where('status', 1)->count(),
+        "totalAntrianPerhari" => Cart::where(['date' => date('Y-m-d'), 'status' => 1])->count(),
+        "cart" => Cart::where('status', 1)->latest()->take(3)->get(),
+    ]);
+})->middleware('admin');
+
+Route::get('/dashboard/categories', [CategoryController::class, 'index'])->middleware('admin');
+
+Route::resource('/dashboard/users', DashboardUserController::class)->middleware('admin');
+Route::resource('/dashboard/orders', DashboardCartController::class)->middleware('admin');
+Route::resource('/dashboard/products', DashboardMenuController::class)->middleware('admin');
+
+Route::get('/dashboard/products/checkSlug', [DashboardMenuController::class, 'checkSlug'])->middleware('admin');
+Route::get('/dashboard/users/checkSlug', [DashboardUserController::class, 'checkSlug'])->middleware('admin');
+
+Route::post('/dashboard/users/update', [DashboardUserController::class, 'update'])->middleware('admin');
+
+Route::get('/dashboard/print/histories', [DashboardCartController::class, 'print'])->middleware('admin');
+Route::get('/dashboard/print/products', [DashboardMenuController::class, 'print'])->middleware('admin');

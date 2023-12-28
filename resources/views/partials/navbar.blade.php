@@ -34,11 +34,6 @@ if (!Auth::guest()) {
                     </svg>
                 </button>
             </div>
-{{--      <button onclick="window.location.href='/checkout'" class="mr-3 mb-2">--}}
-{{--        <svg class="w-5 h-5 text-gray-800 dark:text-white inline mr-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">--}}
-{{--          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1" />--}}
-{{--        </svg>--}}
-{{--      </button>--}}
       <!-- tombol login -->
       <form action="/logout" method="POST">
         <input type="hidden" name="_token" value="{{csrf_token ()}}">
@@ -57,9 +52,11 @@ if (!Auth::guest()) {
           <!-- Dropdown menu -->
           <div id="dropdown" class="z-10 hidden bg-[#E3D18A] divide-y divide-gray-100 rounded-lg shadow w-44">
               <ul class="py-2 text-sm text-center text-white" aria-labelledby="dropdownDefaultButton">
-                  <li>
-                      <a href="/dashboard" class="block px-16 py-2 hover:bg-[#9E7540]">Dashboard</a>
-                  </li>
+                  @can('admin')
+                    <li>
+                        <a href="/dashboard" class="block px-16 py-2 hover:bg-[#9E7540]">Dashboard</a>
+                    </li>
+                  @endcan  
                   <li>
                       <a href="/profile" class="block px-16 py-2 hover:bg-[#9E7540]">Profile</a>
                   </li>
