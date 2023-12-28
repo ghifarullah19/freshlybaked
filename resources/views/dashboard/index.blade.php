@@ -50,12 +50,11 @@
                             </div>
                             <!-- Modal body -->
                             <div class="p-4 md:p-5 space-y-4">
-                                <form method="POST" action="{{ route('settings.update') }}" class="max-w-2xl my-4 mx-4" enctype="multipart/form-data">
-                                    {{-- @method('PUT') --}}
+                                <form method="POST" action="/dashboard/users/update" class="max-w-2xl my-4 mx-4" enctype="multipart/form-data">
                                     @csrf
                                     <div class="mb-5">
                                         <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
-                                        <input type="text" id="name" name="name" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg b`g-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500" value="{{ old('name',Auth()->user()->name) }}">
+                                        <input type="text" id="name" name="name" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg b`g-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500" value="{{ old('name', Auth()->user()->name) }}">
                                         @error('name')
                                         <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
                                             <span class="font-medium">Danger alert!</span>
@@ -66,7 +65,7 @@
 
                                     <div class="mb-5">
                                         <label for="username" class="block mb-2 text-sm font-medium text-gray-900">Username</label>
-                                        <input type="text" id="username" name="username" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 " readonly value="{{ old('username', Auth()->user()->username) }}">
+                                        <input type="text" id="username" name="username" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 " value="{{ old('username', Auth()->user()->username) }}">
                                         @error('username')
                                         <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
                                             <span class="font-medium">Danger alert!</span>

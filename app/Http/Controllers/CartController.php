@@ -25,6 +25,7 @@ class CartController extends Controller
     }
 
     public function addToCart(Request $request, $id) {
+
         $menu = Menu::find($id);
 
         if ($request->quantity > $menu->quantity) {
@@ -226,13 +227,17 @@ class CartController extends Controller
         \Midtrans\Config::$is3ds = true;
 
         $cart = Cart::where('id', $id)->first();
-        $status = \Midtrans\Transaction::status($cart->code);
-        $data_status = json_decode(json_encode($status), true);
-
-        if ($data_status['transaction_status'] == 'settlement') {
-            $this->updateDataPayment();
-            return redirect('/cart')->with('success', 'Pembayaran berhasil');
-        } else {
+        try {
+            $status = \Midtrans\Transaction::status($cart->code);
+            $data_status = json_decode(json_encode($status), true);
+            
+            if ($data_status['transaction_status'] == 'settlement') {
+                $this->updateDataPayment();
+                return redirect('/cart')->with('success', 'Pembayaran berhasil');
+            } else {
+                return redirect('/cart')->with('error', 'Pembayaran belum dilakukan/gagal');
+            }
+        } catch (\Throwable $th) {
             return redirect('/cart')->with('error', 'Pembayaran belum dilakukan/gagal');
         }
     }

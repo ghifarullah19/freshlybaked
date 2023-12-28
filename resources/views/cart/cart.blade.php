@@ -28,7 +28,7 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
           onSuccess: function(result){
               /* You may add your own implementation here */
               alert("payment success! website will reloaded."); console.log(result);
-              const response = fetch('/updateDataPayment', {
+              const response = fetch('/cart/update-data', {
                   method: 'get',
               });
               console.log(response);
@@ -56,6 +56,11 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
             onClose: function(){
               /* You may add your own implementation here */
               alert('you closed the popup without finishing the payment');
+              const checkStatus = document.getElementById('checkStatus');
+              checkStatus.disabled = true;
+              checkStatus.classList.add('bg-blue-300');
+              checkStatus.classList.remove('bg-blue-500');
+              checkStatus.classList.remove('hover:bg-blue-600');
             }
           })
   </script>
@@ -78,7 +83,7 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
               {{-- Category --}}
               <p class="mt-1 text-xs text-gray-700">{{ $detail->menu->category->name }}</p>
               <div class="mt-3 flex items-center border-gray-100">
-                <form action="/cart/ubah/{{ $detail->id }}" class="flex" method="post">
+                <form action="/cart/update/{{ $detail->id }}" class="flex" method="post">
                   @csrf
                   <button type="submit" id="decrement-button" data-input-counter-decrement="quantity-input{{ $detail->id }}" class="bg-gray-100 dark:bg-white dark:hover:bg-gray-400 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-s-lg p-3 h-10 focus:ring-gray-100 dark:focus:ring-white focus:ring-2 focus:outline-none">
                     <svg class="w-3 h-3 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
@@ -148,11 +153,11 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
             </form>
           @endif
           @if ($cart->code != null)
-            <form action="/getStatus/{{ $cart->id }}" method="get">
+            <form action="/status/{{ $cart->id }}" method="get">
               <button type="submit" id="checkStatus" class="mt-6 w-full rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600">Check status</button>
             </form>
           @else
-            <form action="/getStatus/{{ $cart->id }}" method="get">
+            <form action="/status/{{ $cart->id }}" method="get">
               <button type="submit" id="checkStatus" class="mt-6 w-full rounded-md bg-blue-300 py-1.5 font-medium text-blue-50" disabled>Check status</button>
             </form>
           @endif

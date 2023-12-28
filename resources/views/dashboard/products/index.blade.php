@@ -80,7 +80,7 @@
                                     </button>
                                 </div>
                                 <!-- Modal body -->
-                                <form method="POST" action="{{ route('product.create') }}" class="max-w-2xl my-4 mx-4" enctype="multipart/form-data" class="p-4 md:p-5" >
+                                <form method="POST" action="/dashboard/products" class="max-w-2xl my-4 mx-4" enctype="multipart/form-data" class="p-4 md:p-5" >
                                    @csrf
                                     <div class="grid gap-4 mb-4 grid-cols-2">
                                         <div class="col-span-2">
@@ -94,7 +94,7 @@
                                             @enderror
                                         </div>
                                         <div class="col-span-2">
-                                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Slug</label>
+                                            <label for="slug" class="block mb-2 text-sm font-medium text-gray-900">Slug</label>
                                             <input type="text" name="slug" id="slug" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="Type product name" required>
                                             @error('slug')
                                             <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
@@ -106,7 +106,7 @@
                                         <div class="col-span-2 sm:col-span-1">
                                             <label for="price" class="block mb-2 text-sm font-medium text-gray-900">Price</label>
                                             <input type="number" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5" placeholder="$2999" required>
-                                            @error('slug')
+                                            @error('email')
                                             <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
                                                 <span class="font-medium">Danger alert!</span>
                                                 {{ $message }}
