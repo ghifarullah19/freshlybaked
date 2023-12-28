@@ -34,7 +34,7 @@
 {{-- Akhir Breadcumbs --}}
 
 {{-- New Version --}}
-<section class="py-20 overflow-hidden font-poppins sm:py-4 my-20">
+<section class="py-20 overflow-hidden bg-[#FAEED1] font-poppins sm:py-4 my-20">
   @if (session()->has('success'))
       <div class="p-4 mb-4 text-sm bg-gray-800 text-green-400" role="alert">
           <span class="font-medium">Success!</span>
@@ -73,7 +73,7 @@
                           {{ $menu->description }}
                         </p>
                       </div>
-                      
+
                       {{-- Product Availability/quantity --}}
                       <div class="flex">
                         <span class="text-xl mb-5 font-bold">Availability : </span>
@@ -84,7 +84,7 @@
                           <span>Rp. {{ $menu->price }}</span>
                       </p>
                   </div>
-                  
+
                   {{-- Input Quantity Counter --}}
                   <div class="flex flex-wrap items-center ">
                       <div class="mb-4 mr-4 lg:mb-0">
@@ -119,8 +119,6 @@
                   </div>
               </div>
           </div>
-        </div>
       </form>
-  </div>
 </section>
 @endsection

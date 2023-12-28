@@ -118,15 +118,16 @@ class MenuController extends Controller
                 $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
 
                 foreach ($data as $row) {
-                    $output .= '<li class="list-group-item"><a href="/products/' . $row->slug . '">'
-                    . $row->name . 
-                    '</a></li>';
+                    $output .= '<li class="list-group-item my-1 mx-2"><a href="/products/' . $row->slug . '"
+                    class="hover:text-gray-600">'
+                    . $row->name .
+                    '</a></li><hr>';
                 }
 
                 $output .= '</ul>';
             }
         }
-        
+
         return $output;
     }
 }

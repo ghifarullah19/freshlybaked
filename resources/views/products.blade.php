@@ -16,7 +16,8 @@
                 <button type="submit" class="bg-[#6B240C] text-white rounded-r px-2 md:px-3 py-0 md:py-1">Search</button>
             </div>
             <div class="flex flex-row">
-                <div id="search_list"></div>
+                <div id="search_list" class="bg-white w-full rounded-b-xl border-b-2">
+                </div>
             </div>
         </div>
         {{-- Dropdown --}}

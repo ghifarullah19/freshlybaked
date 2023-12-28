@@ -10,8 +10,8 @@
 <form method="POST" action="/dashboard/products" class="max-w-2xl my-4 mx-4" enctype="multipart/form-data">
     @csrf
     <div class="mb-5">
-        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Name</label>
-        <input type="text" id="name" name="name" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ old('name') }}">
+        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Nama</label>
+        <input type="text" id="name" name="name" placeholder="Masukan nama anda" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ old('name') }}">
         @error('name')
             <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
                 <span class="font-medium">Danger alert!</span>
@@ -59,12 +59,6 @@
             <option value="{{ $category->id }}">{{ $category->name }}</option>
         @endforeach
     </select>
-
-    {{-- <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Availability</label>
-    <select id="countries" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-300 dark:placeholder-white dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-5">
-    <option selected value="Cake">Available</option>
-    <option value="Bread">Out of Stock</option>
-    </select> --}}
 
     <div class="mb-3">
         <label for="image">Post Image</label>
