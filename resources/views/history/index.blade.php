@@ -51,11 +51,6 @@
             
             <div class="flex flex-col flex-wrap justify-between">
                 @foreach ($history_details as $details)
-                    @if ($loop->iteration-1 < $histories->count())
-                        <?php 
-                            $id = $histories[$loop->iteration-1]->id;
-                        ?>
-                    @endif
                     @foreach ($details as $detail)
                     <!-- Product Card -->
                     <div class="bg-white flex flex-row justify-between w-full rounded overflow-hidden shadow-md mb-4">
@@ -65,7 +60,7 @@
                                     <img class="rounded-full inline h-20 w-20 object-cover" src="/img/nophoto.png" alt="Profile Image">
                                 </div>
                                 <div class="p-4 flex flex-col">
-                                    <a href="#" class="font-bold text-lg text-blue-500 hover:underline">
+                                    <a href="/products/{{ $detail->menu->slug }}" class="font-bold text-lg text-blue-500 hover:underline">
                                         {{ $detail->menu->name }}
                                     </a>
                                     <div class="flex items-center">
@@ -81,9 +76,9 @@
                         </div>
                         <div class="flex flex-col justify-between h-1/2 gap-5 pr-3">
                             <div class="flex flex-row justify-end">
-                                <p class="text-gray-700 text-base">SAB{{ $id . $detail->id }}</p>
+                                <p class="text-gray-700 text-base">{{ $detail->cart->code }}</p>
                             </div>
-                            <div class="flex flex-row">
+                            <div class="flex flex-row justify-end">
                                 <a href="/products/{{ $detail->menu->slug }}">
                                     <button class="bg-green-500 hover:bg-green-700 text-white font-bold px-4 rounded h-8 w-full">
                                         Reorder

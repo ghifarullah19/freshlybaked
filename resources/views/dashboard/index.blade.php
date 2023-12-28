@@ -1,8 +1,8 @@
 @extends('dashboard.layouts.main')
+@include('dashboard.layouts.sidebar')
 
 @section('container')
 <body class="relative bg-[#6B240C] overflow-hidden max-h-screen">
-@include('dashboard.layouts.sidebar')
 <main class="ml-60 max-h-screen overflow-auto">
     <div class="px-6 py-7">
         <div class="max-w-3xl mx-auto">
@@ -106,7 +106,7 @@
                         </div>
                     </div>
                 </div>
-{{--                end modal setting button--}}
+               {{-- end modal setting button --}}
                 <hr class="my-5">
                 <div class="grid grid-cols-2 gap-x-20">
                     <div>

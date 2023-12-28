@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\User;
 use App\Models\Menu;
 use App\Models\Cart;
+use App\Models\CartDetail;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -46,8 +47,8 @@ class DatabaseSeeder extends Seeder
             'slug' => 'signature'
         ]);
 
+        
         User::factory(3)->create();
         Menu::factory(10)->create();
-        // Cart::factory(5)->create();    
     }
 }

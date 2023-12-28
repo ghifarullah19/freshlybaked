@@ -38,6 +38,13 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/dashboard/orders" class="flex bg-[#E48F45] hover:bg-[#6B240C] rounded-xl font-bold text-sm text-white py-3 px-4">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="text-lg mr-4" viewBox="0 0 16 16">
+                                <path d="M2 1a1 1 0 0 0-1 1v4.586a1 1 0 0 0 .293.707l7 7a1 1 0 0 0 1.414 0l4.586-4.586a1 1 0 0 0 0-1.414l-7-7A1 1 0 0 0 6.586 1H2zm4 3.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                            </svg>Order
+                        </a>
+                    </li>
+                    <li>
                         <button type="button" class="flex bg-[#E48F45] hover:bg-[#6B240C] rounded-xl font-bold text-sm text-white py-3 px-4 pr-4" aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 28 28"><g fill="currentColor"><path d="M14 2v8a2 2 0 0 0 2 2h7.999l.001.078V23.6a2.4 2.4 0 0 1-2.4 2.4H6.4A2.4 2.4 0 0 1 4 23.6V4.4A2.4 2.4 0 0 1 6.4 2z"/>
                                     <path d="M15.5 2.475V10a.5.5 0 0 0 .5.5h7.502a2.739 2.739 0 0 0-.307-.366l-7.431-7.431a2.401 2.401 0 0 0-.264-.228"/>
@@ -53,7 +60,8 @@
                                    class="flex bg-[#6B240C] hover:bg-[#E48F45] rounded-xl font-bold text-sm text-white py-3 px-4 ml-8 shadow-2xl">Daftar Produk</a>
                             </li>
                             <li>
-                                <a href="#"
+                                <a href="/dashboard/print/histories"
+                                    target="_blank"
                                    class="flex bg-[#6B240C] hover:bg-[#E48F45] rounded-xl font-bold text-sm text-white py-3 px-4 ml-8">Histori Transaksi</a>
                             </li>
                         </ul>

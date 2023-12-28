@@ -16,39 +16,21 @@
     <div class="px-6 py-8">
         <div class="max-w-4xl mx-auto">
             <div class="bg-white rounded-3xl shadow-gray-900 drop-shadow-2xll p-8 mb-5">
-                @if (session()->has('success'))
-                    <div class="p-4 mb-4 text-sm bg-gray-800 text-green-400" role="alert">
-                        <span class="font-medium">Success!</span>
-                        {{ session('success') }}
-                    </div>
-                @endif
-
-                @if (session()->has('loginError'))
-                    <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
-                        <span class="font-medium">Danger alert!</span>
-                        {{ session('loginError') }}
-                    </div>
-                @endif
-
                    {{-- modal button product --}}
                     <div class="block text-black mb-5 text-center font-semibold">
-                        Tabel Produk
+                        Tabel Order
                     </div>
 
-                    <!-- Modal toggle -->
                     <div class="flex flex-row">
-                        <button data-modal-target="modal-product" data-modal-toggle="modal-product" class="mr-1 block text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm px-5 py-2.5 text-center h-fit" type="button">
-                            Tambah Data
-                        </button>
-                       {{-- end modal toggle --}}
-                       
                        {{-- button urut --}}
                        <form action="/dashboard/products" class="inline">
                            <select name="col" for="col" id="col" class="text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm pl-2 py-2.5">
                                <option value="">Kolom</option>
-                               <option value="name">Nama</option>
-                               <option value="category">Kategori</option>
-                               <option value="price">Harga</option>
+                               <option value="id">Order ID</option>
+                               <option value="user">Pelanggan</option>
+                               <option value="total_price">Harga</option>
+                               <option value="created_at">Dibuat Pada</option>
+                               <option value="status">Status</option>
                            </select>
                            <select name="sort" for="sort" id="sort" class="text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm pl-2 py-2.5">
                                 <option value="">Urutan</option>
@@ -174,13 +156,19 @@
                                 No
                             </th>
                             <th scope="col" class="px-5 py-3 border-b-2 border-gray-200 bg-[#6B240C] text-left text-xs font-semibold text-white uppercase tracking-wider">
-                                Nama Produk
+                                Order ID
                             </th>
                             <th scope="col" class="px-5 py-3 border-b-2 border-gray-200 bg-[#6B240C] text-left text-xs font-semibold text-white uppercase tracking-wider">
-                                Kategori
+                                Nama Pelanggan
                             </th>
                             <th scope="col" class="px-5 py-3 border-b-2 border-gray-200 bg-[#6B240C] text-left text-xs font-semibold text-white uppercase tracking-wider">
-                                Harga
+                                Total Harga
+                            </th>
+                            <th scope="col" class="px-5 py-3 border-b-2 border-gray-200 bg-[#6B240C] text-center text-xs font-semibold text-white uppercase tracking-wider">
+                                Status
+                            </th>
+                            <th scope="col" class="px-5 py-3 border-b-2 border-gray-200 bg-[#6B240C] text-center text-xs font-semibold text-white uppercase tracking-wider">
+                                Dibuat Pada
                             </th>
                             <th scope="col" class="px-5 py-3 border-b-2 border-gray-200 bg-[#6B240C] text-center text-xs font-semibold text-white uppercase tracking-wider">
                                 Action
@@ -189,7 +177,7 @@
                         </thead>
 
                         <tbody>
-                            @foreach ($menus as $menu)
+                            @foreach ($carts as $cart)
                             <tr>
                                 {{-- Isi Tabel No --}}
                                 <th scope="row" class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
@@ -197,20 +185,36 @@
                                 </th>
                                 {{-- Isi Tabel Name --}}
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    {{ $menu->name  }}
+                                    {{ $cart->code  }}
                                 </td>
                                 {{-- Isi Tabel Categories --}}
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    {{ $menu->category->name }}
+                                    {{ $cart->user->name }}
                                 </td>
                                 {{-- Isi Tabel Price --}}
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    Rp.{{ $menu->price }}
+                                    Rp.{{ $cart->total_price }}
+                                </td>
+                                {{-- Isi Tabel Price --}}
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    @if ($cart->status == 0)
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                            Pending
+                                        </span>
+                                    @else
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            Done
+                                        </span>    
+                                    @endif
+                                </td>
+                                {{-- Isi Tabel Price --}}
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    {{ $cart->created_at }}
                                 </td>
                                 {{-- Isi Tabel Button --}}
                                 <td class="px-6 flex">
                                 <td class="px-6 ml-10 my-2 py-1 inline-flex bg-transparent">
-                                    <button onclick="window.location.href='/dashboard/products/{{ $menu->slug }}'" type="button" class="ml-2 px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-s-lg hover:bg-blue-500 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
+                                    <button onclick="window.location.href='/dashboard/orders/{{ $cart->id }}'" type="button" class="ml-2 px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-s-lg hover:bg-blue-500 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
                                         <svg class="w-3 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
                                             <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                                 <path d="M10 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
@@ -218,21 +222,6 @@
                                             </g>
                                         </svg>
                                     </button>
-                                    <button onclick="window.location.href='/dashboard/products/{{ $menu->slug }}/edit'" type="submit" class="px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border-t border-b border-gray-900 hover:bg-amber-400 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
-                                        <svg class="w-3 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 16">
-                                            <path d="M12.687 14.408a3.01 3.01 0 0 1-1.533.821l-3.566.713a3 3 0 0 1-3.53-3.53l.713-3.566a3.01 3.01 0 0 1 .821-1.533L10.905 2H2.167A2.169 2.169 0 0 0 0 4.167v11.666A2.169 2.169 0 0 0 2.167 18h11.666A2.169 2.169 0 0 0 16 15.833V11.1l-3.313 3.308Zm5.53-9.065.546-.546a2.518 2.518 0 0 0 0-3.56 2.576 2.576 0 0 0-3.559 0l-.547.547 3.56 3.56Z"/>
-                                            <path d="M13.243 3.2 7.359 9.081a.5.5 0 0 0-.136.256L6.51 12.9a.5.5 0 0 0 .59.59l3.566-.713a.5.5 0 0 0 .255-.136L16.8 6.757 13.243 3.2Z"/>
-                                        </svg>
-                                    </button>
-                                    <form action="/dashboard/products/{{ $menu->slug }}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button onclick="return confirm('Are you sure?')" type="submit" class="px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-e-lg hover:bg-red-600 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
-                                            <svg class="w-3 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                            </svg>
-                                        </button>
-                                    </form>
                                 </td>
                                 </td>
                             </tr>

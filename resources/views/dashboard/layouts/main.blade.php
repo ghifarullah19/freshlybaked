@@ -26,7 +26,6 @@
 
 <body>
 
-    {{-- @include('dashboard.layouts.sidebar') --}}
     <div>
         @yield('container')
     </div>

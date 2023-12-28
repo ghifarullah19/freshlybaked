@@ -3,6 +3,7 @@
 use App\Models\Cart;
 use App\Models\Menu;
 use App\Models\Category;
+use App\Models\CartDetail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
@@ -13,9 +14,9 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardCartController;
 use App\Http\Controllers\DashboardMenuController;
 use App\Http\Controllers\DashboardUserController;
-use App\Models\CartDetail;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,7 +52,11 @@ Route::get('/about', function () {
 // View untuk Halaman Profile sementara
 Route::get('/profile', function () {
     $cart_first = Cart::where('user_id', auth()->user()->id)->where('status', 1)->latest()->get();
-    $cart_details = CartDetail::where('cart_id', $cart_first[0]->id)->orWhere('cart_id', $cart_first[1]->id)->latest()->take(4)->get();
+    $cart_details = [];
+
+    for ($i = 0; $i < count($cart_first); $i++) {
+        $cart_details = CartDetail::where('cart_id', $cart_first[$i]->id)->latest()->get();
+    }
 
     return view('profile', [
         "cart_details" => $cart_details,
@@ -81,12 +86,14 @@ Route::get('/dashboard', function () {
 
 Route::resource('/dashboard/products', DashboardMenuController::class)->middleware('auth');
 Route::resource('/dashboard/users', DashboardUserController::class)->middleware('auth');
+Route::resource('/dashboard/orders', DashboardCartController::class)->middleware('auth');
 Route::get('/dashboard/products/checkSlug', [DashboardMenuController::class, 'checkSlug'])->middleware('auth');
 Route::get('/dashboard/users/checkSlug', [DashboardUserController::class, 'checkSlug'])->middleware('auth');
 
 Route::post('/settings', [UserController::class, 'update'])->name('settings.update');
 Route::post('/create-product', [MenuController::class, 'store'])->name('product.create');
 
+Route::get('/dashboard/print/histories', [DashboardCartController::class, 'print'])->middleware('auth');
 Route::get('/dashboard/print/products', [DashboardMenuController::class, 'print'])->middleware('auth');
 Route::get('/dashboard/products/sortByPrice', [DashboardMenuController::class, 'sortByPrice'])->middleware('auth');
 
@@ -117,6 +124,7 @@ Route::get('/cart', [CartController::class, 'cart'])->middleware('auth');
 Route::delete('/cart/{menu:id}', [CartController::class, 'delete'])->middleware('auth');
 Route::post('/cart/ubah/{detail:id}', [CartController::class, 'ubah'])->middleware('auth');
 Route::get('/confirm-checkout', [CartController::class, 'confirm'])->middleware('auth');
+Route::get('/getStatus/{cart:id}', [CartController::class, 'getStatus'])->middleware('auth');
 Route::get('/updateDataPayment', [CartController::class, 'updateDataPayment'])->middleware('auth');
 Route::get('/history', [HistoryController::class, 'index'])->middleware('auth');
 Route::get('/history/{cart:id}', [HistoryController::class, 'detail'])->middleware('auth');

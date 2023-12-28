@@ -52,9 +52,10 @@
             <div class="flex flex-col flex-wrap justify-between">
                 @foreach ($cart_details as $detail)
                     <!-- Product Card -->
+
                     <div class="bg-white flex flex-row justify-between w-full rounded overflow-hidden shadow-md mb-4">
                         <div class="p-4 flex flex-col">
-                            <a href="#" class="font-bold text-xl mb-2 text-blue-500 hover:underline">
+                            <a href="/products/{{ $detail->menu->slug }}" class="font-bold text-xl mb-2 text-blue-500 hover:underline">
                                 {{ $detail->menu->name }}
                             </a>
                             <div class="flex items-center">
