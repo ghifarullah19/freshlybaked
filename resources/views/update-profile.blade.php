@@ -6,7 +6,7 @@
 
         <!-- Form Input -->
         <div class="mt-8">
-            <form action="/ubahprofile" method="post" enctype="multipart/form-data">
+            <form action="/update-profile" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="text-2xl font-semibold text-center mb-4">Edit Information</div>
 
