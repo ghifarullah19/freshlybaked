@@ -17,6 +17,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardCartController;
 use App\Http\Controllers\DashboardMenuController;
 use App\Http\Controllers\DashboardUserController;
+use App\Http\Controllers\MailController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
@@ -127,3 +128,12 @@ Route::post('/dashboard/users/update', [DashboardUserController::class, 'update'
 
 Route::get('/dashboard/print/histories', [DashboardCartController::class, 'print'])->middleware('admin');
 Route::get('/dashboard/print/products', [DashboardMenuController::class, 'print'])->middleware('admin');
+
+// Mail
+Route::get('/mail', [MailController::class, 'sendMail'])->middleware('auth');
+Route::get('/confirm-email', function () {
+    $user = \App\Models\User::find(auth()->user()->id);
+    $user->email_verified_at = now();
+    $user->save();
+    return view('mail.verify');
+})->middleware('auth')->name('verification.notice');
