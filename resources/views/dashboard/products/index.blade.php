@@ -23,10 +23,10 @@
                     </div>
                 @endif
 
-                @if (session()->has('loginError'))
+                @if (session()->has('error'))
                     <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
                         <span class="font-medium">Danger alert!</span>
-                        {{ session('loginError') }}
+                        {{ session('error') }}
                     </div>
                 @endif
 
@@ -37,9 +37,15 @@
 
                     <!-- Modal toggle -->
                     <div class="flex flex-row">
-                        <button data-modal-target="modal-product" data-modal-toggle="modal-product" class="mr-1 block text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm px-5 py-2.5 text-center h-fit" type="button">
-                            Tambah Data
-                        </button>
+                        @if ($menus->count() > 0 && $menus[0]->is_api == null)
+                            <button data-modal-target="modal-product" data-modal-toggle="modal-product" class="mr-1 block text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm px-5 py-2.5 text-center h-fit" type="button">
+                                Tambah Data
+                            </button>
+                        @else
+                            <button onclick="window.location.href='/dashboard/api-products/get'" class="mr-1 block text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm px-5 py-2.5 text-center h-fit" type="button">
+                                Tambah Data
+                            </button>
+                        @endif
                        {{-- end modal toggle --}}
 
                        {{-- button urut --}}

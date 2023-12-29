@@ -16,7 +16,7 @@ class MenuController extends Controller
     {
         $title = "";
 
-        $menu = Menu::latest()->where('is_api', null)->filter(request(['search', 'category']))->paginate(7)->withQueryString();
+        $menu = Menu::latest()->where('is_api', -1)->filter(request(['search', 'category']))->paginate(7)->withQueryString();
 
         if (request('category')) {
             $category = Category::firstWhere('slug', request('category'));
@@ -109,7 +109,7 @@ class MenuController extends Controller
                 $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
 
                 foreach ($data as $row) {
-                    $output .= '<li class="list-group-item my-1 mx-2"><a href="/products/' . $row->slug . '"
+                    $output .= '<li class="list-group-item my-1 mx-2 relative"><a href="/products/' . $row->slug . '"
                     class="hover:text-gray-600">'
                     . $row->name .
                     '</a></li><hr>';

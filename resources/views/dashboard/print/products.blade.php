@@ -24,6 +24,9 @@
           <th scope="col" class="px-6 py-3 text-white">
               Harga
           </th>
+          <th scope="col" class="px-6 py-3 text-white">
+              Produk
+          </th>
       </tr>
       </thead>
 
@@ -40,11 +43,23 @@
               </td>
               {{-- Isi Tabel Categories --}}
               <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                  {{ $categories->where('id', $menu->category_id)->first()->name }}
+                  {{ $menu->category->name }}
               </td>
               {{-- Isi Tabel Price --}}
               <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
                   Rp.{{ $menu->price }}
+              </td>
+              {{-- Isi Tabel Price --}}
+              <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                @if ($menu->is_api == -1)
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                        Original
+                    </span>    
+                @else
+                    <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">
+                        API
+                    </span>
+                @endif  
               </td>
           </tr>
       @endforeach

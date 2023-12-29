@@ -86,16 +86,10 @@ if (!Auth::guest()) {
           <a href="/" class="nav-link block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:hover:text-[#6B240C] md:p-0" aria-current="page">Home</a>
         </li>
         <li>
-          <a href="#about" class="nav-link block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6B240C] md:p-0">About</a>
-        </li>
-        <li>
-          <a href="#highlight" class="nav-link block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6B240C] md:p-0">Highlight</a>
-        </li>
-        <li>
-          <a href="#contact" class="nav-link block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6B240C] md:p-0">Contact</a>
-        </li>
-        <li>
           <a href="/products" class="nav-link block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6B240C] md:p-0">Products</a>
+        </li>
+        <li>
+          <a href="/others" class="nav-link block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6B240C] md:p-0">Client Products</a>
         </li>
       </ul>
     </div>

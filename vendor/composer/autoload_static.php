@@ -576,6 +576,7 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\ApiMenuController' => __DIR__ . '/../..' . '/app/Http/Controllers/ApiMenuController.php',
         'App\\Http\\Controllers\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartController.php',
         'App\\Http\\Controllers\\CartDetailController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartDetailController.php',
         'App\\Http\\Controllers\\CategoryController' => __DIR__ . '/../..' . '/app/Http/Controllers/CategoryController.php',
@@ -610,6 +611,8 @@ class ComposerStaticInit9c491b8531eec05ba41a11d9276a5749
         'App\\Http\\Requests\\UpdatePenjualanRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdatePenjualanRequest.php',
         'App\\Http\\Requests\\UpdateUserRequest' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateUserRequest.php',
         'App\\Mail\\SignUp' => __DIR__ . '/../..' . '/app/Mail/SignUp.php',
+        'App\\Models\\ApiCartDetail' => __DIR__ . '/../..' . '/app/Models/ApiCartDetail.php',
+        'App\\Models\\ApiMenu' => __DIR__ . '/../..' . '/app/Models/ApiMenu.php',
         'App\\Models\\Cart' => __DIR__ . '/../..' . '/app/Models/Cart.php',
         'App\\Models\\CartDetail' => __DIR__ . '/../..' . '/app/Models/CartDetail.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',

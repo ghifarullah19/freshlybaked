@@ -42,6 +42,13 @@
       </div>
   @endif
 
+  @if (session()->has('error'))
+      <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
+          <span class="font-medium">Danger alert!</span>
+          {{ session('error') }}
+      </div>
+  @endif
+  
   @if (session()->has('loginError'))
       <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
           <span class="font-medium">Danger alert!</span>
@@ -54,10 +61,15 @@
           <div class="w-full px-4 md:w-1/2 ">
               <div class="sticky top-0 z-0 overflow-hidden ">
                 {{-- Product Image --}}
-                  <div class="relative mb-6 lg:mb-10" style="max-height:350px; overflow:hidden;">
-                      <img src="https://source.unsplash.com/1200x800?{{ 'bakery' }}"
-                          alt="" class=" w-full h-full ">
-                  </div>
+                <div class="relative mb-6 lg:mb-10" style="max-height:350px; overflow:hidden;">
+                  @if ($menu->is_api == -1)
+                    <img src="https://source.unsplash.com/1200x800?{{ 'bakery' }}"
+                            alt="" class=" w-full h-full ">
+                  @else
+                    <img src="{{ $menu->image }}"
+                        alt="" class=" w-full h-full ">
+                  @endif
+                </div>
               </div>
           </div>
           {{-- Product's name --}}
@@ -70,7 +82,7 @@
                       {{-- Product's desc --}}
                       <div>
                         <p class="mb-8 text-black">
-                          {{ $menu->description }}
+                          {!! $menu->description !!}
                         </p>
                       </div>
 

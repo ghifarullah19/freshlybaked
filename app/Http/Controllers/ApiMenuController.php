@@ -42,7 +42,7 @@ class ApiMenuController extends Controller
             $menu = [];
 
             foreach ($api as $m) {
-                if (!Menu::where('id', $m['idMeal'])->first()) {
+                if (!Menu::where('slug', Str::slug($m['strMeal']))->first()) {
                     $menu[] = Menu::create([
                         'id' => $m['idMeal'],
                         'name' => $m['strMeal'],
@@ -58,10 +58,9 @@ class ApiMenuController extends Controller
                     $menu[] = Menu::where('id', $m['idMeal'])->first();
                 }
             }
-            return redirect('/dashboard/products')->with('success', 'Menu berhasil ditambahkan');
+            return redirect('/dashboard/api-products')->with('success', 'Menu berhasil ditambahkan');
         } catch (\Throwable $th) {
-            dd($th);
-            return redirect('/dashboard/products')->with('error', 'Menu gagal ditambahkan');
+            return redirect('/dashboard/api-products')->with('error', 'Menu gagal ditambahkan');
         }
     }
 
@@ -71,9 +70,10 @@ class ApiMenuController extends Controller
     public function show(menu $menu)
     {
         $menu = menu::where('id', $menu->id)->first();
-
+        
         return view('product', [
             "menu" => $menu,
+            "route" => 'api-products'
         ]);
     }
 
@@ -81,8 +81,9 @@ class ApiMenuController extends Controller
     {
         $menu = menu::where('is_api', true)->get();
 
-        return view('dashboard.products.index', [
+        return view('dashboard.api-products.index', [
             "menus" => $menu,
+            "route" => 'api-products'
         ]);
     }
 
@@ -91,7 +92,7 @@ class ApiMenuController extends Controller
      */
     public function edit(menu $menu)
     {
-        return view('dashboard.products.edit', [
+        return view('dashboard.api-products.edit', [
             "menu" => $menu,
         ]);
     }
@@ -105,7 +106,7 @@ class ApiMenuController extends Controller
             'name' => 'required|max:255',
             'price' => 'required',
             'quantity' => 'required',
-            'image' => 'image|file|max:1024',
+            'image' => 'required',
             'description' => 'required'
         ];
 
@@ -116,10 +117,8 @@ class ApiMenuController extends Controller
         $validatedData = $request->validate($rules);
 
         menu::where('id', $menu->id)->update($validatedData);
-        
-        $menu = menu::where('is_api', true)->get();
 
-        return view('dashboard.products.index', ['menus' => $menu])->with('success', 'New post has been updated!');
+        return redirect('/dashboard/api-products')->with('success', 'New post has been updated!');
     }
 
     /**
@@ -130,5 +129,28 @@ class ApiMenuController extends Controller
         menu::destroy($menu->id);
         $menu = menu::where('is_api', true)->get();
         return view('dashboard.products.index', ['menus' => $menu])->with('success', 'Post has been deleted!');
+    }
+
+    public function search(Request $request) {
+        $output = '';
+
+        if ($request->ajax()) {
+            $data = Menu::where('name', 'LIKE', $request->search . '%')->where('is_api', true)->get();
+
+            if (count($data) > 0) {
+                $output = '<ul class="list-group" style="display: block; position: relative; z-index: 1">';
+
+                foreach ($data as $row) {
+                    $output .= '<li class="list-group-item my-1 mx-2 relative"><a href="/products/' . $row->slug . '"
+                    class="hover:text-gray-600">'
+                    . $row->name .
+                    '</a></li><hr>';
+                }
+
+                $output .= '</ul>';
+            }
+        }
+
+        return $output;
     }
 }

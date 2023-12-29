@@ -40,17 +40,17 @@ Route::get('/', function () {
 
 Route::get('/dashboard/api-products', [ApiMenuController::class, 'dashboardShow'])->middleware('admin');
 Route::get('/dashboard/api-products/get', [ApiMenuController::class, 'store'])->middleware('admin');
-Route::get('/dashboard/api-products/{apiMenu:slug}', [ApiMenuController::class, 'show'])->middleware('admin');
-Route::post('/dashboard/api-products/{apiMenu:slug}', [ApiMenuController::class, 'update'])->middleware('admin');
-Route::get('/dashboard/api-products/{apiMenu:slug}/edit', [ApiMenuController::class, 'edit'])->middleware('admin');
-Route::delete('/dashboard/api-products/{apiMenu:slug}', [ApiMenuController::class, 'destroy'])->middleware('admin');
+Route::get('/dashboard/api-products/{menu:slug}', [ApiMenuController::class, 'show'])->middleware('admin');
+Route::get('/dashboard/api-products/{menu:slug}/edit', [ApiMenuController::class, 'edit'])->middleware('admin');
+Route::post('/dashboard/api-products/{menu:slug}', [ApiMenuController::class, 'update'])->middleware('admin');
+Route::delete('/dashboard/api-products/{menu:slug}', [ApiMenuController::class, 'destroy'])->middleware('admin');
 
 Route::get('/products', [MenuController::class, 'index']);
 Route::get('/products/{menu:slug}', [MenuController::class, 'show']);
 Route::get('search', [MenuController::class, 'search']);
 
 Route::get('/others', [ApiMenuController::class, 'index'])->middleware('auth');
-Route::get('/others/{apiMenu:slug}', [ApiMenuController::class, 'show'])->middleware('auth');
+Route::get('/others/{menu:slug}', [ApiMenuController::class, 'show'])->middleware('auth');
 
 Route::get('/contact', function () {
     return view('contact');
@@ -62,11 +62,11 @@ Route::get('/about', function () {
 
 // View untuk Halaman Profile sementara
 Route::get('/profile', function () {
-    $cart_first = Cart::where('user_id', auth()->user()->id)->where('status', 1)->latest()->get();
+    $cart_first = Cart::where('user_id', auth()->user()->id)->where('status', 1)->get();
     $cart_details = [];
 
     for ($i = 0; $i < count($cart_first); $i++) {
-        $cart_details = CartDetail::where('cart_id', $cart_first[$i]->id)->latest()->get();
+        $cart_details = CartDetail::where('cart_id', $cart_first[$i]->id)->orderBy('created_at', 'desc')->get();
     }
 
     return view('profile', [
@@ -128,6 +128,7 @@ Route::get('/dashboard/categories', [CategoryController::class, 'index'])->middl
 
 Route::resource('/dashboard/users', DashboardUserController::class)->middleware('admin');
 Route::resource('/dashboard/orders', DashboardCartController::class)->middleware('admin');
+Route::get('/dashboard/orders/{cart:id}', [DashboardCartController::class, 'show'])->middleware('admin');
 Route::resource('/dashboard/products', DashboardMenuController::class)->middleware('admin');
 
 Route::get('/dashboard/products/checkSlug', [DashboardMenuController::class, 'checkSlug'])->middleware('admin');
