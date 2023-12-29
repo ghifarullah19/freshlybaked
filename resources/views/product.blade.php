@@ -62,7 +62,7 @@
               <div class="sticky top-0 z-0 overflow-hidden ">
                 {{-- Product Image --}}
                 <div class="relative mb-6 lg:mb-10" style="max-height:350px; overflow:hidden;">
-                  @if ($menu->is_api == null)
+                  @if ($menu->is_api == -1)
                     <img src="https://source.unsplash.com/1200x800?{{ 'bakery' }}"
                             alt="" class=" w-full h-full ">
                   @else

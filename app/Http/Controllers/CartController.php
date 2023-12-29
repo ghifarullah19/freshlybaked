@@ -28,12 +28,10 @@ class CartController extends Controller
 
     public function addToCart(Request $request, $id) {
 
-        $menu = Menu::where('id', $id)->get();
+        $menu = Menu::where('id', $id)->first();
         $route = '';
 
-        dd($menu);
-
-        if ($menu->is_api == 0) {
+        if ($menu->is_api == -1) {
             $route = 'products';
         } else {
             $route = 'others';
@@ -206,8 +204,6 @@ class CartController extends Controller
     public function updateDataPayment() {
         $cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
         $cart_details = CartDetail::where('cart_id', $cart->id)->get();
-
-        dd($cart, $cart_details);
 
         $cart->status = 1;
         $cart->update();

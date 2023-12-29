@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cart;
+use App\Models\CartDetail;
 use Illuminate\Http\Request;
 
 class DashboardCartController extends Controller
@@ -51,9 +52,13 @@ class DashboardCartController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Cart $cart)
+    public function show($id)
     {
-        //
+        $cart_details = CartDetail::where('cart_id', $id)->get();
+
+        return view('dashboard.orders.show', [
+            'cart_details' => $cart_details,
+        ]);
     }
 
     /**

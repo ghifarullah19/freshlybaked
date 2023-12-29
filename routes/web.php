@@ -62,11 +62,11 @@ Route::get('/about', function () {
 
 // View untuk Halaman Profile sementara
 Route::get('/profile', function () {
-    $cart_first = Cart::where('user_id', auth()->user()->id)->where('status', 1)->latest()->get();
+    $cart_first = Cart::where('user_id', auth()->user()->id)->where('status', 1)->get();
     $cart_details = [];
 
     for ($i = 0; $i < count($cart_first); $i++) {
-        $cart_details = CartDetail::where('cart_id', $cart_first[$i]->id)->latest()->get();
+        $cart_details = CartDetail::where('cart_id', $cart_first[$i]->id)->orderBy('created_at', 'desc')->get();
     }
 
     return view('profile', [
@@ -128,6 +128,7 @@ Route::get('/dashboard/categories', [CategoryController::class, 'index'])->middl
 
 Route::resource('/dashboard/users', DashboardUserController::class)->middleware('admin');
 Route::resource('/dashboard/orders', DashboardCartController::class)->middleware('admin');
+Route::get('/dashboard/orders/{cart:id}', [DashboardCartController::class, 'show'])->middleware('admin');
 Route::resource('/dashboard/products', DashboardMenuController::class)->middleware('admin');
 
 Route::get('/dashboard/products/checkSlug', [DashboardMenuController::class, 'checkSlug'])->middleware('admin');

@@ -36,7 +36,7 @@
             <div class="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
                 {{-- Image --}}
                 <div class="relative mx-4 mt-4 h-96 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
-                    @if ($menu->is_api == null)
+                    @if ($menu->is_api == -1)
                         <a href="/products/{{ $menu->slug }}">
                             <img src="https://source.unsplash.com/1200x800?{{ $menu->category->name }}"
                                     alt="" class=" w-full h-full ">
@@ -59,26 +59,42 @@
                 </div>
                 <div class="p-6">
                     <div class="mb-2 flex items-center justify-between">
-                        <a href="/products/{{ $menu->slug }}">
-                            <p class="block font-sans text-lg font-bold leading-relaxed text-blue-gray-900 antialiased">
-                            {{ $menu->name }}
-                            </p>
-                        </a>
+                        @if ($menu->is_api == -1)
+                            <a href="/products/{{ $menu->slug }}">
+                                <p class="block font-sans text-lg font-bold leading-relaxed text-blue-gray-900 antialiased">
+                                {{ $menu->name }}
+                                </p>
+                            </a>
+                        @else
+                            <a href="/others/{{ $menu->slug }}">
+                                <p class="block font-sans text-lg font-bold leading-relaxed text-blue-gray-900 antialiased">
+                                {{ $menu->name }}
+                                </p>
+                            </a>
+                        @endif
                         {{-- Menu's price --}}
                             <p class="block font-sans text-base font-bold leading-relaxed text-blue-gray-900 antialiased">
                             Rp.{{ $menu->price }}
                             </p>
                     </div>
                     {{-- Menu's category/desc --}}
-                    <a href="/products?category={{ $menu->category->slug }}">
-                        <p class="block font-sans text-sm font-normal leading-normal text-gray-900 antialiased opacity-90">
-                            {{ $menu->category->name }}
-                        </p>
-                    </a>
+                    @if ($menu->is_api == -1)
+                        <a href="/products?category={{ $menu->category->slug }}">
+                            <p class="block font-sans text-sm font-normal leading-normal text-gray-900 antialiased opacity-90">
+                                {{ $menu->category->name }}
+                            </p>
+                        </a>
+                    @else
+                        <a href="/others?category={{ $menu->category->slug }}">
+                            <p class="block font-sans text-sm font-normal leading-normal text-gray-900 antialiased opacity-90">
+                                {{ $menu->category->name }}
+                            </p>
+                        </a>
+                    @endif
                 </div>
                 {{-- Button --}}
                 <div class="p-6 pt-0">
-                    @if ($menu->is_api == null)
+                    @if ($menu->is_api == -1)
                         <button onclick="window.location.href='/products/{{ $menu->slug }}'"
                             class="block bg-blue-500 text-white w-full select-none rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
                             type="button"

@@ -27,15 +27,27 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
           // Condition success
           onSuccess: function(result){
               /* You may add your own implementation here */
-              alert("payment success! website will reloaded."); console.log(result);
-              const response = fetch('/cart/update-data', {
-                  method: 'get',
-              });
-              console.log(response);
+              alert("payment success! Please click the finish button below."); console.log(result);
+                const checkStatus = document.getElementById('checkStatus');
+                const finish = document.getElementById('finish');
+                finish.style.display = 'none';
+                checkStatus.disabled = false;
+                checkStatus.textContent = 'Finish';
+                checkStatus.classList.add('bg-green-500');
+                checkStatus.classList.add('hover:bg-green-600');
+                checkStatus.classList.remove('bg-blue-500');
+                checkStatus.classList.remove('hover:bg-blue-600');
+                
+              // === CODE BELOW: INTERNAL SERVER ERROR ===
+              // const response = fetch('/cart/update-data', {
+              //     method: 'get',
+              // });
+              // console.log(response);
 
-              setTimeout(() => {
-                  window.location.reload(true);
-              }, 1500);
+              // setTimeout(() => {
+              //     window.location.reload(true);
+              // }, 1500);
+              // === CODE ABOVE: INTERNAL SERVER ERROR ===
           },
           // Condition pending
           onPending: function(result){
@@ -69,9 +81,6 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
   <h1 class="mb-10 text-center text-2xl font-bold pt-8">Cart Items</h1>
   {{-- Card Container (Looping) --}}
   <div class="flex flex-col mx-auto container">
-    <a href="/cart/update-data">
-      check status
-    </a>
     @foreach ($cart_details as $detail)
     <div class="w-full items-center flex justify-center px-6 md:space-x-6 xl:px-0">
       {{-- Card Product --}}
@@ -148,7 +157,7 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
           </div>
           @if ($order_count <= env('MAX_ORDER'))
             <form action="/confirm-checkout" method="get">
-              <button type="submit" class="mt-6 w-full rounded-md bg-green-500 py-1.5 font-medium text-green-50 hover:bg-green-600">Check out</button>
+              <button id="finish" type="submit" class="mt-6 w-full rounded-md bg-green-500 py-1.5 font-medium text-green-50 hover:bg-green-600">Check out</button>
             </form>
           @else
             <form action="/confirm-checkout" method="get">
