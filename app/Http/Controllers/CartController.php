@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ApiCartDetail;
 use Illuminate\Http\Request;
 use App\Models\Menu;
 use App\Models\Cart;
 use App\Models\CartDetail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Spatie\FlareClient\Api;
 
 class CartController extends Controller
 {
@@ -28,47 +30,51 @@ class CartController extends Controller
 
         $menu = Menu::find($id);
 
-        if ($request->quantity > $menu->quantity) {
-            return redirect('/products/'. $menu->slug)->with('error', 'Stok tidak cukup');
+        try {
+            if ($request->quantity > $menu->quantity) {
+                return redirect('/products/'. $menu->slug)->with('error', 'Stok tidak cukup');
+            }
+    
+            $check_cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
+    
+            if (empty($check_cart)) {
+                $cart = new Cart;
+                $cart->user_id = auth()->user()->id;
+                $cart->date = date('Y-m-d');
+                $cart->status = 0;
+                $cart->total_price = 0;
+                $cart->save();
+            }
+    
+            $new_cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
+    
+            $check_cart_detail = CartDetail::where('menu_id', $menu->id)->where('cart_id', $new_cart->id)->first();
+    
+            if (empty($check_cart_detail)) {
+                $cartDetail = new CartDetail;
+                // $cartDetail->user_id = auth()->user()->id;
+                $cartDetail->menu_id = $menu->id;
+                $cartDetail->cart_id = $new_cart->id;
+                $cartDetail->quantity = $request->quantity;
+                $cartDetail->price = $menu->price;
+                $cartDetail->total_price = $menu->price * $request->quantity;
+                $cartDetail->save();
+            } else {
+                $cartDetail = CartDetail::where('menu_id', $menu->id)->where('cart_id', $new_cart->id)->first();
+                $cartDetail->quantity = $cartDetail->quantity + $request->quantity;
+                $cartDetail->price = $menu->price;
+                $cartDetail->total_price = $cartDetail->total_price + ($menu->price * $request->quantity);
+                $cartDetail->update();
+            }
+    
+            $cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
+            $cart->total_price = $cart->total_price + ($menu->price * $request->quantity);
+            $cart->update();
+    
+            return redirect('/products/'. $menu->slug)->with('success', 'Menu berhasil ditambahkan ke keranjang');
+        } catch (\Throwable $th) {
+            return redirect('/products/'. $menu->slug)->with('error', 'Menu gagal ditambahkan ke keranjang');
         }
-
-        $check_cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
-
-        if (empty($check_cart)) {
-            $cart = new Cart;
-            $cart->user_id = auth()->user()->id;
-            $cart->date = date('Y-m-d');
-            $cart->status = 0;
-            $cart->total_price = 0;
-            $cart->save();
-        }
-
-        $new_cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
-
-        $check_cart_detail = CartDetail::where('menu_id', $menu->id)->where('cart_id', $new_cart->id)->first();
-
-        if (empty($check_cart_detail)) {
-            $cartDetail = new CartDetail;
-            // $cartDetail->user_id = auth()->user()->id;
-            $cartDetail->menu_id = $menu->id;
-            $cartDetail->cart_id = $new_cart->id;
-            $cartDetail->quantity = $request->quantity;
-            $cartDetail->price = $menu->price;
-            $cartDetail->total_price = $menu->price * $request->quantity;
-            $cartDetail->save();
-        } else {
-            $cartDetail = CartDetail::where('menu_id', $menu->id)->where('cart_id', $new_cart->id)->first();
-            $cartDetail->quantity = $cartDetail->quantity + $request->quantity;
-            $cartDetail->price = $menu->price;
-            $cartDetail->total_price = $cartDetail->total_price + ($menu->price * $request->quantity);
-            $cartDetail->update();
-        }
-
-        $cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
-        $cart->total_price = $cart->total_price + ($menu->price * $request->quantity);
-        $cart->update();
-
-        return redirect('/products/'. $menu->slug)->with('success', 'Menu berhasil ditambahkan ke keranjang');
     }
 
     public function cart() {

@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id()->autoIncrement();
             $table->string('name');
             $table->string('slug');
-            $table->integer('price');
-            $table->integer('quantity');
+            $table->integer('price')->nullable();
+            $table->integer('quantity')->nullable();
             $table->text('description');
             $table->string('image')->nullable();
+            $table->boolean('is_api')->nullable();
             $table->foreignId('category_id')->references('id')->on('categories');
             $table->timestamps(); // created_at, updated_at
         });

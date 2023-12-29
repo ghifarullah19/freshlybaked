@@ -29,7 +29,8 @@ class DatabaseSeeder extends Seeder
             'name' => "Muhammad Lutfi",
             'username' => "ghifarullah",
             'email' => "ghifarullah@email.com",
-            'password' => bcrypt('password')
+            'password' => bcrypt('password'),
+            'is_admin' => 1
         ]);
 
         Category::create([
@@ -47,7 +48,11 @@ class DatabaseSeeder extends Seeder
             'slug' => 'signature'
         ]);
 
-        
+        Category::create([
+            'name' => 'Side',
+            'slug' => 'side'
+        ]);
+
         User::factory(3)->create();
         Menu::factory(10)->create();
     }
