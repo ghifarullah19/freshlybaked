@@ -20,19 +20,19 @@ class DashboardMenuController extends Controller
             if (request('col') == 'category') {
                 return view('dashboard.products.index', [
                     'menus' => Menu::join('categories', 'categories.id', '=', 'menus.category_id')
-                    ->where('is_api', 0)
+                    ->where('is_api', -1)
                     ->orderBy('categories.name', request('sort'))
                     ->select('menus.*', 'categories.name as category_name')
                     ->get(),
                 ]);
             } else {
                 return view('dashboard.products.index', [
-                    'menus' => Menu::where('is_api', 0)->orderBy('menus.' . request('col'), request('sort'))->get(),
+                    'menus' => Menu::where('is_api', -1)->orderBy('menus.' . request('col'), request('sort'))->get(),
                 ]);
             }
         } else {
             return view('dashboard.products.index', [
-                'menus' => Menu::where('is_api', 0)->get(),
+                'menus' => Menu::where('is_api', -1)->get(),
             ]);
         }
     }

@@ -43,7 +43,7 @@
                        {{-- end modal toggle --}}
 
                        {{-- button urut --}}
-                       <form action="/dashboard/products" class="inline">
+                       <form action="/dashboard/api-products" class="inline">
                            <select name="col" for="col" id="col" class="text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm pl-2 py-2.5">
                                <option value="">Kolom</option>
                                <option value="name">Nama</option>
