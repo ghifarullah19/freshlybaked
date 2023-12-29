@@ -9,7 +9,7 @@
             <img class="rounded-full h-60 w-60 object-cover mb-2" src="/img/nophoto.png" alt="Profile Image">
                 <span class="font-bold text-xl">{{ auth()->user()->name }}</span>
             <div class="mt-2">
-                <a href="/ubahprofile">
+                <a href="/update-profile">
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded h-8 w-full">
                         Edit Profile
                     </button>
@@ -48,7 +48,7 @@
                     <a href="/profile" class="text-blue-500 hover:underline">Back to Profile</a>
                 </div>
             </div>
-            
+
             <div class="flex flex-col flex-wrap justify-between">
                 @foreach ($history_details as $details)
                     @foreach ($details as $detail)
@@ -90,7 +90,7 @@
                     @endforeach
                 @endforeach
             </div>
-                
+
         </div>
     </div>
 </section>

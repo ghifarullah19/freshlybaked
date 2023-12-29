@@ -20,7 +20,7 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
     </div>
 @endif
 
-<section>
+<section class="bg-[#FAEED1]">
   @if (session()->has('token'))
   <script>
       window.snap.pay("{{ session('token') }}", {
@@ -132,7 +132,7 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
             <p class="text-gray-700">Rp. {{ $cart->total_price }}</p>
           </div>
           <div class="flex justify-between">
-            <p class="text-gray-700">Shipping</p>
+            <p class="text-gray-700">Biaya Ongkir</p>
             <p class="text-gray-700">Rp. 10.000</p>
           </div>
           <hr class="my-4" />
