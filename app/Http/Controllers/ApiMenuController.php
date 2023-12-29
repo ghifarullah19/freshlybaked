@@ -77,14 +77,27 @@ class ApiMenuController extends Controller
         ]);
     }
 
-    public function dashboardShow(menu $menu)
+    public function dashboardShow()
     {
-        $menu = menu::where('is_api', true)->get();
-
-        return view('dashboard.api-products.index', [
-            "menus" => $menu,
-            "route" => 'api-products'
-        ]);
+        if (request('col') && request('sort')) {
+            if (request('col') == 'category') {
+                return view('dashboard.api-products.index', [
+                    'menus' => Menu::join('categories', 'categories.id', '=', 'menus.category_id')
+                    ->where('is_api', 1)
+                    ->orderBy('categories.name', request('sort'))
+                    ->select('menus.*', 'categories.name as category_name')
+                    ->get(),
+                ]);
+            } else {
+                return view('dashboard.api-products.index', [
+                    'menus' => Menu::where('is_api', 1)->orderBy('menus.' . request('col'), request('sort'))->get(),
+                ]);
+            }
+        } else {
+            return view('dashboard.api-products.index', [
+                'menus' => Menu::where('is_api', 1)->get(),
+            ]);
+        }
     }
 
     /**
