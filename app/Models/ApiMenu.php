@@ -15,4 +15,9 @@ class ApiMenu extends Model
     {
         return $this->belongsTo(Category::class, 'category_id', 'id');
     }
+
+    public function cartDetail()
+    {
+        return $this->hasMany(CartDetail::class, 'api_id', 'id');
+    }
 }

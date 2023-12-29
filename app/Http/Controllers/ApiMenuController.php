@@ -16,7 +16,7 @@ class ApiMenuController extends Controller
     {
         $menu = ApiMenu::all();
 
-        return view('api', [
+        return view('api-products', [
             "menus" => $menu,
         ]);
     }
@@ -48,8 +48,8 @@ class ApiMenuController extends Controller
                         'strMeal' => $m['strMeal'],
                         'strSlug' => Str::slug($m['strMeal']),
                         'category_id' => 4,
-                        'strPrice' => 10000,
-                        'strQuantity' => 10,
+                        'strPrice' => null,
+                        'strQuantity' => null,
                         'strMealThumb' => $m['strMealThumb'],
                         'strDescription' => $m['strMeal'] . ' made by the mealdb api',
                     ]);
@@ -71,36 +71,13 @@ class ApiMenuController extends Controller
     {
         $apiMenu = ApiMenu::where('id', $apiMenu->id)->first();
 
-        return view('dashboard.api-products.show', [
+        return view('api-product', [
             "menu" => $apiMenu,
         ]);
     }
 
     public function dashboardShow(ApiMenu $apiMenu)
     {
-        $menu = Http::get('https://www.themealdb.com/api/json/v1/1/filter.php?c=side');
-        $menu = $menu['meals'];
-        $menu = collect($menu)->take(8);
-
-        $apiMenu = [];
-
-        foreach ($menu as $m) {
-            if (!ApiMenu::where('idMeal', $m['idMeal'])->first()) {
-                $apiMenu[] = ApiMenu::create([
-                    'idMeal' => $m['idMeal'],
-                    'strMeal' => $m['strMeal'],
-                    'strSlug' => Str::slug($m['strMeal']),
-                    'category_id' => 4,
-                    'strPrice' => 10000,
-                    'strQuantity' => 10,
-                    'strMealThumb' => $m['strMealThumb'],
-                    'strDescription' => $m['strMeal'] . ' made by the mealdb api',
-                ]);
-            } else {
-                $apiMenu[] = ApiMenu::where('idMeal', $m['idMeal'])->first();
-            }
-        }
-
         $apiMenu = ApiMenu::all();
 
         return view('dashboard.api-products.index', [
@@ -125,10 +102,8 @@ class ApiMenuController extends Controller
     {
         $rules = [
             'strMeal' => 'required|max:255',
-            'strSlug' => 'required',
             'strPrice' => 'required',
             'strQuantity' => 'required',
-            'category_id' => 'required',
             'strMealThumb' => 'image|file|max:1024',
             'strDescription' => 'required'
         ];
@@ -149,6 +124,7 @@ class ApiMenuController extends Controller
      */
     public function destroy(ApiMenu $apiMenu)
     {
-        //
+        ApiMenu::destroy($apiMenu->id);
+        return redirect('/dashboard/api-products')->with('success', 'Post has been deleted!');
     }
 }

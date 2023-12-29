@@ -79,6 +79,9 @@
                             <th scope="col" class="px-5 py-3 border-b-2 border-gray-200 bg-[#6B240C] text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 Harga
                             </th>
+                            <th scope="col" class="px-5 py-3 border-b-2 border-gray-200 bg-[#6B240C] text-left text-xs font-semibold text-white uppercase tracking-wider">
+                                Jumlah
+                            </th>
                             <th scope="col" class="px-5 py-3 border-b-2 border-gray-200 bg-[#6B240C] text-center text-xs font-semibold text-white uppercase tracking-wider">
                                 Action
                             </th>
@@ -102,12 +105,27 @@
                                 </td>
                                 {{-- Isi Tabel Price --}}
                                 <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                                    Rp.{{ $menu->strPrice }}
+                                    @if ($menu->strPrice == null)
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">NULL</span>
+                                    @else
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            Rp.{{ $menu->strPrice }}
+                                        </span>
+                                    @endif
+                                </td>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
+                                    @if ($menu->strQuantity == null)
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-red-100 text-red-800">NULL</span>
+                                    @else
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            {{ $menu->strQuantity }}
+                                        </span>
+                                    @endif
                                 </td>
                                 {{-- Isi Tabel Button --}}
                                 <td class="px-6 flex">
                                 <td class="px-6 ml-10 my-2 py-1 inline-flex bg-transparent">
-                                    <button onclick="window.location.href='/dashboard/api-products/show/{{ $menu->strSlug }}'" type="button" class="ml-2 px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-s-lg hover:bg-blue-500 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
+                                    <button onclick="window.location.href='/dashboard/api-products/{{ $menu->strSlug }}'" type="button" class="ml-2 px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-s-lg hover:bg-blue-500 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
                                         <svg class="w-3 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
                                             <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                                 <path d="M10 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>

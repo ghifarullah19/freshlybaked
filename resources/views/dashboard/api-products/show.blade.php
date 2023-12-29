@@ -9,13 +9,9 @@
     <div class="flex flex-col md:flex-row -mx-4">
       <div class="md:flex-1 px-4">
         <div class="h-auto w-[100%] md:w-[105%] lg:w-[100%] rounded-lg mb-4 border border-black">
-          @if ($menu->strMealThumb)
-            <div style="max-height: 350px; overflow: hidden">
-              <img src="{{ $menu->strMealThumb }}">
-            </div>
-            @else
-            <img class="w-full h-full object-cover rounded-lg" src="https://source.unsplash.com/1200x800?{{ 'bakery' }}" alt="Product Image">
-          @endif
+          <div style="max-height: 350px; overflow: hidden">
+            <img src="{{ $menu->strMealThumb }}">
+          </div>
         </div>
       </div>
 
@@ -39,7 +35,7 @@
           {{-- Product Description --}}
           <span class="font-bold text-black">Product Description:</span>
           <p class="text-black text-sm mt-2">
-            {{ $menu->strDescription }}  
+            {!! $menu->strDescription !!}
           </p>
         </div>
         <div class="flex -mx-2 mt-5">

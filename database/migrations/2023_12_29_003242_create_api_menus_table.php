@@ -16,8 +16,8 @@ return new class extends Migration
             $table->string('idMeal')->unique();
             $table->string('strMeal');
             $table->string('strSlug')->unique();
-            $table->integer('strPrice');
-            $table->integer('strQuantity');
+            $table->integer('strPrice')->nullable();
+            $table->integer('strQuantity')->nullable();
             $table->text('strDescription');
             $table->string('strMealThumb')->nullable();
             $table->foreignId('category_id')->references('id')->on('categories');
