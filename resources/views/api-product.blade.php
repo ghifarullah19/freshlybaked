@@ -24,7 +24,7 @@
               <div class="sticky top-0 z-0 overflow-hidden ">
                 {{-- Product Image --}}
                   <div class="relative mb-6 lg:mb-10" style="max-height:350px; overflow:hidden;">
-                      <img src="{{ $menu->strMealThumb }}"
+                      <img src="{{ $menu->image }}"
                           alt="" class=" w-full h-full ">
                   </div>
               </div>
@@ -34,23 +34,23 @@
               <div class="lg:pl-20">
                   <div class="pb-6 mb-8 border-b border-gray-200 dark:border-gray-700">
                       <h2 class="max-w-xl mt-2 mb-6 text-xl font-bold text-black md:text-4xl">
-                          {{ $menu->strMeal }}
+                          {{ $menu->name }}
                       </h2>
                       {{-- Product's desc --}}
                       <div>
                         <p class="mb-8 text-black">
-                          {!! $menu->strDescription !!}
+                          {!! $menu->description !!}
                         </p>
                       </div>
                       
                       {{-- Product Availability/quantity --}}
                       <div class="flex">
                         <span class="text-xl mb-5 font-bold">Availability : </span>
-                        <span class="text-xl ml-2">{{ $menu->strQuantity }}</span>
+                        <span class="text-xl ml-2">{{ $menu->quantity }}</span>
                       </div>
                       {{-- Products's price --}}
                       <p class="inline-block text-2xl font-bold text-black ">
-                          <span>Rp. {{ $menu->strPrice }}</span>
+                          <span>Rp. {{ $menu->price }}</span>
                       </p>
                   </div>
                   
@@ -64,7 +64,7 @@
                                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h16"/>
                                   </svg>
                               </button>
-                              <input type="text" name="strQuantity" id="quantity-input" data-input-counter aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-10 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" value="1" data-input-counter-max="{{ $menu->strQuantity }}" data-input-counter-min="" required>
+                              <input type="text" name="strQuantity" id="quantity-input" data-input-counter aria-describedby="helper-text-explanation" class="bg-gray-50 border-x-0 border-gray-300 h-10 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-white dark:border-gray-600 dark:placeholder-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="" value="1" data-input-counter-max="{{ $menu->quantity }}" data-input-counter-min="" required>
                               <button type="button" id="increment-button" data-input-counter-increment="quantity-input" class="bg-gray-100 dark:bg-white dark:hover:bg-gray-400 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-10 focus:ring-gray-100 dark:focus:ring-white focus:ring-2 focus:outline-none">
                                   <svg class="w-3 h-3 text-gray-900" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                                       <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
