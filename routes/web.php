@@ -40,17 +40,17 @@ Route::get('/', function () {
 
 Route::get('/dashboard/api-products', [ApiMenuController::class, 'dashboardShow'])->middleware('admin');
 Route::get('/dashboard/api-products/get', [ApiMenuController::class, 'store'])->middleware('admin');
-Route::get('/dashboard/api-products/{apiMenu:slug}', [ApiMenuController::class, 'show'])->middleware('admin');
-Route::post('/dashboard/api-products/{apiMenu:slug}', [ApiMenuController::class, 'update'])->middleware('admin');
-Route::get('/dashboard/api-products/{apiMenu:slug}/edit', [ApiMenuController::class, 'edit'])->middleware('admin');
-Route::delete('/dashboard/api-products/{apiMenu:slug}', [ApiMenuController::class, 'destroy'])->middleware('admin');
+Route::get('/dashboard/api-products/{menu:slug}', [ApiMenuController::class, 'show'])->middleware('admin');
+Route::get('/dashboard/api-products/{menu:slug}/edit', [ApiMenuController::class, 'edit'])->middleware('admin');
+Route::post('/dashboard/api-products/{menu:slug}', [ApiMenuController::class, 'update'])->middleware('admin');
+Route::delete('/dashboard/api-products/{menu:slug}', [ApiMenuController::class, 'destroy'])->middleware('admin');
 
 Route::get('/products', [MenuController::class, 'index']);
 Route::get('/products/{menu:slug}', [MenuController::class, 'show']);
 Route::get('search', [MenuController::class, 'search']);
 
 Route::get('/others', [ApiMenuController::class, 'index'])->middleware('auth');
-Route::get('/others/{apiMenu:slug}', [ApiMenuController::class, 'show'])->middleware('auth');
+Route::get('/others/{menu:slug}', [ApiMenuController::class, 'show'])->middleware('auth');
 
 Route::get('/contact', function () {
     return view('contact');

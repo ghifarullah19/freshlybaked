@@ -15,8 +15,8 @@
                 class="w-full md:w-80 px-3 h-10 rounded-l border-1 border-[#6B240C] focus:outline-none focus:border-[#6B240C]" name="search" value="{{ request("search") }}">
                 <button type="submit" class="bg-[#6B240C] text-white rounded-r px-2 md:px-3 py-0 md:py-1">Search</button>
             </div>
-            <div class="flex flex-row">
-                <div id="search_list" class="bg-white w-full rounded-b-xl border-b-2">
+            <div class="flex flex-row w-full">
+                <div id="search_list" class="bg-white rounded-b-xl border-b-2 absolute z-10">
                 </div>
             </div>
         </div>
@@ -36,12 +36,17 @@
             <div class="relative flex flex-col rounded-xl bg-white bg-clip-border text-gray-700 shadow-md">
                 {{-- Image --}}
                 <div class="relative mx-4 mt-4 h-96 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
-                    <a href="/products/{{ $menu->slug }}">
-                        <img
-                            src="https://source.unsplash.com/350x350?{{ $menu->category->name }}"
-                            class="h-full w-full object-cover"
-                        />
-                    </a>
+                    @if ($menu->is_api == null)
+                        <a href="/products/{{ $menu->slug }}">
+                            <img src="https://source.unsplash.com/1200x800?{{ $menu->category->name }}"
+                                    alt="" class=" w-full h-full ">
+                        </a>
+                    @else
+                        <a href="/others/{{ $menu->slug }}">
+                            <img src="{{ $menu->image }}"
+                                alt="" class=" w-full h-full ">
+                        </a>
+                    @endif
                 @if ($menu->quantity == 0)
                     <div class="absolute top-0 right-0 text-white bg-red-600 px-2 items-center py-1 m-2 rounded-md text-sm font-medium">
                         OUT OF STOCK
@@ -73,12 +78,21 @@
                 </div>
                 {{-- Button --}}
                 <div class="p-6 pt-0">
-                    <button onclick="window.location.href='/products/{{ $menu->slug }}'"
-                        class="block bg-blue-500 text-white w-full select-none rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        type="button"
-                    >
-                        Add to Cart
-                    </button>
+                    @if ($menu->is_api == null)
+                        <button onclick="window.location.href='/products/{{ $menu->slug }}'"
+                            class="block bg-blue-500 text-white w-full select-none rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            type="button"
+                        >
+                            Add to Cart
+                        </button>
+                    @else
+                        <button onclick="window.location.href='/others/{{ $menu->slug }}'"
+                            class="block bg-blue-500 text-white w-full select-none rounded-lg bg-blue-gray-900/10 py-3 px-6 text-center align-middle font-sans text-xs font-bold uppercase text-blue-gray-900 transition-all hover:scale-105 focus:scale-105 focus:opacity-[0.85] active:scale-100 active:opacity-[0.85] disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            type="button"
+                        >
+                            Add to Cart
+                        </button>
+                    @endif
                 </div>
             </div>
         @endforeach

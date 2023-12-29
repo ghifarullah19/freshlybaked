@@ -69,6 +69,9 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
   <h1 class="mb-10 text-center text-2xl font-bold pt-8">Cart Items</h1>
   {{-- Card Container (Looping) --}}
   <div class="flex flex-col mx-auto container">
+    <a href="/cart/update-data">
+      check status
+    </a>
     @foreach ($cart_details as $detail)
     <div class="w-full items-center flex justify-center px-6 md:space-x-6 xl:px-0">
       {{-- Card Product --}}

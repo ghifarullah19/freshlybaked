@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\ApiMenuController' => $baseDir . '/app/Http/Controllers/ApiMenuController.php',
     'App\\Http\\Controllers\\CartController' => $baseDir . '/app/Http/Controllers/CartController.php',
     'App\\Http\\Controllers\\CartDetailController' => $baseDir . '/app/Http/Controllers/CartDetailController.php',
     'App\\Http\\Controllers\\CategoryController' => $baseDir . '/app/Http/Controllers/CategoryController.php',
@@ -42,6 +43,8 @@ return array(
     'App\\Http\\Requests\\UpdatePenjualanRequest' => $baseDir . '/app/Http/Requests/UpdatePenjualanRequest.php',
     'App\\Http\\Requests\\UpdateUserRequest' => $baseDir . '/app/Http/Requests/UpdateUserRequest.php',
     'App\\Mail\\SignUp' => $baseDir . '/app/Mail/SignUp.php',
+    'App\\Models\\ApiCartDetail' => $baseDir . '/app/Models/ApiCartDetail.php',
+    'App\\Models\\ApiMenu' => $baseDir . '/app/Models/ApiMenu.php',
     'App\\Models\\Cart' => $baseDir . '/app/Models/Cart.php',
     'App\\Models\\CartDetail' => $baseDir . '/app/Models/CartDetail.php',
     'App\\Models\\Category' => $baseDir . '/app/Models/Category.php',
