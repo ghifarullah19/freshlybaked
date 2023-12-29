@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use App\Models\Category;
-use App\Models\User;
-use App\Http\Requests\StoreMenuRequest;
 use App\Http\Requests\UpdateMenuRequest;
 use Illuminate\Http\Request;
 
@@ -18,21 +16,18 @@ class MenuController extends Controller
     {
         $title = "";
 
+        $menu = Menu::latest()->where('is_api', null)->filter(request(['search', 'category']))->paginate(7)->withQueryString();
+
         if (request('category')) {
             $category = Category::firstWhere('slug', request('category'));
             $title = ' in ' . $category->name;
         }
 
-        // if (request('author')) {
-        //     $author = User::firstWhere('username', request('author'));
-        //     $title = ' by ' . $author->name;
-        // }
-
         // Membuat query untuk mengambil data post yang sudah di filter
         return view('/products', [
             'title' => "All Posts" . $title,
             'active' => 'products',
-            'menus' => Menu::latest()->filter(request(['search', 'category']))->paginate(7)->withQueryString()
+            'menus' => $menu
         ]);
     }
 
@@ -62,10 +57,6 @@ class MenuController extends Controller
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('menu-images');
         }
-
-        // $validatedData['user_id'] = auth()->user()->id;
-        // $validatedData['excerpt'] = Str::limit(strip_tags($request->body, 100));
-        // $validatedData['excerpt'] = substr($request->body, 0, 255);
 
         Menu::create($validatedData);
 

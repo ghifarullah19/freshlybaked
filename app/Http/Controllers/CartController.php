@@ -77,59 +77,6 @@ class CartController extends Controller
         }
     }
 
-    public function apiAddToCart(Request $request, $id) {
-
-        $apiMenu = \App\Models\ApiMenu::find($id);
-
-        try {
-            if ($request->strQuantity > $apiMenu->strQuantity) {
-                return redirect('/others/'. $apiMenu->strSlug)->with('error', 'Stok tidak cukup');
-            }
-    
-            $check_cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
-    
-            if (empty($check_cart)) {
-                $cart = new Cart;
-                $cart->user_id = auth()->user()->id;
-                $cart->date = date('Y-m-d');
-                $cart->status = 0;
-                $cart->total_price = 0;
-                $cart->save();
-            }
-    
-            $new_cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
-    
-            $check_cart_detail = ApiCartDetail::where('api_id', $apiMenu->id)->where('cart_id', $new_cart->id)->first();
-
-            
-            if (empty($check_cart_detail) || $check_cart_detail == null) {
-                $cartDetail = new ApiCartDetail;
-                // $cartDetail->user_id = auth()->user()->id;
-                $cartDetail->api_id = $apiMenu->id;
-                $cartDetail->cart_id = $new_cart->id;
-                $cartDetail->quantity = $request->strQuantity;
-                $cartDetail->price = $apiMenu->strPrice;
-                $cartDetail->total_price = $apiMenu->strPrice * $request->strQuantity;
-                $cartDetail->save();
-            } else {
-                $cartDetail = ApiCartDetail::where('api_id', $apiMenu->id)->where('cart_id', $new_cart->id)->first();
-                $cartDetail->quantity = $cartDetail->quantity + $request->strQuantity;
-                $cartDetail->price = $apiMenu->strPrice;
-                $cartDetail->total_price = $cartDetail->total_price + ($apiMenu->strPrice * $request->strQuantity);
-                $cartDetail->update();
-            }
-            
-            $cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->first();
-            $cart->total_price = $cart->total_price + ($apiMenu->strPrice * $request->strQuantity);
-            $cart->update();
-            
-            return redirect('/others/'. $apiMenu->strSlug)->with('success', 'Menu berhasil ditambahkan ke keranjang');
-        } catch (\Throwable $th) {
-            dd($th);
-            return redirect('/others/'. $apiMenu->strSlug)->with('error', 'Menu gagal ditambahkan ke keranjang');
-        }
-    }
-
     public function cart() {
         $cart = Cart::where('user_id', auth()->user()->id)->where('status', 0)->latest()->first();
         
@@ -137,18 +84,6 @@ class CartController extends Controller
 
         if (!empty($cart_first)) {
             $cart_details = CartDetail::where('cart_id', $cart_first->id)->get();
-
-            if (empty($cart_details) || $cart_details == null) {
-                $cart_details = ApiCartDetail::where('cart_id', $cart_first->id)->get();
-
-                return view('cart.cart', [
-                    "title" => "cart",
-                    "active" => "cart",
-                    "cart" => $cart,
-                    "cart_details" => $cart_details,
-                    "order_count" => Cart::where('user_id', auth()->user()->id)->where('date', Carbon::now()->format('Y-m-d'))->count()
-                ]);
-            }
 
             return view('cart.cart', [
                 "title" => "cart",

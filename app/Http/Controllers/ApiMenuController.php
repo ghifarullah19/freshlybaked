@@ -14,9 +14,9 @@ class ApiMenuController extends Controller
      */
     public function index()
     {
-        $menu = menu::find('is_api', true)->get();
+        $menu = menu::where('is_api', true)->get();
 
-        return view('api-products', [
+        return view('products', [
             "menus" => $menu,
         ]);
     }
@@ -72,7 +72,7 @@ class ApiMenuController extends Controller
     {
         $menu = menu::where('id', $menu->id)->first();
 
-        return view('api-product', [
+        return view('product', [
             "menu" => $menu,
         ]);
     }
@@ -116,8 +116,10 @@ class ApiMenuController extends Controller
         $validatedData = $request->validate($rules);
 
         menu::where('id', $menu->id)->update($validatedData);
+        
+        $menu = menu::where('is_api', true)->get();
 
-        return redirect('/dashboard/products')->with('success', 'New post has been updated!');
+        return view('dashboard.products.index', ['menus' => $menu])->with('success', 'New post has been updated!');
     }
 
     /**
@@ -126,6 +128,7 @@ class ApiMenuController extends Controller
     public function destroy(menu $menu)
     {
         menu::destroy($menu->id);
-        return redirect('/dashboard/products')->with('success', 'Post has been deleted!');
+        $menu = menu::where('is_api', true)->get();
+        return view('dashboard.products.index', ['menus' => $menu])->with('success', 'Post has been deleted!');
     }
 }
