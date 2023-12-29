@@ -2,11 +2,11 @@
 
 use App\Models\Cart;
 use App\Models\Menu;
-use App\Models\Category;
 use App\Models\CartDetail;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ApiMenuController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
@@ -17,8 +17,6 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardCartController;
 use App\Http\Controllers\DashboardMenuController;
 use App\Http\Controllers\DashboardUserController;
-use App\Http\Controllers\MailController;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +37,12 @@ Route::get('/', function () {
         "menus" => Menu::take(4)->get()
     ]);
 });
+
+Route::get('/api', [ApiMenuController::class, 'index'])->middleware('auth');
+Route::get('/dashboard/api-products', [ApiMenuController::class, 'dashboardShow'])->middleware('admin');
+Route::get('/dashboard/api-products/get', [ApiMenuController::class, 'store'])->middleware('admin');
+Route::get('/dashboard/api-products/{apiMenu:strSlug}', [ApiMenuController::class, 'show'])->middleware('admin');
+Route::get('/dashboard/api-products/{apiMenu:strSlug}/edit', [ApiMenuController::class, 'edit'])->middleware('admin');
 
 Route::get('/products', [MenuController::class, 'index']);
 Route::get('/products/{menu:slug}', [MenuController::class, 'show']);
