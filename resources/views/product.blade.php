@@ -34,7 +34,7 @@
 {{-- Akhir Breadcumbs --}}
 
 {{-- New Version --}}
-<section class="py-20 overflow-hidden bg-[#FAEED1] font-poppins sm:py-4 my-20">
+<section class="overflow-hidden bg-[#FAEED1] font-poppins sm:py-4">
   @if (session()->has('success'))
       <div class="p-4 mb-4 text-sm bg-gray-800 text-green-400" role="alert">
           <span class="font-medium">Success!</span>
@@ -48,13 +48,8 @@
           {{ session('error') }}
       </div>
   @endif
-  
-  @if (session()->has('loginError'))
-      <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
-          <span class="font-medium">Danger alert!</span>
-          {{ session('loginError') }}
-      </div>
-  @endif
+
+
   <div class="max-w-6xl px-4 py-4 mx-auto lg:py-8 md:px-6">
     <form action="/cart/{{ $menu->id }}" action="get">
       <div class="flex flex-wrap -mx-4">
