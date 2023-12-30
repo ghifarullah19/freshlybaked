@@ -49,8 +49,8 @@ Route::get('/products', [MenuController::class, 'index']);
 Route::get('/products/{menu:slug}', [MenuController::class, 'show']);
 Route::get('search', [MenuController::class, 'search']);
 
-Route::get('/others', [ApiMenuController::class, 'index'])->middleware('auth');
-Route::get('/others/{menu:slug}', [ApiMenuController::class, 'show'])->middleware('auth');
+Route::get('/others', [ApiMenuController::class, 'index']);
+Route::get('/others/{menu:slug}', [ApiMenuController::class, 'show']);
 
 Route::get('/contact', function () {
     return view('contact');
@@ -79,7 +79,7 @@ Route::get('/update-profile', function () {
     return view('update-profile');
 })->middleware('auth');
 
-// ubah 
+// ubah
 Route::post('/update-profile', [UserController::class, 'updateProfile'])->middleware('auth');
 
 // View untuk About Developer

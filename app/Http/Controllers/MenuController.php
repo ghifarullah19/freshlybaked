@@ -12,25 +12,21 @@ class MenuController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $title = "";
-
-        $menu = Menu::latest()->where('is_api', -1)->filter(request(['search', 'category']))->paginate(7)->withQueryString();
-
-        if (request('category')) {
-            $category = Category::firstWhere('slug', request('category'));
-            $title = ' in ' . $category->name;
+        if ($request->category) {
+            $category = Category::where('name', $request->category)->first();
+            $menu = Menu::latest()->where('is_api', -1)->where('category_id', $category->id)->filter(request(['search', 'category']))->paginate(8)->withQueryString();
+        } else {
+            $menu = Menu::latest()->where('is_api', -1)->filter(request(['search', 'category']))->paginate(8)->withQueryString();
         }
 
         // Membuat query untuk mengambil data post yang sudah di filter
         return view('/products', [
-            'title' => "All Posts" . $title,
-            'active' => 'products',
-            'menus' => $menu
+            'menus' => $menu,
+            'categories' => Category::all(),
         ]);
     }
-
     /**
      * Show the form for creating a new resource.
      */

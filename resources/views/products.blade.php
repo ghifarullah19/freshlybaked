@@ -6,29 +6,49 @@
         <h1 class="text-2xl font-bold pt-5 text-black">Menu</h1>
     </div>
 
-    <!-- SearchBar New Version -->
-    <form action="/products" method="get" class="flex flex-col md:flex-row gap-3 md:mx-5 lg:mx-10 justify-end">
-        <div class="flex flex-col">
-            {{-- Search Input --}}
-            <div class="flex flex-row">
-                <input type="text" id="search" placeholder="Search"
-                class="w-full md:w-80 px-3 h-10 rounded-l border-1 border-[#6B240C] focus:outline-none focus:border-[#6B240C]" name="search" value="{{ request("search") }}">
-                <button type="submit" class="bg-[#6B240C] text-white rounded-r px-2 md:px-3 py-0 md:py-1">Search</button>
+    <div class="mx-auto justify-between align-bottom flex flex-row bg-gray">
+        <div class="mx-10 flex flex-col">
+            <div class="flex flex-row gap-2">
+                @foreach ($categories as $category)
+                    @if ($category->id != 4)
+                        <div class="flex flex-col">
+                            <form action="/products">
+                                <input type="hidden" name="category" value="{{ $category->name }}">
+                                <button class="mr-1 block text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm px-5 py-2.5 text-center h-fit" type="submit">
+                                    {{ ucwords($category->name) }}
+                                </button>
+                            </form>
+                        </div>
+                    @endif
+                @endforeach
             </div>
-            <div class="flex flex-row w-full">
-                <div id="search_list" class="bg-white rounded-b-xl border-b-2 absolute z-10">
+        </div>
+        <div class="flex flex-col">
+            <!-- SearchBar New Version -->
+            <form action="/products" method="get" class="flex flex-col md:flex-row gap-3 md:mx-5 lg:mx-10 justify-end">
+                <div class="flex flex-col">
+                    {{-- Search Input --}}
+                    <div class="flex flex-row">
+                        <input type="text" id="search" placeholder="Search"
+                        class="w-full md:w-80 px-3 h-10 rounded-l border-1 border-[#6B240C] focus:outline-none focus:border-[#6B240C]" name="search" value="{{ request("search") }}">
+                        <button type="submit" class="bg-[#6B240C] text-white rounded-r px-2 md:px-3 py-0 md:py-1">Search</button>
+                    </div>
+                    <div class="flex flex-row w-full">
+                        <div id="search_list" class="bg-white rounded-b-xl border-b-2 absolute z-10">
+                        </div>
+                    </div>
                 </div>
-            </div>
+                {{-- Dropdown --}}
+                <div class="flex flex-col">
+                    <select id="filter" name="filter"
+                        class="w-full h-10 border-2 border-amber-950 focus:border-amber-950 text-black rounded mt-3 md:mt-0 md:w-32 px-2 md:px-3 py-0 md:py-1 tracking-wider">
+                        <option value="name" selected>Name</option>
+                        <option value="category">Category</option>
+                    </select>
+                </div>
+            </form>
         </div>
-        {{-- Dropdown --}}
-        <div class="flex flex-col">
-            <select id="filter" name="filter"
-                class="w-full h-10 border-2 border-amber-950 focus:border-amber-950 text-black rounded mt-3 md:mt-0 md:w-32 px-2 md:px-3 py-0 md:py-1 tracking-wider">
-                <option value="name" selected>Name</option>
-                <option value="category">Category</option>
-            </select>
-        </div>
-    </form>
+    </div>
     {{-- Produts --}}
     @if ($menus->count() > 0)
     <section class="mx-5 my-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -116,6 +136,10 @@
         <p class="text-center text-gray-600 dark:text-gray-400 py-80">No menu found.</p>
     </section>
     @endif
+</section>
+<div class="flex flex-row w-full justify-end pe-5">
+    {{ $menus->links('pagination::tailwind') }}
+</div>
 @endsection
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
