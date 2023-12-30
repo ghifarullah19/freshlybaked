@@ -31,7 +31,7 @@
 </head>
 <body>
     @include('partials.navbar')
-    <div class="mt-[64px] mb-[-20px] min-h-screen">
+    <div class="mt-[64px] mb-[-10px]">
         @yield('container')
     </div>
 @include('partials.footer')
