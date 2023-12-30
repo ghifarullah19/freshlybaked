@@ -6,18 +6,25 @@ use App\Models\Menu;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
+use App\Models\Category;
 
 class ApiMenuController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $menu = menu::where('is_api', true)->get();
+        if ($request->category) {
+            $category = Category::where('name', $request->category)->first();
+            $menu = Menu::latest()->where('is_api', 1)->where('category_id', $category->id)->filter(request(['search', 'category']))->paginate(8)->withQueryString();
+        } else {
+            $menu = Menu::latest()->where('is_api', 1)->filter(request(['search', 'category']))->paginate(8)->withQueryString();
+        }
 
         return view('products', [
             "menus" => $menu,
+            "categories" => [],
         ]);
     }
 
@@ -60,6 +67,7 @@ class ApiMenuController extends Controller
             }
             return redirect('/dashboard/api-products')->with('success', 'Menu berhasil ditambahkan');
         } catch (\Throwable $th) {
+            dd($th);
             return redirect('/dashboard/api-products')->with('error', 'Menu gagal ditambahkan');
         }
     }
@@ -70,7 +78,7 @@ class ApiMenuController extends Controller
     public function show(menu $menu)
     {
         $menu = menu::where('id', $menu->id)->first();
-        
+
         return view('product', [
             "menu" => $menu,
             "route" => 'api-products'
