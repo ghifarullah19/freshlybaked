@@ -56,7 +56,7 @@ if (!Auth::guest()) {
                     <li>
                         <a href="/dashboard" class="block px-16 py-2 hover:bg-[#9E7540]">Dashboard</a>
                     </li>
-                  @endcan  
+                  @endcan
                   <li>
                       <a href="/profile" class="block px-16 py-2 hover:bg-[#9E7540]">Profile</a>
                   </li>
