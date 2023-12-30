@@ -50,7 +50,7 @@ if (!Auth::guest()) {
               @endif
           </button>
           <!-- Dropdown menu -->
-          <div id="dropdown" class="z-10 hidden bg-[#E3D18A] divide-y divide-gray-100 rounded-lg shadow w-44">
+          <div id="dropdown" class="z-10 hidden bg-[#a09052] divide-y divide-gray-100 rounded-lg shadow w-44">
               <ul class="py-2 text-sm text-center text-white" aria-labelledby="dropdownDefaultButton">
                   @can('admin')
                     <li>
@@ -83,13 +83,13 @@ if (!Auth::guest()) {
     <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
       <ul class="flex flex-col p-4 bg-[#9E7540] md:p-0 mt-4 font-medium border border-gray-100 rounded-lg md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0">
         <li>
-          <a href="/" class="nav-link block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:hover:text-[#6B240C] md:p-0" aria-current="page">Home</a>
+          <a href="/" class="nav-link block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:hover:text-[#252525] md:p-0" aria-current="page">Home</a>
         </li>
         <li>
-          <a href="/products" class="nav-link block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6B240C] md:p-0">Products</a>
+          <a href="/products" class="nav-link block py-2 px-3 text-white rounded hover:bg-blue-800 md:hover:bg-transparent md:hover:text-[#252525] md:p-0">Products</a>
         </li>
         <li>
-          <a href="/others" class="nav-link block py-2 px-3 text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-[#6B240C] md:p-0">Client Products</a>
+          <a href="/others" class="nav-link block py-2 px-3 text-white rounded hover:bg-blue-800 md:hover:bg-transparent md:hover:text-[#252525] md:p-0">Client Products</a>
         </li>
       </ul>
     </div>

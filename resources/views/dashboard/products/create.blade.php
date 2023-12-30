@@ -2,91 +2,100 @@
 
 @section('container')
 
-<div class="text-4xl font-bold mb-4 mx-3 my-3">
-    <h1>Add New Products</h1>
-</div>
-<hr class="border-t border-gray-600 my-4 mx-4 px-[610px]"> <!-- Separator line -->
-
-<form method="POST" action="/dashboard/products" class="max-w-2xl my-4 mx-4" enctype="multipart/form-data">
-    @csrf
-    <div class="mb-5">
-        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Nama</label>
-        <input type="text" id="name" name="name" placeholder="Masukan nama anda" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ old('name') }}">
-        @error('name')
-            <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
-                <span class="font-medium">Danger alert!</span>
-                {{ $message }}
-            </div>
-        @enderror
+<section class="bg-[#FAEED1]">
+    <div class="text-4xl font-bold mb-4 mx-3 text-center pt-3 bg-[#FAEED1]">
+        <h1>Add New Product</h1>
     </div>
+    <hr class="border-t border-black my-4 mx-4 px-[610px]"> <!-- Separator line -->
 
-    <div class="mb-5">
-        <label for="slug" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Slug</label>
-        <input type="text" id="slug" name="slug" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" readonly value="{{ old('slug') }}">
-        @error('slug')
-            <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
-                <span class="font-medium">Danger alert!</span>
-                {{ $message }}
+     {{-- fORM --}}
+        <!-- component -->
+    <div class="bg-[#FAEED1] py-32 px-10 min-h-screen ">
+        <!--   tip; mx-auto -- jagab ilusti keskele  -->
+        <div class="bg-white p-10 md:w-3/4 lg:w-1/2 mx-auto rounded-2xl">
+
+          <form action="">
+
+            <!--       flex - asjad korvuti, nb! flex-1 - element kogu ylejaanud laius -->
+            <div class="flex items-center mb-5">
+              <!--         tip - here neede inline-block , but why? -->
+              <label for="name" class="inline-block w-20 mr-6 text-right
+                                       font-bold text-gray-600">Name</label>
+              <input type="text" id="name" name="name" placeholder="Name"
+                     class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
+                            text-gray-600 placeholder-gray-400
+                            outline-none">
             </div>
-        @enderror
-    </div>
 
-    <div class="mb-5">
-        <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Price</label>
-        <input type="number" min="0" max="5000000" id="price" name="price" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ old('price') }}">
-        @error('price')
-            <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
-                <span class="font-medium">Danger alert!</span>
-                {{ $message }}
+            <div class="flex items-center mb-5">
+              <!--         tip - here neede inline-block , but why? -->
+              <label for="number" class="inline-block w-20 mr-6 text-right
+                                       font-bold text-gray-600">Slug</label>
+              <input type="number" id="number" name="number" placeholder=""
+                     class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
+                            text-gray-600 placeholder-gray-400
+                            outline-none" disabled>
             </div>
-        @enderror
-    </div>
 
-    <div class="mb-5">
-        <label for="quantity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Quantity</label>
-        <input type="number" min="0" max="5000000" id="quantity" name="quantity" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ old('quantity') }}">
-        @error('quantity')
-            <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
-                <span class="font-medium">Danger alert!</span>
-                {{ $message }}
+
+
+            <div class="flex items-center mb-5">
+              <!--         tip - here neede inline-block , but why? -->
+              <label for="number" class="inline-block w-20 mr-6 text-right
+                                       font-bold text-gray-600">Image</label>
+              <input type="file" id="file" name="file" placeholder="file"
+                     class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
+                            text-gray-600 placeholder-gray-400
+                            outline-none">
             </div>
-        @enderror
-    </div>
 
-    <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Category</label>
-    <select id="category" name="category_id" class="bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-white dark:border-gray-300 dark:placeholder-white dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-5">
-        @foreach ($categories as $category)
-            <option value="{{ $category->id }}">{{ $category->name }}</option>
-        @endforeach
-    </select>
+            <div class="flex items-center mb-5">
+                <!--         tip - here neede inline-block , but why? -->
+                <label for="number" class="inline-block w-20 mr-6 text-right
+                                         font-bold text-gray-600">Price</label>
+                <input type="number" id="number" name="number" placeholder="Rp. 100.000"
+                       class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
+                              text-gray-600 placeholder-gray-400
+                              outline-none">
+              </div>
 
-    <div class="mb-3">
-        <label for="image">Post Image</label>
-        <input type="file" id="image" name="image" onchange="previewImage()">
-        <img class="mt-3 img-preview">
-        @error('image')
-        <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
-            <span class="font-medium">Danger alert!</span>
-            {{ $message }}
+
+            <div class="flex items-center mb-5">
+              <!--         tip - here neede inline-block , but why? -->
+              <label for="number" class="inline-block w-20 mr-6 text-right
+                                       font-bold text-gray-600">Category</label>
+              <select class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
+                            text-gray-600 placeholder-gray-400
+                            outline-none pl-3">
+                  <option>Cake</option>
+                  <option>Signature</option>
+                  <option>Bread</option>
+              </select>
+            </div>
+
+            <div>
+                <label for="description" class="inline-block w-20 mr-6 text-right
+                font-bold text-gray-600 mb-3">Description</label>
+                {{-- <input type="text" id="large-input" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"> --}}
+                @error('description')
+                    <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
+                        <span class="font-medium">Danger alert!</span>
+                        {{ $message }}
+                    </div>
+                @enderror
+                <input id="description" type="hidden" name="description">
+                <trix-editor input="description" value="{{ old('description', $menu->description) }}"></trix-editor>
+            </div>
+
+            <div class="text-right">
+              <button class="py-3 px-8 bg-blue-600 text-white font-bold rounded-2xl">Submit</button>
+            </div>
+
+          </form>
         </div>
-        @enderror
-    </div>
-
-    <div>
-        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Description</label>
-        {{-- <input type="text" id="large-input" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"> --}}
-        @error('description')
-            <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
-                <span class="font-medium">Danger alert!</span>
-                {{ $message }}
-            </div>
-        @enderror
-        <input id="description" type="hidden" name="description">
-        <trix-editor input="description" value="{{ old('value') }}"></trix-editor>
-    </div>
-
-    <button type="submit">Create Post</button>
-  </form>
+      </div>
+     {{-- aKHIR fORM --}}
+    </section>
 
   <script>
     const name = document.querySelector('#name');

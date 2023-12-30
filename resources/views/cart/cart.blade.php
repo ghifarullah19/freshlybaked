@@ -37,7 +37,7 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
                 checkStatus.classList.add('hover:bg-green-600');
                 checkStatus.classList.remove('bg-blue-500');
                 checkStatus.classList.remove('hover:bg-blue-600');
-                
+
               // === CODE BELOW: INTERNAL SERVER ERROR ===
               // const response = fetch('/cart/update-data', {
               //     method: 'get',
@@ -176,7 +176,7 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
         </div>
       </div>
     @else
-      <div class="flex flex-col justify-center">
+      <div class="flex flex-col justify-center h-screen">
         <h1 class="text-center text-3xl font-bold">Keranjang masih kosong</h1>
       </div>
     @endif
