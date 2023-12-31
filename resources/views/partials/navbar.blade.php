@@ -18,9 +18,9 @@ if (!Auth::guest()) {
     <div class="flex flex-row md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
       @auth
       <!-- tombol cart -->
-            <div slot="icon" class="relative pr-6">
+            <div slot="icon" class="relative pr-6 pt-2">
                 <button onclick="window.location.href='/cart'">
-                    <div class="absolute text-xs rounded-full -mt-1 -mr-2 px-1 font-bold top-0 right-6 bg-red-700 transition duration-300 md:duration-150 text-white">
+                    <div class="absolute text-xs rounded-full mt-1 -mr-2 px-1 font-bold top-0 right-6 bg-red-700 transition duration-300 md:duration-150 text-white">
                       @if (!empty($cart_details))
                         {{ $cart_details->count() }}
                       @else
@@ -38,9 +38,9 @@ if (!Auth::guest()) {
       <form action="/logout" method="POST">
         <input type="hidden" name="_token" value="{{csrf_token ()}}">
         {{--button dropdown navbar--}}
-          <button id="dropdownInformationButton" data-dropdown-toggle="dropdown" class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium text-sm rounded-full text-center inline-flex items-center" type="button">
+          <button id="dropdownInformationButton" data-dropdown-toggle="dropdown" class="text-white mt-2 mr-2 bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium text-sm rounded-full text-center inline-flex items-center" type="button">
               @if (Auth()->user()->image != null)
-              <div class="h-8 w-8">
+              <div class="h-8 w-8 ">
                   <img class="object-cover w-full h-full rounded-full" src="{{ asset('storage/' . Auth()->user()->image) }}">
               </div>
               @else
