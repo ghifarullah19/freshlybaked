@@ -138,18 +138,22 @@
                         </div>
                     </div>
                     <div>
-                        <h2 class="text-2xl font-bold mb-4">Histori Pesanan</h2>
+                        <h2 class="text-2xl font-bold mb-4">Pesanan</h2>
                         <div class="space-y-4">
                             @if ($cart->count() > 0)
                             @foreach ($cart as $c)
                             <div class="p-4 bg-white border rounded-xl text-gray-800 space-y-2">
                                 <div class="flex justify-between">
-                                    <div class="text-gray-400 text-xs">Antrian {{ $loop->iteration }}</div>
-                                    <div class="text-gray-400 text-xs">{{ $c->date }}</div>
+                                    <div class="text-gray-400 text-xs">{{ $c->code }}</div>
+                                    <div class="text-gray-400 text-xs">{{ $c->created_at }}</div>
                                 </div>
                                 <div class="flex justify-between">
-                                    <div class="font-bold hover:text-yellow-800 hover:underline">{{ $c->user->name }}</div>
-                                    <div class="font-bold hover:text-yellow-800 hover:underline">SAB{{ $c->id }}</div>
+                                    <div class="font-bold">{{ $c->user->name }}</div>
+                                    @if ($c->status == 1)
+                                        <div class="px-2 inline-flex text-base leading-5 font-semibold rounded-full bg-green-100 text-green-800">Done</div>
+                                    @else
+                                        <div class="px-2 inline-flex text-base leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">Pending</div>
+                                    @endif
                                 </div>
                             </div>
                             @endforeach
