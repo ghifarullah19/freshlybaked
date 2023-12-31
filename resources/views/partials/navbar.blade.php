@@ -9,18 +9,18 @@ if (!Auth::guest()) {
 }
 ?>
 
-<nav class="bg-[#9E7540] fixed h-[65px] w-full z-20 top-0 start-0 z20">
-  <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto p-4">
+<nav class="bg-[#9E7540] fixed h-[65px] w-full z-20 top-0 start-0 a">
+  <div class="max-w-screen-2xl flex flex-wrap items-center justify-between mx-auto pt-2">
     <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="/img/freshlybaked.png" class="h-8 rounded-full" alt="Logo">
+      <img src="/img/logo.jpg" class="h-8 rounded-full" alt="Logo">
       <span class="nav-title self-center text-xl font-semibold whitespace-nowrap dark:text-white text-opacity-0 md:text-opacity-100 lg:text-opacity-100">FreshlyBaked</span>
     </a>
     <div class="flex flex-row md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
       @auth
       <!-- tombol cart -->
-            <div slot="icon" class="relative pr-6">
+            <div slot="icon" class="relative pr-6 pt-2">
                 <button onclick="window.location.href='/cart'">
-                    <div class="absolute text-xs rounded-full -mt-1 -mr-2 px-1 font-bold top-0 right-6 bg-red-700 text-white">
+                    <div class="absolute text-xs rounded-full mt-1 -mr-2 px-1 font-bold top-0 right-6 bg-red-700 transition duration-300 md:duration-150 text-white">
                       @if (!empty($cart_details))
                         {{ $cart_details->count() }}
                       @else
@@ -38,9 +38,9 @@ if (!Auth::guest()) {
       <form action="/logout" method="POST">
         <input type="hidden" name="_token" value="{{csrf_token ()}}">
         {{--button dropdown navbar--}}
-          <button id="dropdownInformationButton" data-dropdown-toggle="dropdown" class="text-white bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium text-sm rounded-full text-center inline-flex items-center" type="button">
+          <button id="dropdownInformationButton" data-dropdown-toggle="dropdown" class="text-white mt-2 mr-2 bg-gray-700 hover:bg-gray-800 focus:ring-2 focus:outline-none focus:ring-gray-300 font-medium text-sm rounded-full text-center inline-flex items-center" type="button">
               @if (Auth()->user()->image != null)
-              <div class="h-8 w-8">
+              <div class="h-8 w-8 ">
                   <img class="object-cover w-full h-full rounded-full" src="{{ asset('storage/' . Auth()->user()->image) }}">
               </div>
               @else
@@ -67,8 +67,7 @@ if (!Auth::guest()) {
           </div>
         </form>
       @else
-          <button type="button" class="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-yellow-300 dark:text-yellow-300 dark:hover:text-white dark:hover:bg-yellow-400 dark:focus:ring-yellow-900">
-            <button type="button" >Yellow</button>
+          <button type="button" class="text-yellow-400 hover:text-white border border-yellow-400 hover:bg-yellow-500 focus:ring-4 focus:outline-none focus:ring-yellow-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
             <a href="/login" class="text-white">
               LOGIN
             </a>

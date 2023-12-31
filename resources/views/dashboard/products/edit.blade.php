@@ -3,15 +3,15 @@
 @section('container')
 
 <section class="bg-[#FAEED1]">
-<div class="text-4xl font-bold mb-4 mx-3 text-center pt-3 bg-[#FAEED1]">
-    <h1>Edit Products</h1>
-</div>
+
 <hr class="border-t border-black my-4 mx-4 px-[610px]"> <!-- Separator line -->
 
  {{-- fORM --}}
     <!-- component -->
-<div class="bg-[#FAEED1] py-32 px-10 min-h-screen">
-    <!--   tip; mx-auto -- jagab ilusti keskele  -->
+<div class="bg-[#FAEED1] pb-10 px-10 min-h-screen">
+    <div class="text-4xl font-bold mb-4 mx-3 text-center pt-3 bg-[#FAEED1]">
+        <h1>Edit Products</h1>
+    </div>
     <div class="bg-white p-10 md:w-3/4 lg:w-1/2 mx-auto rounded-2xl">
       <form action="/dashboard/products/{{ $menu->slug }}" method="POST" enctype="multipart/form-data">
         @method('PUT')
@@ -30,7 +30,7 @@
                                    font-bold text-gray-600">Name</label>
           <input type="text" id="name" name="name" placeholder="Name"
                  class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
-                        text-gray-600 placeholder-gray-400
+                        text-gray-600 placeholder-gray-400 rounded-lg
                         outline-none @error('name') is-invalid @enderror" value="{{ $menu->name }}">
         </div>
         {{-- Akhir Name --}}
@@ -47,7 +47,7 @@
           <!--         tip - here neede inline-block , but why? -->
           <label for="slug" class="inline-block w-20 mr-6 text-right font-bold text-gray-600">Slug</label>
           <input type="text" id="slug" name="slug" placeholder=""
-          class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
+          class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 rounded-lg
            text-gray-600 placeholder-gray-400 outline-none @error('slug') is-invalid @enderror" value="{{ $menu->slug }}">
         </div>
 
@@ -61,7 +61,7 @@
         @enderror
         {{-- Mengirim data image lama --}}
         <input type="hidden" name="oldImage" value="{{ $menu->image }}">
-        
+
         {{-- Jika ada image lama --}}
         @if ($menu->image)
           {{-- Tampilkan image tersebut --}}
@@ -77,7 +77,7 @@
                                    font-bold text-gray-600">Image</label>
           <input type="file" id="image" name="image" placeholder="Image"
                  class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
-                        text-gray-600 placeholder-gray-400
+                        text-gray-600 placeholder-gray-400 rounded-lg
                         outline-none @error('image') is-invalid @enderror" value="{{ $menu->image }}"
                         onchange="previewImage()">
         </div>
@@ -95,7 +95,7 @@
                                      font-bold text-gray-600">Price</label>
             <input type="number" id="price" name="price" placeholder="Rp. 100.000"
                    class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
-                          text-gray-600 placeholder-gray-400
+                          text-gray-600 placeholder-gray-400 rounded-lg
                           outline-none @error('price') is-invalid @enderror" value="{{ $menu->price }}">
         </div>
 
@@ -112,7 +112,7 @@
                                      font-bold text-gray-600">Quantity</label>
             <input type="number" id="quantity" name="quantity" placeholder="Rp. 100.000"
                    class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
-                          text-gray-600 placeholder-gray-400
+                          text-gray-600 placeholder-gray-400 rounded-lg
                           outline-none @error('quantity') is-invalid @enderror" value="{{ $menu->quantity }}">
         </div>
 
@@ -121,7 +121,7 @@
           <!--         tip - here neede inline-block , but why? -->
           <label for="category_id" class="inline-block w-20 mr-6 text-right
                                    font-bold text-gray-600">Category</label>
-          <select class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
+          <select class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400 rounded-lg
                         text-gray-600 placeholder-gray-400
                         outline-none pl-3" name="category_id" id="category_id">
                         {{-- Loop/Iterasi category yang ada --}}
@@ -156,7 +156,7 @@
         </div>
 
         <div class="text-right">
-          <button type="submit" class="py-3 px-8 bg-blue-500 text-white font-bold rounded-2xl">Submit</button>
+          <button type="submit" class="mt-5 py-3 px-8 bg-blue-500 text-white font-bold rounded-2xl">Submit</button>
         </div>
 
       </form>
