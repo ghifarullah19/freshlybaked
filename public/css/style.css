@@ -6,7 +6,7 @@
 }
 
 .bg-custom {
-    background-image: url("/img/bg.jpg");
+    background-image: url("/img/gg.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -28,4 +28,3 @@
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(0, 0, 0, 0.3);
 }
-

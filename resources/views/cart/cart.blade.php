@@ -6,20 +6,6 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
 
 @section('container')
 
-@if (session()->has('success'))
-    <div class="p-4 mb-4 text-sm bg-gray-800 text-green-400" role="alert">
-        <span class="font-medium">Success!</span>
-        {{ session('success') }}
-    </div>
-@endif
-
-@if (session()->has('error'))
-    <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
-        <span class="font-medium">Danger alert!</span>
-        {{ session('error') }}
-    </div>
-@endif
-
 <section class="bg-[#FAEED1]">
   @if (session()->has('token'))
   <script>
@@ -78,6 +64,20 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
   </script>
 @endif
 
+@if (session()->has('success'))
+    <div class="p-4 mb-4 text-sm bg-yellow-900 text-green-400" role="alert">
+        <span class="font-medium">Success!</span>
+        {{ session('success') }}
+    </div>
+@endif
+
+@if (session()->has('error'))
+    <div class="p-4 mb-4 text-sm bg-yellow-900 text-red-400" role="alert">
+        <span class="font-medium">Danger alert!</span>
+        {{ session('error') }}
+    </div>
+@endif
+
   <h1 class="mb-10 text-center text-2xl font-bold pt-8">Cart Items</h1>
   {{-- Card Container (Looping) --}}
   <div class="flex flex-col mx-auto container">
@@ -87,7 +87,7 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
       <div class="rounded-lg w-[80%]">
         {{-- Image/Gambar --}}
         <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
-          <img src="https://source.unsplash.com/350x220?{{ 'bakery'}}" alt="product-image" class="w-full rounded-lg sm:w-40"/>
+          <img src="{{ asset('storage/' . $menu->image) }}" alt="product-image" class="w-full rounded-lg sm:w-40"/>
           <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
             {{-- Nama Produk --}}
             <div class="mt-5 sm:mt-0">

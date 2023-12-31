@@ -2,12 +2,30 @@
 
 @section('container')
 <section class="mt-16">
+    @if (session()->has('success'))
+        <div class="p-4 mb-4 text-sm bg-yellow-900 text-green-400" role="alert">
+            <span class="font-medium">Success!</span>
+            {{ session('success') }}
+        </div>
+    @endif
+
+    @if (session()->has('error'))
+        <div class="p-4 mb-4 text-sm bg-yellow-900 text-red-400" role="alert">
+            <span class="font-medium">Danger alert!</span>
+            {{ session('error') }}
+        </div>
+    @endif
+
     <div class="container mx-auto p-4 sm:p-8 flex flex-col sm:flex-row my-12">
 
         <!-- Personal Information-->
         <div class="sm:w-1/3 pr-0 sm:pr-8 mb-4 sm:mb-0">
-            <img class="rounded-full h-60 w-60 object-cover mb-2" src="/img/nophoto.png" alt="Profile Image">
-                <span class="font-bold text-xl">{{ auth()->user()->name }}</span>
+            @if (auth()->user()->image != null)
+                <img class="rounded-full h-60 w-60 object-cover mb-2" src="{{ asset('storage/' . auth()->user()->image) }}" alt="Profile Image">
+            @else
+                <img class="rounded-full h-60 w-60 object-cover mb-2" src="/img/nophoto.png" alt="Profile Image">
+            @endif
+            <span class="font-bold text-xl">{{ auth()->user()->name }}</span>
             <div class="mt-2">
                 <a href="/update-profile">
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-4 rounded h-8 w-full">
@@ -31,9 +49,7 @@
                 <div class="text-gray-500">
                     <span class="font-semibold">Address :</span> {{ auth()->user()->address }}
                 </div>
-
             </div>
-
         </div>
 
         <!-- Product List -->
@@ -80,7 +96,11 @@
                                     <div class="bg-orange-600 rounded-full w-[10px] h-[10px]"></div>
                                 @endif
                             </div>
-                            <img class="rounded-full h-20 w-20 object-cover mb-2" src="/img/nophoto.png" alt="Profile Image">
+                            @if ($detail->menu->image == null)
+                                <img class="rounded-full h-20 w-20 object-cover mb-2" src="/img/nophoto.png" alt="Product Image">
+                            @else
+                                <img class="rounded-full h-20 w-20 object-cover mb-2" src="{{ asset('storage/' . $detail->menu->image) }}" alt="Product Image">
+                            @endif
                         </div>
                     </div>
                 @endforeach

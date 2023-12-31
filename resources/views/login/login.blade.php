@@ -9,14 +9,14 @@
                 Freshly Baked
             </a>
             @if (session()->has('success'))
-                <div class="p-4 mb-4 text-sm bg-gray-800 text-green-400" role="alert">
+                <div class="p-4 mb-4 text-sm bg-yellow-900 text-green-400" role="alert">
                     <span class="font-medium">Success!</span>
                     {{ session('success') }}
                 </div>
             @endif
 
             @if (session()->has('loginError'))
-                <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
+                <div class="p-4 mb-4 text-sm bg-yellow-900 text-red-400" role="alert">
                     <span class="font-medium">Danger alert!</span>
                     {{ session('loginError') }}
                 </div>

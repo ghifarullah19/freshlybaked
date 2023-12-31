@@ -57,7 +57,7 @@
                 <div class="relative mx-4 mt-4 h-72 overflow-hidden rounded-xl bg-white bg-clip-border text-gray-700">
                     @if ($menu->is_api == -1)
                         <a href="/products/{{ $menu->slug }}">
-                            <img src="https://source.unsplash.com/1200x800?{{ $menu->category->name }}"
+                            <img src="{{ asset('storage/' . $menu->image) }}"
                                     alt="" class=" w-full h-full ">
                         </a>
                     @else

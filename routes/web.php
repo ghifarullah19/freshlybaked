@@ -120,21 +120,22 @@ Route::get('/dashboard', function () {
         "antrianPending" => Cart::where('status', 0)->count(),
         "antrianDiproses" => Cart::where('status', 1)->count(),
         "totalAntrianPerhari" => Cart::where(['date' => date('Y-m-d'), 'status' => 1])->count(),
-        "cart" => Cart::where('status', 1)->latest()->take(3)->get(),
+        "cart" => Cart::latest()->take(3)->get(),
     ]);
 })->middleware('admin');
 
 Route::get('/dashboard/categories', [CategoryController::class, 'index'])->middleware('admin');
 
+Route::get('/dashboard/users/checkSlug', [DashboardUserController::class, 'checkSlug'])->middleware('admin');
+Route::post('/dashboard/users/update', [DashboardUserController::class, 'update'])->middleware('admin');
 Route::resource('/dashboard/users', DashboardUserController::class)->middleware('admin');
-Route::resource('/dashboard/orders', DashboardCartController::class)->middleware('admin');
-Route::get('/dashboard/orders/{cart:id}', [DashboardCartController::class, 'show'])->middleware('admin');
-Route::resource('/dashboard/products', DashboardMenuController::class)->middleware('admin');
 
 Route::get('/dashboard/products/checkSlug', [DashboardMenuController::class, 'checkSlug'])->middleware('admin');
-Route::get('/dashboard/users/checkSlug', [DashboardUserController::class, 'checkSlug'])->middleware('admin');
+Route::resource('/dashboard/products', DashboardMenuController::class)->middleware('admin');
 
-Route::post('/dashboard/users/update', [DashboardUserController::class, 'update'])->middleware('admin');
+Route::get('/dashboard/orders/{cart:id}', [DashboardCartController::class, 'show'])->middleware('admin');
+Route::resource('/dashboard/orders', DashboardCartController::class)->middleware('admin');
+
 
 Route::get('/dashboard/print/histories', [DashboardCartController::class, 'print'])->middleware('admin');
 Route::get('/dashboard/print/products', [DashboardMenuController::class, 'print'])->middleware('admin');

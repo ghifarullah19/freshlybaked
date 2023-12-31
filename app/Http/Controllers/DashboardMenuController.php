@@ -103,7 +103,7 @@ class DashboardMenuController extends Controller
     {
         $rules = [
             'name' => 'required|max:255',
-            // 'slug' => 'required',
+            'slug' => 'required',
             'price' => 'required',
             'quantity' => 'required',
             'category_id' => 'required',

@@ -173,6 +173,10 @@ class CartController extends Controller
         // Set 3DS transaction for credit card to true
         \Midtrans\Config::$is3ds = true;
 
+        if ($cart->user->address == null || $cart->user->phone_number == null) {
+            return redirect('/cart')->with('error', 'Checkout gagal. Lengkapi profil terlebih dahulu');
+        }
+
         $params = array(
             'transaction_details' => array(
                 'order_id' => "SAB" . '-' . Carbon::now()->format('Ymd') . '-' . rand('100', '999'),
@@ -182,7 +186,8 @@ class CartController extends Controller
             'customer_details' => array(
                 'first_name' => $cart->user->name,
                 'email' => $cart->user->email,
-                'phone' => '08111222333',
+                'phone' => $cart->user->phone_number,
+                'address' => $cart->user->address,
             ),
         );
 
