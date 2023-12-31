@@ -4,7 +4,7 @@
 <body class="bg-custom min-h-screen login ">
     <div class="flex items-center justify-center min-h-full">
         <div class="bg-gray-900 bg-opacity-60  rounded-lg shadow p-8 w-full max-w-md justify-center">
-            <a href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-50 ">
+            <a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-50 ">
                 <img class="w-8 h-8 mr-2 rounded-full" src="img/logo.jpg" alt="logo">
                 Freshly Baked
             </a>
@@ -25,7 +25,7 @@
                 @csrf
                 <div class="mb-4">
                     <label for="email" class="block mb-1  text-gray-50">Email</label>
-                    <input type="email" placeholder="Enter Your Email " id="email" name="email" class="w-full border p-2 rounded border-2 rounded-lg font-sans border-black" required value="{{ old('email') }}">
+                    <input type="email" placeholder="Enter Your Email " id="email" name="email" class="w-full p-2 border-2 rounded-lg font-sans border-black" required value="{{ old('email') }}">
                     @error('email')
                     <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
                         <span class="font-medium">Danger alert!</span>
@@ -35,15 +35,15 @@
                 </div>
                 <div class="mb-4">
                     <label for="password" class="block mb-1 font-semibold text-gray-50">Password</label>
-                    <input type="password" placeholder="***********" id="password" name="password" class="w-full border p-2 rounded border p-2 rounded border-2 rounded-lg font-sans border-black" required>
+                    <input type="password" placeholder="***********" id="password" name="password" class="w-full p-2 border-2 rounded-lg font-sans border-black" required>
                 </div>
-                <button type="submit" class="mb-1.5 block w-full text-center text-white bg-indigo-600 hover:bg-indigo-700 px-2 py-1.5 rounded-md">
+                <button type="submit" class="mb-1.5 block w-full text-center text-white bg-yellow-600 hover:bg-yellow-700 px-2 py-1.5 rounded-md">
                     Login
                 </button>
             </form>
             <div class="text-center mt-4">
                 <span class="text-xs text-gray-400 font-semibold">Don't have account?</span>
-                <a href="/register" class="text-white text-xs font-semibold hover:text-blue-500">
+                <a href="/register" class="text-white text-xs font-semibold hover:text-yellow-500">
                     Sign Up
                 </a>
             </div>
