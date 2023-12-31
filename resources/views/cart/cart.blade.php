@@ -87,7 +87,11 @@ data-client-key="SB-Mid-client-RCH1hg9ZAdMK8XW_"></script>
       <div class="rounded-lg w-[80%]">
         {{-- Image/Gambar --}}
         <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start">
-          <img src="{{ asset('storage/' . $menu->image) }}" alt="product-image" class="w-full rounded-lg sm:w-40"/>
+          @if ($detail->menu->image == null)
+            <img src="/img/nophoto.png" alt="product-image" class="w-full rounded-lg sm:w-40"/>    
+          @else
+            <img src="{{ asset('storage/' . $detail->menu->image) }}" alt="product-image" class="w-full rounded-lg sm:w-40"/>  
+          @endif
           <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
             {{-- Nama Produk --}}
             <div class="mt-5 sm:mt-0">

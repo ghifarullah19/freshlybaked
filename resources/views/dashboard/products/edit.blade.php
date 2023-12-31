@@ -156,6 +156,9 @@
         </div>
 
         <div class="text-right">
+          <button onclick="window.location.href='/dashboard/products'" class="mt-5 py-3 px-8 bg-red-500 text-white font-bold rounded-2xl" type="button">
+            Back
+          </button>
           <button type="submit" class="mt-5 py-3 px-8 bg-blue-500 text-white font-bold rounded-2xl">Submit</button>
         </div>
 
