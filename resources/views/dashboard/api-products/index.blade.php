@@ -127,7 +127,7 @@
                                 {{-- Isi Tabel Button --}}
                                 <td class="px-6 flex">
                                 <td class="px-6 ml-10 my-2 py-1 inline-flex bg-transparent">
-                                    <button onclick="window.location.href='/dashboard/api-products/{{ $menu->slug }}'" type="button" class="ml-2 px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-s-lg hover:bg-blue-500 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
+                                    <button onclick="window.location.href='/dashboard/api-products/{{ $menu->slug }}'" type="button" class="ml-2 px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-s-lg hover:bg-[#994D1C] hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
                                         <svg class="w-3 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
                                             <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                                 <path d="M10 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>

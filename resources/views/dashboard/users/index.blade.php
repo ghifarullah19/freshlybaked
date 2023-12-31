@@ -115,7 +115,7 @@
                                 </td>
                                 {{-- Isi Tabel Button --}}
                                 <td class="px-2 py-5 flex flex-row border-b border-gray-200 bg-white text-sm">
-                                    <button onclick="window.location.href='/dashboard/users/{{ $user->username }}'" type="button" class="ml-2 px-4 py-2.5 text-sm font-medium text-white bg-blue-700 border border-white rounded-xl mb-2 hover:bg-blue-500 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
+                                    <button onclick="window.location.href='/dashboard/users/{{ $user->username }}'" type="button" class="ml-2 px-4 py-2.5 text-sm font-medium text-white bg-[#994D1C] border border-white rounded-xl mb-2 hover:bg-[#E48F45] hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
                                         <svg class="w-3 h-3 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
                                             <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                                 <path d="M10 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
