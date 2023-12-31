@@ -180,7 +180,7 @@ class CartController extends Controller
         $params = array(
             'transaction_details' => array(
                 'order_id' => "SAB" . '-' . Carbon::now()->format('Ymd') . '-' . rand('100', '999'),
-                'gross_amount' => $cart->total_price,
+                'gross_amount' => $cart->total_price + 10000,
             ),
             'item_details' => $cart_details_array,
             'customer_details' => array(

@@ -36,7 +36,7 @@
             @foreach ($menus as $menu)
                 <div class="bg-[#85603F] w-full md:w-72 h-96 shadow-md m-3 hover:-translate-y-5 transition rounded-2xl">
                     <div class="h-3/4 w-full rounded-t-2xl overflow-hidden">
-                        <img class="w-full h-full object-cover rounded-t" src="/img/1.jpg" alt="piña">
+                        <img class="w-full h-full object-cover rounded-t" src="{{ asset('storage/'.$menu->image) }}" alt="">
                     </div>
                     <div class="w-full h-1/4 p-3 bg-amber-800/[0.7] rounded-b-2xl">
                         <span class="text-lg font-semibold text-white uppercase tracking-wide">{{ $menu->name }}</span>

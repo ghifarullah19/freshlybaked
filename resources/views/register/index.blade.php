@@ -4,15 +4,15 @@
 <body class="bg-custom min-h-screen">
     <div class="flex items-center justify-center min-h-full">
         <div class="bg-gray-900 bg-opacity-60  rounded-lg shadow p-8 w-full max-w-md justify-center">
-            <p href="#" class="flex items-center mb-6 text-2xl font-semibold text-gray-50 dark:text-white">
+            <a href="/" class="flex items-center mb-6 text-2xl font-semibold text-gray-50 dark:text-white">
                 <img class="w-8 h-8 mr-2 rounded-full" src="img/logo.jpg" alt="logo">
                 Freshly Baked
-            </p>
+            </a>
             <form class="max-w-sm mx-auto" action="/register" method="POST">
                 @csrf
                 <div class="mb-5">
                   <label for="name" class="block mb-2 text-sm font-medium text-white">Name</label>
-                  <input type="text" id="name" name="name" class="text-sm rounded-lg block w-full p-2.5 bg-white border-black placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 shadow-sm-light" placeholder="Enter Your Username" required value="{{ old('name') }}">
+                  <input type="text" id="name" name="name" class="text-sm rounded-lg block w-full p-2.5 bg-white border-black placeholder-gray-400 text-white shadow-sm-light" placeholder="Enter Your Username" required value="{{ old('name') }}">
                 </div>
                 @error('name')
                     <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
@@ -22,7 +22,7 @@
                 @enderror
                 <div class="mb-5">
                   <label for="email" class="block mb-2 text-sm font-medium text-white">Email</label>
-                  <input type="email" id="email" name="email" class="text-sm rounded-lg block w-full p-2.5 bg-white border-black placeholder-gray-400 text-white focus:ring-blue-800 focus:border-blue-800 shadow-sm-light" placeholder="Enter your Email" required value="{{ old('email') }}">
+                  <input type="email" id="email" name="email" class="text-sm rounded-lg block w-full p-2.5 bg-white border-black placeholder-gray-400 text-white shadow-sm-light" placeholder="Enter your Email" required value="{{ old('email') }}">
                 </div>
                 @error('email')
                     <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
@@ -32,7 +32,7 @@
                 @enderror
                 <div class="mb-5">
                   <label for="password" class="block mb-2 text-sm font-medium text-white">Your password</label>
-                  <input type="password" placeholder="********" id="password" name="password" class="text-sm rounded-lg block w-full p-2.5 bg-white border-black placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500 shadow-sm-light" required>
+                  <input type="password" placeholder="********" id="password" name="password" class="text-sm rounded-lg block w-full p-2.5 bg-white border-black placeholder-gray-400 text-white shadow-sm-light" required>
                 </div>
                 @error('password')
                     <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">
@@ -40,12 +40,12 @@
                         {{ $message  }}
                   </div>
                 @enderror
-                <button type="submit" class="mb-1.5 block w-full text-center text-white bg-indigo-600 hover:bg-indigo-700 px-2 py-1.5 rounded-md">Register new account</button>
+                <button type="submit" class="mb-1.5 block w-full text-center text-white bg-yellow-600 hover:bg-yellow-700 px-2 py-1.5 rounded-md">Register new account</button>
               </form>
             <!-- Login button -->
             <div class="text-center mt-4">
                 <span class="text-xs text-gray-400 font-semibold">Already have account?</span>
-                <a href="/login" class="text-white text-xs font-semibold hover:text-blue-500">
+                <a href="/login" class="text-white text-xs font-semibold hover:text-yellow-500">
                     Sign In
                 </a>
             </div>

@@ -28,7 +28,7 @@
                 <div class="relative mb-6 lg:mb-10" style="max-height:350px; overflow:hidden;">
                   @if ($menu->is_api == -1)
                     <img src="{{ asset('storage/' . $menu->image) }}"
-                            alt="" class=" w-full h-full ">
+                            alt="" class=" w-full h-full">
                   @else
                     <img src="{{ $menu->image }}"
                         alt="" class=" w-full h-full ">
