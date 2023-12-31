@@ -14,7 +14,7 @@
             </div>
             <div class="bg-white p-10 md:w-3/4 lg:w-1/2 mx-auto rounded-2xl">
                 <form action="/dashboard/api-products/{{ $menu->slug }}" method="POST" enctype="multipart/form-data">
-{{--                    @method('PUT')--}}
+                   {{-- @method('PUT') --}}
                     @csrf
                     {{-- Name --}}
                     <!--       flex - asjad korvuti, nb! flex-1 - element kogu ylejaanud laius -->
@@ -74,12 +74,7 @@
                     @endif
                     <div class="flex items-center mb-5">
                         <label for="image" class="inline-block w-20 mr-6 text-right
-                                   font-bold text-gray-600">Image</label>
-                        <input type="file" id="image" name="image" placeholder="Image"
-                               class="flex-1 py-2 border-b-2 border-gray-400 focus:border-green-400
-                        text-gray-600 placeholder-gray-400 rounded-lg
-                        outline-none @error('image') is-invalid @enderror" value="{{ $menu->image }}"
-                               onchange="previewImage()">
+                                   font-bold text-gray-600">Image</label>                        
                     </div>
 
                     {{-- PRICE --}}
@@ -125,88 +120,19 @@
 
                         <label for="description" class="inline-block w-20 mr-6 text-right
             font-bold text-gray-600 mb-3">Description</label>
-                        {{-- <input type="text" id="large-input" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"> --}}
                         <input id="description" type="hidden" name="description">
                         <trix-editor input="description" value="{{ old('description', $menu->description) }}">
                             {{ $menu->description }}</trix-editor>
                     <div class="text-right">
+                        <button onclick="window.location.href='/dashboard/api-products'" class="mt-5 py-3 px-8 bg-red-500 text-white font-bold rounded-2xl" type="button">
+                            Back
+                          </button>
                         <button type="submit" class="py-3 mt-5 px-8 bg-blue-500 text-white font-bold rounded-2xl">Submit</button>
                     </div>
 
                 </form>
             </div>
         </div>
-{{--<div class="text-4xl font-bold mb-4 mx-3 my-3">--}}
-{{--    <h1>Edit Products</h1>--}}
-{{--</div>--}}
-{{--<hr class="border-t border-gray-600 my-4 mx-4 px-[610px]"> <!-- Separator line -->--}}
-
-{{--<form method="POST" action="/dashboard/api-products/{{ $menu->slug }}" class="max-w-2xl my-4 mx-4" enctype="multipart/form-data">--}}
-{{--    --}}{{-- @method('PUT') --}}
-{{--    @csrf--}}
-{{--    <div class="mb-5">--}}
-{{--        <label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Name</label>--}}
-{{--        <input type="text" id="name" name="name" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ old('name', $menu->name) }}">--}}
-{{--        @error('name')--}}
-{{--            <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">--}}
-{{--                <span class="font-medium">Danger alert!</span>--}}
-{{--                {{ $message }}--}}
-{{--            </div>--}}
-{{--        @enderror--}}
-{{--    </div>--}}
-
-{{--    <div class="mb-5">--}}
-{{--        <label for="slug" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Slug</label>--}}
-{{--        <input type="text" id="slug" name="slug" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" readonly value="{{ old('slug', $menu->slug) }}">--}}
-{{--        @error('slug')--}}
-{{--            <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">--}}
-{{--                <span class="font-medium">Danger alert!</span>--}}
-{{--                {{ $message }}--}}
-{{--            </div>--}}
-{{--        @enderror--}}
-{{--    </div>--}}
-
-{{--    <div class="mb-5">--}}
-{{--        <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Price</label>--}}
-{{--        <input type="number" min="0" max="5000000" id="price" name="price" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ old('price', $menu->price) }}">--}}
-{{--        @error('price')--}}
-{{--            <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">--}}
-{{--                <span class="font-medium">Danger alert!</span>--}}
-{{--                {{ $message }}--}}
-{{--            </div>--}}
-{{--        @enderror--}}
-{{--    </div>--}}
-
-{{--    <div class="mb-5">--}}
-{{--        <label for="quantity" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Quantity</label>--}}
-{{--        <input type="number" min="0" max="5000000" id="quantity" name="quantity" class="block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-white dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500" value="{{ old('quantity', $menu->quantity) }}">--}}
-{{--        @error('quantity')--}}
-{{--            <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">--}}
-{{--                <span class="font-medium">Danger alert!</span>--}}
-{{--                {{ $message }}--}}
-{{--            </div>--}}
-{{--        @enderror--}}
-{{--    </div>--}}
-
-{{--    --}}{{-- Mengirim data image lama --}}
-{{--    <input type="hidden" name="image" value="{{ $menu->image }}">--}}
-
-{{--    <img src="{{ $menu->image }}" class="img-preview mb-3 block">--}}
-
-{{--    <div>--}}
-{{--        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-black">Description</label>--}}
-{{--        @error('description')--}}
-{{--            <div class="p-4 mb-4 text-sm bg-gray-800 text-red-400" role="alert">--}}
-{{--                <span class="font-medium">Danger alert!</span>--}}
-{{--                {{ $message }}--}}
-{{--            </div>--}}
-{{--        @enderror--}}
-{{--        <input id="description" type="hidden" name="description"  value="{{ old('description', $menu->description) }}">--}}
-{{--        <trix-editor input="description"></trix-editor>--}}
-{{--    </div>--}}
-
-{{--    <button type="submit">Create Post</button>--}}
-{{--  </form>--}}
 
   <script>
     const name = document.querySelector('#name');

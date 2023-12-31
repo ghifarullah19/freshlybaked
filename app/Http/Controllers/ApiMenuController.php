@@ -79,7 +79,7 @@ class ApiMenuController extends Controller
     {
         $menu = menu::where('id', $menu->id)->first();
 
-        return view('product', [
+        return view('dashboard.api-products.show', [
             "menu" => $menu,
             "route" => 'api-products'
         ]);
@@ -127,7 +127,6 @@ class ApiMenuController extends Controller
             'name' => 'required|max:255',
             'price' => 'required',
             'quantity' => 'required',
-            'image' => 'required',
             'description' => 'required'
         ];
 

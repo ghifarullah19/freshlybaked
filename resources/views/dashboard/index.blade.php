@@ -20,7 +20,7 @@
                     </div>
                    {{-- onclick="window.location.href='/dashboard/users/{{ Auth()->user()->username }}/edit'" --}}
                     <div class="flex items-center gap-x-2">
-                        <button type="button"  class="inline-flex items-center justify-center h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
+                        <button type="button" onclick="window.location.href='/'"  class="inline-flex items-center justify-center h-9 px-5 rounded-xl bg-gray-900 text-gray-300 hover:text-white text-sm font-semibold transition">
                             <svg class="text-lg mr-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M10 20v-6h4v6h5v-8h3L12 3L2 12h3v8z"/></svg>
                             <a href="/">
                                 Home

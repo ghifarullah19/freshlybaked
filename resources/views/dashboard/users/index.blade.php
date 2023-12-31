@@ -94,11 +94,15 @@
                                     {{ $user->email }}
                                 </td>
                                 {{-- Isi Tabel Is admin --}}
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-black">
+                                <td class="py-5 border-b border-gray-200 bg-white text-sm text-black">
                                     @if ($user->is_admin == 1)
-                                    {{ "true" }}
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            ADMIN
+                                        </span>
                                     @else
-                                    {{ "false" }}
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
+                                            REGULER
+                                        </span>
                                     @endif
                                 </td>
                                 {{-- Isi Tabel Created at --}}
@@ -110,7 +114,7 @@
                                     {{ $user->updated_at }}
                                 </td>
                                 {{-- Isi Tabel Button --}}
-                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm tex">
+                                <td class="px-2 py-5 flex flex-row border-b border-gray-200 bg-white text-sm">
                                     <button onclick="window.location.href='/dashboard/users/{{ $user->username }}'" type="button" class="ml-2 px-4 py-2.5 text-sm font-medium text-white bg-blue-700 border border-white rounded-xl mb-2 hover:bg-blue-500 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
                                         <svg class="w-3 h-3 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
                                             <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
