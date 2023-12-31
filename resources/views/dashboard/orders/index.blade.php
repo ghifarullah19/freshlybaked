@@ -107,17 +107,10 @@
                                     {{ $cart->created_at }}
                                 </td>
                                 {{-- Isi Tabel Button --}}
-                                <td class="px-6 flex">
-                                <td class="px-6 ml-10 my-2 py-1 inline-flex bg-transparent">
-                                    <button onclick="window.location.href='/dashboard/orders/{{ $cart->id }}'" type="button" class="ml-2 px-4 py-2 text-sm font-medium text-gray-900 bg-transparent border border-gray-900 rounded-s-lg hover:bg-blue-500 hover:text-white focus:z-10 focus:ring-2 focus:ring-gray-500 focus:bg-gray-900 focus:text-white">
-                                        <svg class="w-3 h-4 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 14">
-                                            <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                                <path d="M10 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
-                                                <path d="M10 13c4.97 0 9-2.686 9-6s-4.03-6-9-6-9 2.686-9 6 4.03 6 9 6Z"/>
-                                            </g>
-                                        </svg>
+                                <td class="px-6 py-3 mt-2 flex flex-col justify-center">
+                                    <button onclick="window.location.href='/dashboard/orders/{{ $cart->id }}'" type="button" class="text-[#994D1C] hover:text-white border border-[#994D1C] hover:bg-[#994D1C] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-xs px-2.5 py-2.5 text-center me-2 mb-2">
+                                        Detail
                                     </button>
-                                </td>
                                 </td>
                             </tr>
                         @endforeach

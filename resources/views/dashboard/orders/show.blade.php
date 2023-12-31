@@ -21,29 +21,37 @@
                         Tabel Order
                     </div>
 
-                    <div class="flex flex-row">
+                    <div class="flex flex-row justify-between">
                        {{-- button urut --}}
-                       <form action="/dashboard/products" class="inline">
-                           <select name="col" for="col" id="col" class="text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm pl-2 py-2.5">
-                               <option value="">Kolom</option>
-                               <option value="id">Order ID</option>
-                               <option value="user">Pelanggan</option>
-                               <option value="total_price">Harga</option>
-                               <option value="created_at">Dibuat Pada</option>
-                               <option value="status">Status</option>
-                           </select>
-                           <select name="sort" for="sort" id="sort" class="text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm pl-2 py-2.5">
-                                <option value="">Urutan</option>
-                                <option value="asc">Menaik</option>
-                                <option value="desc">Menurun</option>
-                            </select>
-                           <button class="text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">
-                               Urut
-                           </button>
-                       </form>
+                       <div class="flex flex-col">
+                           <form action="/dashboard/products" class="inline">
+                               <select name="col" for="col" id="col" class="text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm pl-2 py-2.5">
+                                   <option value="">Kolom</option>
+                                   <option value="id">Order ID</option>
+                                   <option value="user">Pelanggan</option>
+                                   <option value="total_price">Harga</option>
+                                   <option value="created_at">Dibuat Pada</option>
+                                   <option value="status">Status</option>
+                               </select>
+                               <select name="sort" for="sort" id="sort" class="text-white bg-[#994D1C] hover:bg-[#E48F45] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm pl-2 py-2.5">
+                                    <option value="">Urutan</option>
+                                    <option value="asc">Menaik</option>
+                                    <option value="desc">Menurun</option>
+                                </select>
+                               <button class="text-white bg-gray-800 hover:bg-gray-600-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">
+                                   Urut
+                               </button>
+                           </form>
+                       </div>
+
+                       <div class="flex flex-col mr-3">
+                           <button onclick="window.location.href='/dashboard/orders'" class="mr-1 mb-5 block text-[#994D1C] hover:text-white border border-[#994D1C] hover:bg-[#994D1C] focus:ring-4 focus:outline-none focus:ring-[#994D1C] font-medium rounded-lg text-sm px-5 py-2.5 text-center h-fit" type="button">
+                            Back
+                          </button>
+                       </div>
                     </div>
                     
-                <div class="flex overflow-x-auto shadow-md sm:rounded-lg mx-3 mt-5">
+                <div class="flex overflow-x-auto shadow-md sm:rounded-lg mx-3">
                     <table class="w-full text-sm text-left rtl:text-right text-gray-500 ">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-800 ">
                         <tr>
