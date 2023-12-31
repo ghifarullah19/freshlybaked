@@ -11,12 +11,9 @@
      {{-- fORM --}}
         <!-- component -->
     <div class="bg-[#FAEED1] py-32 px-10 min-h-screen ">
-        <!--   tip; mx-auto -- jagab ilusti keskele  -->
         <div class="bg-white p-10 md:w-3/4 lg:w-1/2 mx-auto rounded-2xl">
 
           <form action="">
-
-            <!--       flex - asjad korvuti, nb! flex-1 - element kogu ylejaanud laius -->
             <div class="flex items-center mb-5">
               <!--         tip - here neede inline-block , but why? -->
               <label for="name" class="inline-block w-20 mr-6 text-right
